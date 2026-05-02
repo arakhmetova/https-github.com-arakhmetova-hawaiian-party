@@ -30,37 +30,16 @@
     /* ── Hero ── */
     .hero {
       background: #fdf0e0;
-      padding: 40px 32px 32px;
+      padding: 36px 32px 28px;
       text-align: center;
       border-bottom: 1px solid #f0e6d6;
     }
 
-    .hero-emoji {
-      font-size: 44px;
-      display: block;
-      margin-bottom: 14px;
-      letter-spacing: 6px;
-    }
-
-    .hero h1 {
-      font-size: 26px;
-      font-weight: 700;
-      color: #1a1a1a;
-      letter-spacing: -0.5px;
-    }
-
-    .hero .meta {
-      margin-top: 6px;
-      font-size: 14px;
-      color: #a08060;
-      font-weight: 500;
-    }
-
-    .hero .meta-small {
-      margin-top: 4px;
-      font-size: 12px;
-      color: #c0a080;
-    }
+    .hero-emoji { font-size: 44px; display: block; margin-bottom: 12px; letter-spacing: 6px; }
+    .hero h1 { font-size: 26px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.5px; }
+    .hero .meta { margin-top: 6px; font-size: 14px; color: #a08060; font-weight: 500; }
+    .hero .meta-small { margin-top: 4px; font-size: 12px; color: #c0a080; }
+    .hero .eligibility { margin-top: 12px; font-size: 13px; color: #a08060; line-height: 1.6; }
 
     .students-badge {
       display: inline-block;
@@ -96,106 +75,117 @@
       transition: all 0.15s;
     }
 
-    .lang-btn.active {
-      border-color: #c8873a;
-      color: #c8873a;
-      background: #fffbf5;
+    .lang-btn.active { border-color: #c8873a; color: #c8873a; background: #fffbf5; }
+
+    /* ── Progress ── */
+    .progress-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 20px 32px 0;
     }
 
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .step-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #e8e0d8;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #c0a880;
+      transition: all 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step.active .step-dot { border-color: #c8873a; color: #c8873a; background: #fffbf5; }
+    .step.done .step-dot { border-color: #3aaa7a; background: #3aaa7a; color: white; }
+
+    .step-label { font-size: 10px; font-weight: 600; color: #c0a880; letter-spacing: 0.5px; text-align: center; }
+    .step.active .step-label { color: #c8873a; }
+    .step.done .step-label { color: #3aaa7a; }
+
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: #e8e0d8;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+
+    .step-line.done { background: #3aaa7a; }
+
     /* ── Body ── */
-    .body { padding: 28px 32px 32px; }
+    .body { padding: 24px 32px 32px; }
+
+    /* ── Step panels ── */
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    .step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .step-subtitle {
+      font-size: 13px;
+      color: #b0a090;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
 
     /* ── Early bird banner ── */
     .eb-banner {
       background: #fff8ee;
       border: 1.5px solid #f5d9a0;
       border-radius: 12px;
-      padding: 12px 16px;
+      padding: 10px 14px;
       font-size: 13px;
       color: #8a6020;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .eb-banner strong { color: #6a4010; }
-
-    .countdown {
-      text-align: center;
-      font-size: 12px;
-      color: #b0a090;
-      margin-bottom: 24px;
-      font-weight: 500;
-    }
-
+    .countdown { text-align: center; font-size: 12px; color: #b0a090; margin-bottom: 16px; font-weight: 500; }
     .countdown b { color: #c8873a; }
 
-    /* ── Spots counter ── */
-    .spots-wrap {
-      margin-bottom: 24px;
-    }
-
-    .spots-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .spots-label {
-      font-size: 12px;
-      color: #b0a090;
-      font-weight: 600;
-    }
-
-    .spots-count {
-      font-size: 12px;
-      font-weight: 700;
-      color: #c8873a;
-    }
-
-    .progress-bar {
-      height: 6px;
-      background: #f0ebe4;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #f7c87a, #c8873a);
-      border-radius: 10px;
-      transition: width 0.4s ease;
-    }
-
-    /* ── Section label ── */
-    .label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      color: #c0a880;
-      margin-bottom: 12px;
-    }
+    /* ── Spots ── */
+    .spots-wrap { margin-bottom: 20px; }
+    .spots-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .spots-label { font-size: 12px; color: #b0a090; font-weight: 600; }
+    .spots-count { font-size: 12px; font-weight: 700; color: #c8873a; }
+    .progress-bar { height: 5px; background: #f0ebe4; border-radius: 10px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #f7c87a, #c8873a); border-radius: 10px; }
 
     /* ── Tickets ── */
-    .tickets {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
+    .tickets { display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px; }
 
     .ticket {
       border: 1.5px solid #ede8e0;
       border-radius: 16px;
-      padding: 16px 18px;
+      padding: 14px 16px;
       cursor: pointer;
       transition: all 0.18s;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       position: relative;
       background: #fff;
       user-select: none;
@@ -205,69 +195,53 @@
     .ticket.selected { border-color: #c8873a; background: #fffbf5; }
 
     .radio-dot {
-      width: 18px;
-      height: 18px;
+      width: 18px; height: 18px;
       border-radius: 50%;
       border: 1.5px solid #ddd;
       flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       transition: all 0.18s;
     }
 
-    .ticket.selected .radio-dot {
-      border-color: #c8873a;
-      background: #c8873a;
-    }
-
-    .ticket.selected .radio-dot::after {
-      content: '';
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: white;
-    }
+    .ticket.selected .radio-dot { border-color: #c8873a; background: #c8873a; }
+    .ticket.selected .radio-dot::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: white; }
 
     .ticket-info { flex: 1; }
-
-    .ticket-name { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+    .ticket-name { font-size: 14px; font-weight: 600; color: #1a1a1a; }
     .ticket-desc { font-size: 12px; color: #b0a090; margin-top: 2px; }
-    .ticket-price { font-size: 20px; font-weight: 700; color: #1a1a1a; }
+    .ticket-price { font-size: 19px; font-weight: 700; color: #1a1a1a; }
 
     .badge {
-      position: absolute;
-      top: -9px;
-      right: 14px;
-      background: #3aaa7a;
-      color: white;
-      font-size: 9px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 20px;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
+      position: absolute; top: -9px; right: 14px;
+      background: #3aaa7a; color: white;
+      font-size: 9px; font-weight: 700;
+      padding: 3px 8px; border-radius: 20px;
+      letter-spacing: 0.6px; text-transform: uppercase;
     }
 
-    /* ── Divider ── */
-    .divider { height: 1px; background: #f0ebe4; margin: 20px 0; }
+    /* ── Section label ── */
+    .label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      color: #c0a880; margin-bottom: 10px;
+    }
 
-    /* ── Inputs ── */
-    .field { margin-bottom: 16px; }
+    /* ── Type select ── */
+    .type-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+
+    /* ── Fields ── */
+    .field { margin-bottom: 14px; }
 
     .field label {
       display: block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #c0a880;
-      margin-bottom: 8px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: #c0a880; margin-bottom: 6px;
     }
 
     .field input, .field select {
       width: 100%;
-      padding: 14px 16px;
+      padding: 13px 14px;
       border: 1.5px solid #ede8e0;
       border-radius: 12px;
       font-size: 15px;
@@ -286,198 +260,123 @@
       appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c0a880' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 16px center;
+      background-position: right 14px center;
       cursor: pointer;
     }
 
-    .error-msg {
-      color: #e05050;
-      font-size: 12px;
-      margin-top: 6px;
-      display: none;
-    }
+    .field-hint { font-size: 12px; color: #b0a090; margin-top: 5px; }
+
+    .error-msg { color: #e05050; font-size: 12px; margin-top: 5px; display: none; }
 
     /* ── Checkbox ── */
     .checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      margin-bottom: 6px;
+      display: flex; align-items: flex-start;
+      gap: 12px; cursor: pointer; margin-bottom: 6px;
     }
 
     .checkbox-label input[type="checkbox"] { display: none; }
 
     .checkmark {
-      width: 20px;
-      height: 20px;
+      width: 20px; height: 20px; min-width: 20px;
       border: 1.5px solid #ede8e0;
       border-radius: 6px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.18s;
-      background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.18s; background: #fff; margin-top: 1px;
     }
 
-    .checkbox-label input:checked ~ .checkmark {
-      background: #1a1a1a;
-      border-color: #1a1a1a;
-    }
-
+    .checkbox-label input:checked ~ .checkmark { background: #1a1a1a; border-color: #1a1a1a; }
     .checkbox-label input:checked ~ .checkmark::after {
-      content: '';
-      width: 5px;
-      height: 9px;
-      border: 2px solid white;
-      border-top: none;
-      border-left: none;
-      transform: rotate(45deg) translateY(-1px);
-      display: block;
+      content: ''; width: 5px; height: 9px;
+      border: 2px solid white; border-top: none; border-left: none;
+      transform: rotate(45deg) translateY(-1px); display: block;
     }
 
     .checkmark.error { border-color: #e05050; }
-    .check-text { font-size: 14px; color: #555; line-height: 1.4; }
+    .check-text { font-size: 14px; color: #555; line-height: 1.5; }
 
-    /* ── Rules link ── */
     .rules-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      color: #c8873a;
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-weight: 600;
-      padding: 0;
-      text-decoration: underline;
-      text-underline-offset: 2px;
+      color: #c8873a; cursor: pointer; background: none; border: none;
+      font-family: inherit; font-size: 14px; font-weight: 600;
+      padding: 0; text-decoration: underline; text-underline-offset: 2px;
     }
 
-    /* ── Rules modal ── */
-    .rules-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(20,15,10,0.5);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+    /* ── Divider ── */
+    .divider { height: 1px; background: #f0ebe4; margin: 20px 0; }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      width: 100%; padding: 16px;
+      background: #1a1a1a; color: #fff;
+      border: none; border-radius: 14px;
+      font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: all 0.18s;
+      font-family: inherit; letter-spacing: -0.2px;
     }
 
-    .rules-modal.open { display: flex; }
+    .btn-primary:hover { background: #333; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+    .btn-primary:active { transform: translateY(0); }
 
-    .rules-card {
-      background: white;
-      border-radius: 24px;
-      padding: 32px 28px;
-      max-width: 420px;
-      width: 100%;
-      max-height: 80vh;
-      overflow-y: auto;
-      animation: slideUp 0.25s ease;
+    .btn-secondary {
+      width: 100%; padding: 14px;
+      background: none; color: #b0a090;
+      border: 1.5px solid #ede8e0; border-radius: 14px;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all 0.18s;
+      font-family: inherit; margin-top: 10px;
     }
 
-    .rules-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #1a1a1a;
+    .btn-secondary:hover { border-color: #c0a880; color: #888; }
+
+    .pay-note { margin-top: 12px; text-align: center; font-size: 12px; color: #c0a880; line-height: 1.7; }
+
+    /* ── Summary box ── */
+    .summary-box {
+      background: #fdf6ee;
+      border: 1.5px solid #f0e0c0;
+      border-radius: 14px;
+      padding: 16px;
       margin-bottom: 20px;
     }
 
-    .rules-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 28px;
+    .summary-row {
+      display: flex; justify-content: space-between;
+      font-size: 13px; padding: 4px 0;
+      color: #666;
     }
 
-    .rules-list li {
-      display: flex;
-      gap: 12px;
-      font-size: 14px;
-      color: #444;
-      line-height: 1.5;
+    .summary-row.total {
+      font-size: 15px; font-weight: 700;
+      color: #1a1a1a; border-top: 1px solid #f0e0c0;
+      margin-top: 8px; padding-top: 10px;
     }
 
-    .rules-list li .rule-icon {
-      font-size: 16px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
+    .summary-label { color: #b0a090; font-size: 12px; }
 
-    .rules-close {
-      width: 100%;
-      padding: 14px;
-      background: #1a1a1a;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    /* ── Button ── */
-    .pay-btn {
-      width: 100%;
-      padding: 17px;
-      background: #1a1a1a;
-      color: #fff;
-      border: none;
+    /* ── Confirm payment box ── */
+    .confirm-box {
+      background: #f0fbf5;
+      border: 1.5px solid #b0e0c8;
       border-radius: 14px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.18s;
-      font-family: inherit;
-      letter-spacing: -0.2px;
-      margin-top: 20px;
+      padding: 16px;
+      margin-bottom: 20px;
     }
 
-    .pay-btn:hover {
-      background: #333;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    }
-
-    .pay-btn:active { transform: translateY(0); }
-
-    .pay-note {
-      margin-top: 14px;
-      text-align: center;
-      font-size: 12px;
-      color: #c0a880;
-      line-height: 1.7;
-    }
+    .confirm-box p { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 12px; }
+    .confirm-box strong { color: #1a1a1a; }
 
     /* ── Modal ── */
     .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(20,15,10,0.45);
-      z-index: 100;
-      align-items: flex-end;
-      justify-content: center;
+      display: none; position: fixed; inset: 0;
+      background: rgba(20,15,10,0.45); z-index: 100;
+      align-items: flex-end; justify-content: center;
     }
 
     .modal.open { display: flex; }
 
     .modal-card {
-      background: white;
-      border-radius: 28px 28px 0 0;
-      padding: 32px 28px 48px;
-      max-width: 440px;
-      width: 100%;
-      text-align: center;
-      animation: slideUp 0.25s ease;
+      background: white; border-radius: 28px 28px 0 0;
+      padding: 28px 28px 48px; max-width: 440px; width: 100%;
+      text-align: center; animation: slideUp 0.25s ease;
     }
 
     @keyframes slideUp {
@@ -485,99 +384,79 @@
       to   { transform: translateY(0); opacity: 1; }
     }
 
-    .modal-handle {
-      width: 36px;
-      height: 4px;
-      background: #ede8e0;
-      border-radius: 2px;
-      margin: 0 auto 24px;
-    }
-
+    .modal-handle { width: 36px; height: 4px; background: #ede8e0; border-radius: 2px; margin: 0 auto 20px; }
     .modal-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #1a1a1a; }
-    .modal-card p { color: #888; font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+    .modal-card p { color: #888; font-size: 14px; line-height: 1.6; margin-bottom: 14px; }
 
-    /* Copy box */
     .copy-box {
-      background: #fdf6ee;
-      border: 1.5px solid #f0e0c0;
-      border-radius: 12px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 20px;
-      text-align: left;
+      background: #fdf6ee; border: 1.5px solid #f0e0c0;
+      border-radius: 12px; padding: 12px 14px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px; margin-bottom: 16px; text-align: left;
     }
 
-    .copy-text {
-      font-size: 14px;
-      font-weight: 600;
-      color: #1a1a1a;
-      flex: 1;
-      word-break: break-word;
-    }
+    .copy-text { font-size: 13px; font-weight: 600; color: #1a1a1a; flex: 1; word-break: break-word; }
 
     .copy-btn {
-      background: #1a1a1a;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      white-space: nowrap;
-      transition: all 0.18s;
-      flex-shrink: 0;
+      background: #1a1a1a; color: white; border: none;
+      border-radius: 8px; padding: 7px 12px;
+      font-size: 12px; font-weight: 600;
+      cursor: pointer; font-family: inherit; white-space: nowrap;
+      transition: all 0.18s; flex-shrink: 0;
     }
 
-    .copy-btn.copied {
-      background: #3aaa7a;
-    }
+    .copy-btn.copied { background: #3aaa7a; }
 
     .modal-btn {
-      display: block;
-      width: 100%;
-      padding: 16px;
-      background: #1a1a1a;
-      color: white;
-      border: none;
-      border-radius: 14px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      margin-bottom: 12px;
-      font-family: inherit;
-      transition: background 0.18s;
+      display: block; width: 100%; padding: 15px;
+      background: #1a1a1a; color: white; border: none;
+      border-radius: 14px; font-size: 15px; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      margin-bottom: 10px; font-family: inherit; transition: background 0.18s;
     }
 
     .modal-btn:hover { background: #333; }
+    .modal-cancel { background: none; border: none; color: #b0a090; font-size: 14px; cursor: pointer; font-family: inherit; }
 
-    .modal-cancel {
-      background: none;
-      border: none;
-      color: #b0a090;
-      font-size: 14px;
-      cursor: pointer;
-      font-family: inherit;
+    /* ── Rules modal ── */
+    .rules-modal {
+      display: none; position: fixed; inset: 0;
+      background: rgba(20,15,10,0.5); z-index: 200;
+      align-items: center; justify-content: center; padding: 24px;
     }
 
-    /* ── i18n hidden ── */
+    .rules-modal.open { display: flex; }
+
+    .rules-card {
+      background: white; border-radius: 24px;
+      padding: 28px 24px; max-width: 420px; width: 100%;
+      max-height: 80vh; overflow-y: auto; animation: slideUp 0.25s ease;
+    }
+
+    .rules-card h3 { font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 16px; }
+
+    .rules-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+
+    .rules-list li { display: flex; gap: 10px; font-size: 14px; color: #444; line-height: 1.5; }
+    .rule-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    .rules-close {
+      width: 100%; padding: 14px; background: #1a1a1a; color: white;
+      border: none; border-radius: 12px; font-size: 15px; font-weight: 600;
+      cursor: pointer; font-family: inherit;
+    }
+
+    /* ── i18n ── */
     [data-lang] { display: none; }
     .lang-en [data-lang="en"] { display: inline; }
     .lang-de [data-lang="de"] { display: inline; }
-    .lang-en [data-lang-block="en"] { display: block; }
-    .lang-de [data-lang-block="de"] { display: block; }
   </style>
 </head>
 <body class="lang-en">
 
 <div class="card">
 
-  <!-- Lang switcher -->
+  <!-- Lang -->
   <div class="lang-switcher">
     <button class="lang-btn active" onclick="setLang('en')">EN</button>
     <button class="lang-btn" onclick="setLang('de')">DE</button>
@@ -592,219 +471,123 @@
       <span data-lang="de">Freitag, 12. Juni · Ketteler Wohnheim</span>
     </div>
     <div class="meta-small">Schleiermacherstraße 14, Darmstadt</div>
-    <div class="students-badge">
-      🎓 <span data-lang="en">Students only</span><span data-lang="de">Nur Studierende</span>
-    </div>
-    <div style="margin-top: 14px; font-size: 13px; color: #a08060; line-height: 1.6; max-width: 300px; margin-left: auto; margin-right: auto;">
-      <span data-lang="en">Open to students at Darmstadt universities & friends of Ketteler Wohnheim residents</span>
+    <div class="students-badge">🎓 <span data-lang="en">Students & friends of residents</span><span data-lang="de">Studierende & Freunde der Bewohner</span></div>
+    <div class="eligibility">
+      <span data-lang="en">Open to students at Darmstadt universities & friends of Ketteler residents</span>
       <span data-lang="de">Für Studierende in Darmstadt & Freunde der Ketteler-Bewohner</span>
     </div>
   </div>
 
-  <!-- Body -->
+  <!-- Progress -->
+  <div class="progress-steps" id="progress-bar">
+    <div class="step active" id="step-ind-1">
+      <div class="step-dot">1</div>
+      <div class="step-label"><span data-lang="en">Ticket</span><span data-lang="de">Ticket</span></div>
+    </div>
+    <div class="step-line" id="line-1"></div>
+    <div class="step" id="step-ind-2">
+      <div class="step-dot">2</div>
+      <div class="step-label"><span data-lang="en">Details</span><span data-lang="de">Details</span></div>
+    </div>
+    <div class="step-line" id="line-2"></div>
+    <div class="step" id="step-ind-3">
+      <div class="step-dot">3</div>
+      <div class="step-label"><span data-lang="en">Pay</span><span data-lang="de">Zahlen</span></div>
+    </div>
+  </div>
+
   <div class="body">
 
-    <!-- Early bird banner -->
-    <div class="eb-banner" id="eb-banner">
-      🐚 <span>
-        <strong data-lang="en">Early Bird until May 15</strong>
-        <strong data-lang="de">Early Bird bis 15. Mai</strong>
-        <span data-lang="en"> — save 5 € if you pay now</span>
-        <span data-lang="de"> — jetzt 5 € sparen</span>
-      </span>
-    </div>
+    <!-- ── STEP 1: Ticket ── -->
+    <div class="step-panel active" id="panel-1">
 
-    <div class="countdown" id="countdown-wrap">
-      <span data-lang="en">Early Bird closes in </span>
-      <span data-lang="de">Early Bird endet in </span>
-      <b id="cd-text">—</b>
-    </div>
-
-    <!-- Spots counter -->
-    <div class="spots-wrap">
-      <div class="spots-row">
-        <span class="spots-label">
-          <span data-lang="en">Spots taken</span>
-          <span data-lang="de">Plätze belegt</span>
+      <div class="eb-banner" id="eb-banner">
+        🐚 <span>
+          <strong data-lang="en">Early Bird until May 15</strong>
+          <strong data-lang="de">Early Bird bis 15. Mai</strong>
+          <span data-lang="en"> — save 5 € now</span>
+          <span data-lang="de"> — jetzt 5 € sparen</span>
         </span>
-        <span class="spots-count" id="spots-text">14 / 30</span>
       </div>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill" style="width: 47%"></div>
+
+      <div class="countdown" id="countdown-wrap">
+        <span data-lang="en">Closes in </span>
+        <span data-lang="de">Endet in </span>
+        <b id="cd-text">—</b>
       </div>
-    </div>
 
-    <!-- Ticket label -->
-    <div class="label">
-      <span data-lang="en">Your ticket</span>
-      <span data-lang="de">Dein Ticket</span>
-    </div>
+      <div class="spots-wrap">
+        <div class="spots-row">
+          <span class="spots-label"><span data-lang="en">Spots taken</span><span data-lang="de">Plätze belegt</span></span>
+          <span class="spots-count" id="spots-text"></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
 
-    <!-- Tickets -->
-    <div class="tickets">
+      <div class="label"><span data-lang="en">Choose your ticket</span><span data-lang="de">Ticket wählen</span></div>
 
-      <label class="ticket" id="ticket-eb" onclick="selectTicket('eb', this)">
-        <div class="radio-dot"></div>
-        <div class="ticket-info">
-          <div class="ticket-name">
-            <span data-lang="en">Early Bird</span>
-            <span data-lang="de">Early Bird</span>
+      <div class="tickets">
+        <label class="ticket" id="ticket-eb" onclick="selectTicket('eb', this)">
+          <div class="radio-dot"></div>
+          <div class="ticket-info">
+            <div class="ticket-name">🐦 Early Bird</div>
+            <div class="ticket-desc"><span data-lang="en">Until May 15, 2026</span><span data-lang="de">Bis 15. Mai 2026</span></div>
           </div>
-          <div class="ticket-desc">
-            <span data-lang="en">Until May 15, 2026</span>
-            <span data-lang="de">Bis 15. Mai 2026</span>
+          <div class="ticket-price">15 €</div>
+          <div class="badge"><span data-lang="en">Save 5 €</span><span data-lang="de">5 € sparen</span></div>
+        </label>
+
+        <label class="ticket" id="ticket-std" onclick="selectTicket('std', this)">
+          <div class="radio-dot"></div>
+          <div class="ticket-info">
+            <div class="ticket-name">🎉 Standard</div>
+            <div class="ticket-desc"><span data-lang="en">Regular price</span><span data-lang="de">Normalpreis</span></div>
           </div>
-        </div>
-        <div class="ticket-price">15 €</div>
-        <div class="badge">
-          <span data-lang="en">Save 5 €</span>
-          <span data-lang="de">5 € sparen</span>
-        </div>
-      </label>
+          <div class="ticket-price">20 €</div>
+        </label>
 
-      <label class="ticket" id="ticket-std" onclick="selectTicket('std', this)">
-        <div class="radio-dot"></div>
-        <div class="ticket-info">
-          <div class="ticket-name">Standard</div>
-          <div class="ticket-desc">
-            <span data-lang="en">Regular price</span>
-            <span data-lang="de">Normalpreis</span>
+        <label class="ticket" id="ticket-grp" onclick="selectTicket('grp', this)">
+          <div class="radio-dot"></div>
+          <div class="ticket-info">
+            <div class="ticket-name">👥 <span data-lang="en">Group · 3 people</span><span data-lang="de">Gruppe · 3 Personen</span></div>
+            <div class="ticket-desc"><span data-lang="en">Instead of 60 €</span><span data-lang="de">Statt 60 €</span></div>
           </div>
-        </div>
-        <div class="ticket-price">20 €</div>
-      </label>
-
-      <label class="ticket" id="ticket-grp" onclick="selectTicket('grp', this)">
-        <div class="radio-dot"></div>
-        <div class="ticket-info">
-          <div class="ticket-name">
-            <span data-lang="en">Group · 3 people</span>
-            <span data-lang="de">Gruppe · 3 Personen</span>
-          </div>
-          <div class="ticket-desc">
-            <span data-lang="en">Instead of 60 €</span>
-            <span data-lang="de">Statt 60 €</span>
-          </div>
-        </div>
-        <div class="ticket-price">50 €</div>
-        <div class="badge">
-          <span data-lang="en">Save 10 €</span>
-          <span data-lang="de">10 € sparen</span>
-        </div>
-      </label>
-
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Full name -->
-    <div id="fullname-field">
-    <div class="field">
-      <label>
-        <span data-lang="en">Your full name</span>
-        <span data-lang="de">Vor- und Nachname</span>
-      </label>
-      <input type="text" id="fullname" autocomplete="name"
-        placeholder="Anna Müller" />
-      <div class="error-msg" id="name-error">
-        <span data-lang="en">Please enter your first and last name</span>
-        <span data-lang="de">Bitte Vor- und Nachnamen eingeben</span>
-      </div>
-    </div>
-    </div>
-
-    <!-- Group names — shown only for group ticket -->
-    <div id="group-field" style="display:none;">
-
-      <div class="field">
-        <label><span data-lang="en">Person 1 — Full name</span><span data-lang="de">Person 1 — Vor- und Nachname</span></label>
-        <input type="text" id="group1" placeholder="Anna Müller" />
-        <div class="error-msg" id="group1-error">
-          <span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span>
-        </div>
+          <div class="ticket-price">50 €</div>
+          <div class="badge"><span data-lang="en">Save 10 €</span><span data-lang="de">10 € sparen</span></div>
+        </label>
       </div>
 
-      <div class="field">
-        <label><span data-lang="en">Person 2 — Full name</span><span data-lang="de">Person 2 — Vor- und Nachname</span></label>
-        <input type="text" id="group2" placeholder="Max Schmidt" />
-        <div class="error-msg" id="group2-error">
-          <span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span>
-        </div>
+      <div class="error-msg" id="ticket-error" style="margin-bottom:12px;">
+        <span data-lang="en">Please choose a ticket</span>
+        <span data-lang="de">Bitte Ticket wählen</span>
       </div>
 
-      <div class="field">
-        <label><span data-lang="en">Person 3 — Full name</span><span data-lang="de">Person 3 — Vor- und Nachname</span></label>
-        <input type="text" id="group3" placeholder="Lisa Weber" />
-        <div class="error-msg" id="group3-error">
-          <span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span>
-        </div>
-      </div>
-
+      <button class="btn-primary" onclick="goStep(2)">
+        <span data-lang="en">Next →</span>
+        <span data-lang="de">Weiter →</span>
+      </button>
     </div>
 
-    <!-- Email -->
-    <div class="field">
-      <label>
-        <span data-lang="en">Email</span>
-        <span data-lang="de">E-Mail</span>
-      </label>
-      <input type="email" id="email" autocomplete="email"
-        placeholder="anna@tu-darmstadt.de" />
-      <div class="error-msg" id="email-error">
-        <span data-lang="en">Please enter a valid email</span>
-        <span data-lang="de">Bitte gültige E-Mail eingeben</span>
-      </div>
-    </div>
+    <!-- ── STEP 2: Details ── -->
+    <div class="step-panel" id="panel-2">
 
-    <!-- Phone -->
-    <div class="field">
-      <label>
-        <span data-lang="en">Phone number</span>
-        <span data-lang="de">Telefonnummer</span>
-      </label>
-      <input type="tel" id="phone" autocomplete="tel"
-        placeholder="+49 151 234 567 89" />
-      <div class="error-msg" id="phone-error">
-        <span data-lang="en">Please enter a valid phone number</span>
-        <span data-lang="de">Bitte gültige Telefonnummer eingeben</span>
+      <div class="step-title"><span data-lang="en">Your details</span><span data-lang="de">Deine Angaben</span></div>
+      <div class="step-subtitle">
+        <span data-lang="en">We need this to confirm your spot after payment.</span>
+        <span data-lang="de">Damit wir deinen Platz nach der Zahlung bestätigen können.</span>
       </div>
-    </div>
 
-    <!-- University — visible only for students -->
-    <div class="field" id="uni-field" style="display:none;">
-      <label>
-        <span data-lang="en">Your university</span>
-        <span data-lang="de">Deine Hochschule</span>
-      </label>
-      <select id="university">
-        <option value="">
-          — Select —
-        </option>
-        <option value="TU Darmstadt">TU Darmstadt</option>
-        <option value="Hochschule Darmstadt (h_da)">Hochschule Darmstadt (h_da)</option>
-        <option value="Evangelische Hochschule Darmstadt">Evangelische Hochschule Darmstadt</option>
-      </select>
-      <div class="error-msg" id="uni-error">
-        <span data-lang="en">Please select your university</span>
-        <span data-lang="de">Bitte Hochschule auswählen</span>
-      </div>
-    </div>
-
-    <!-- Who are you -->
-    <div class="field">
-      <label>
-        <span data-lang="en">How are you connected to Ketteler?</span>
-        <span data-lang="de">Wie bist du mit dem Ketteler verbunden?</span>
-      </label>
-      <div class="tickets" style="margin-bottom:0; gap:8px;">
-        <label class="ticket" id="type-student" onclick="selectType('student', this)" style="padding:12px 16px;">
+      <!-- Who are you -->
+      <div class="label"><span data-lang="en">Who are you?</span><span data-lang="de">Wer bist du?</span></div>
+      <div class="type-options">
+        <label class="ticket" id="type-student" onclick="selectType('student', this)" style="padding:12px 14px;">
           <div class="radio-dot"></div>
           <div class="ticket-info">
             <div class="ticket-name" style="font-size:14px;">🎓 <span data-lang="en">I am a student</span><span data-lang="de">Ich bin Student/in</span></div>
-            <div class="ticket-desc"><span data-lang="en">Enrolled at a Darmstadt university</span><span data-lang="de">Eingeschrieben an einer Hochschule in Darmstadt</span></div>
+            <div class="ticket-desc"><span data-lang="en">Enrolled at a Darmstadt university</span><span data-lang="de">An einer Hochschule in Darmstadt eingeschrieben</span></div>
           </div>
         </label>
-        <label class="ticket" id="type-friend" onclick="selectType('friend', this)" style="padding:12px 16px;">
+        <label class="ticket" id="type-friend" onclick="selectType('friend', this)" style="padding:12px 14px;">
           <div class="radio-dot"></div>
           <div class="ticket-info">
             <div class="ticket-name" style="font-size:14px;">🏠 <span data-lang="en">My friend lives in Ketteler</span><span data-lang="de">Mein Freund/meine Freundin wohnt im Ketteler</span></div>
@@ -812,72 +595,184 @@
           </div>
         </label>
       </div>
-      <div class="error-msg" id="type-error" style="margin-top:6px;">
+      <div class="error-msg" id="type-error" style="margin-bottom:12px;">
         <span data-lang="en">Please select an option</span>
         <span data-lang="de">Bitte eine Option wählen</span>
       </div>
+
+      <!-- University (student only) -->
+      <div class="field" id="uni-field" style="display:none; margin-top:14px;">
+        <label><span data-lang="en">Your university</span><span data-lang="de">Deine Hochschule</span></label>
+        <select id="university">
+          <option value="">— <span data-lang="en">Select</span><span data-lang="de">Auswählen</span> —</option>
+          <option value="TU Darmstadt">TU Darmstadt</option>
+          <option value="Hochschule Darmstadt (h_da)">Hochschule Darmstadt (h_da)</option>
+          <option value="Evangelische Hochschule Darmstadt">Evangelische Hochschule Darmstadt</option>
+        </select>
+        <div class="error-msg" id="uni-error">
+          <span data-lang="en">Please select your university</span>
+          <span data-lang="de">Bitte Hochschule auswählen</span>
+        </div>
+      </div>
+
+      <!-- Friend name (friend only) -->
+      <div class="field" id="friend-field" style="display:none; margin-top:14px;">
+        <label><span data-lang="en">Name of your friend who lives in Ketteler</span><span data-lang="de">Name deines Freundes im Ketteler</span></label>
+        <input type="text" id="friend-name" placeholder="Max Müller" />
+        <div class="field-hint"><span data-lang="en">So we can verify with the resident</span><span data-lang="de">Damit wir beim Bewohner nachfragen können</span></div>
+        <div class="error-msg" id="friend-error">
+          <span data-lang="en">Please enter your friend's full name</span>
+          <span data-lang="de">Bitte Namen des Freundes eingeben</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Name(s) -->
+      <div id="single-name-wrap">
+        <div class="field">
+          <label><span data-lang="en">Your full name</span><span data-lang="de">Vor- und Nachname</span></label>
+          <input type="text" id="fullname" autocomplete="name" placeholder="Anna Müller" />
+          <div class="field-hint"><span data-lang="en">First and last name</span><span data-lang="de">Vor- und Nachname</span></div>
+          <div class="error-msg" id="name-error">
+            <span data-lang="en">Please enter your first and last name</span>
+            <span data-lang="de">Bitte Vor- und Nachnamen eingeben</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="group-names-wrap" style="display:none;">
+        <div class="label"><span data-lang="en">Names of all 3 people</span><span data-lang="de">Namen aller 3 Personen</span></div>
+        <div class="field">
+          <label><span data-lang="en">Person 1 (you — the one paying)</span><span data-lang="de">Person 1 (du — zahlende Person)</span></label>
+          <input type="text" id="group1" placeholder="Anna Müller" />
+          <div class="error-msg" id="group1-error"><span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span></div>
+        </div>
+        <div class="field">
+          <label><span data-lang="en">Person 2</span><span data-lang="de">Person 2</span></label>
+          <input type="text" id="group2" placeholder="Max Schmidt" />
+          <div class="error-msg" id="group2-error"><span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span></div>
+        </div>
+        <div class="field">
+          <label><span data-lang="en">Person 3</span><span data-lang="de">Person 3</span></label>
+          <input type="text" id="group3" placeholder="Lisa Weber" />
+          <div class="error-msg" id="group3-error"><span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span></div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="email" autocomplete="email" placeholder="anna@tu-darmstadt.de" />
+        <div class="field-hint"><span data-lang="en">We'll send you a confirmation</span><span data-lang="de">Wir schicken dir eine Bestätigung</span></div>
+        <div class="error-msg" id="email-error">
+          <span data-lang="en">Please enter a valid email</span>
+          <span data-lang="de">Bitte gültige E-Mail eingeben</span>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="field">
+        <label><span data-lang="en">Phone number</span><span data-lang="de">Telefonnummer</span></label>
+        <input type="tel" id="phone" autocomplete="tel" placeholder="+49 151 234 567 89" />
+        <div class="field-hint"><span data-lang="en">In case we need to reach you</span><span data-lang="de">Falls wir dich kontaktieren müssen</span></div>
+        <div class="error-msg" id="phone-error">
+          <span data-lang="en">Please enter a valid phone number</span>
+          <span data-lang="de">Bitte gültige Telefonnummer eingeben</span>
+        </div>
+      </div>
+
+      <!-- Rules -->
+      <label class="checkbox-label">
+        <input type="checkbox" id="rules-check" />
+        <span class="checkmark" id="rules-checkmark"></span>
+        <span class="check-text">
+          <span data-lang="en">I have read and agree to the </span>
+          <span data-lang="de">Ich habe die </span>
+          <button class="rules-link" onclick="openRules(event)">
+            <span data-lang="en">event rules</span>
+            <span data-lang="de">Veranstaltungsregeln</span>
+          </button>
+          <span data-lang="de"> gelesen und stimme zu</span>
+        </span>
+      </label>
+      <div class="error-msg" id="rules-error" style="margin-bottom:16px;">
+        <span data-lang="en">Please read and accept the event rules</span>
+        <span data-lang="de">Bitte Regeln lesen und akzeptieren</span>
+      </div>
+
+      <button class="btn-primary" onclick="goStep(3)" style="margin-top:16px;">
+        <span data-lang="en">Review & Pay →</span>
+        <span data-lang="de">Überprüfen & Zahlen →</span>
+      </button>
+      <button class="btn-secondary" onclick="goStep(1)">
+        <span data-lang="en">← Back</span>
+        <span data-lang="de">← Zurück</span>
+      </button>
     </div>
 
-    <!-- Friend name — shown only if "friend" selected -->
-    <div class="field" id="friend-field" style="display:none;">
-      <label>
-        <span data-lang="en">Name of your friend who lives in Ketteler</span>
-        <span data-lang="de">Name deines Freundes / deiner Freundin im Ketteler</span>
-      </label>
-      <input type="text" id="friend-name" placeholder="Max Müller" />
-      <div class="error-msg" id="friend-error">
-        <span data-lang="en">Please enter your friend's full name</span>
-        <span data-lang="de">Bitte den Namen deines Freundes eingeben</span>
+    <!-- ── STEP 3: Pay ── -->
+    <div class="step-panel" id="panel-3">
+
+      <div class="step-title"><span data-lang="en">Review & pay</span><span data-lang="de">Überprüfen & zahlen</span></div>
+      <div class="step-subtitle">
+        <span data-lang="en">Check your details and complete payment via Revolut.</span>
+        <span data-lang="de">Überprüfe deine Angaben und zahle via Revolut.</span>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-box" id="summary-box">
+        <div class="summary-row"><span class="summary-label"><span data-lang="en">Ticket</span><span data-lang="de">Ticket</span></span><span id="sum-ticket">—</span></div>
+        <div class="summary-row"><span class="summary-label"><span data-lang="en">Name(s)</span><span data-lang="de">Name(n)</span></span><span id="sum-names">—</span></div>
+        <div class="summary-row"><span class="summary-label">Email</span><span id="sum-email">—</span></div>
+        <div class="summary-row"><span class="summary-label"><span data-lang="en">University / Invited by</span><span data-lang="de">Hochschule / Eingeladen von</span></span><span id="sum-uni">—</span></div>
+        <div class="summary-row total"><span><span data-lang="en">Total</span><span data-lang="de">Gesamt</span></span><span id="sum-total">—</span></div>
+      </div>
+
+      <button class="btn-primary" onclick="openPayModal()">
+        <span data-lang="en">Pay via Revolut →</span>
+        <span data-lang="de">Per Revolut zahlen →</span>
+      </button>
+
+      <div class="divider"></div>
+
+      <!-- Confirm payment -->
+      <div class="confirm-box">
+        <p>
+          <strong>
+            <span data-lang="en">Already paid?</span>
+            <span data-lang="de">Bereits gezahlt?</span>
+          </strong><br/>
+          <span data-lang="en">Paste the last 4 digits of your Revolut transfer amount below to confirm. Find it in Revolut → Activity → your transfer.</span>
+          <span data-lang="de">Gib die letzten 4 Ziffern deines Revolut-Überweisungsbetrags ein. Zu finden in Revolut → Aktivität → deine Überweisung.</span>
+        </p>
+        <div class="field" style="margin-bottom:10px;">
+          <label><span data-lang="en">Amount you sent (e.g. 15.00)</span><span data-lang="de">Gesendeter Betrag (z. B. 15.00)</span></label>
+          <input type="number" id="confirm-amount" placeholder="15.00" step="0.01" min="1" />
+          <div class="field-hint"><span data-lang="en">Exactly as shown in Revolut</span><span data-lang="de">Genau wie in Revolut angezeigt</span></div>
+          <div class="error-msg" id="confirm-error">
+            <span data-lang="en">Please enter the amount you sent</span>
+            <span data-lang="de">Bitte gesendeten Betrag eingeben</span>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="confirmPayment()" style="background:#3aaa7a;">
+          <span data-lang="en">Confirm payment ✓</span>
+          <span data-lang="de">Zahlung bestätigen ✓</span>
+        </button>
+      </div>
+
+      <button class="btn-secondary" onclick="goStep(2)">
+        <span data-lang="en">← Edit details</span>
+        <span data-lang="de">← Details bearbeiten</span>
+      </button>
+
+      <div class="pay-note">
+        <span data-lang="en">Secure payment via Revolut · Cards also accepted</span>
+        <span data-lang="de">Sichere Zahlung per Revolut · Kartenzahlung möglich</span>
+        <br/>Kostenbeteiligung — private Veranstaltung
       </div>
     </div>
 
-    <!-- University — shown only if "student" selected -->
-    <div id="uni-wrap">
-
-    <!-- Rules checkbox -->
-    <label class="checkbox-label" style="margin-top:10px;">
-      <input type="checkbox" id="rules-check" />
-      <span class="checkmark" id="rules-checkmark"></span>
-      <span class="check-text">
-        <span data-lang="en">I have read and agree to the </span>
-        <span data-lang="de">Ich habe die </span>
-        <button class="rules-link" onclick="openRules(event)">
-          <span data-lang="en">event rules</span>
-          <span data-lang="de">Veranstaltungsregeln</span>
-        </button>
-        <span data-lang="de"> gelesen und stimme zu</span>
-      </span>
-    </label>
-    <div class="error-msg" id="rules-error" style="margin-bottom: 4px;">
-      <span data-lang="en">Please read and accept the event rules</span>
-      <span data-lang="de">Bitte Veranstaltungsregeln lesen und akzeptieren</span>
-    </div>
-
-    <button class="pay-btn" onclick="handlePay()">
-      <span data-lang="en">Continue to payment →</span>
-      <span data-lang="de">Weiter zur Zahlung →</span>
-    </button>
-
-    <div class="pay-note">
-      <span data-lang="en">Secure payment via Revolut · Cards also accepted</span>
-      <span data-lang="de">Sichere Zahlung per Revolut · Kartenzahlung möglich</span>
-      <br/>Kostenbeteiligung — private Veranstaltung
-    </div>
-
-  </div>
-</div>
-
-<!-- Rules Modal -->
-<div class="rules-modal" id="rules-modal">
-  <div class="rules-card">
-    <h3>🌴 Event Rules</h3>
-    <p style="color:#b0a090; font-size:14px; line-height:1.7; margin-bottom:24px;">
-      🚧 <em>Event rules are being finalised — check back soon.</em>
-    </p>
-    <button class="rules-close" onclick="closeRules()">
-      <span data-lang="en">Got it, I agree ✓</span>
-      <span data-lang="de">Verstanden, ich stimme zu ✓</span>
-    </button>
   </div>
 </div>
 
@@ -885,56 +780,71 @@
 <div class="modal" id="modal">
   <div class="modal-card">
     <div class="modal-handle"></div>
-    <h2>
-      <span data-lang="en">Almost there 🌴</span>
-      <span data-lang="de">Fast geschafft 🌴</span>
-    </h2>
+    <h2><span data-lang="en">Almost there 🌴</span><span data-lang="de">Fast geschafft 🌴</span></h2>
     <p>
-      <span data-lang="en">Copy your name and paste it as a note in Revolut so we can confirm your spot:</span>
-      <span data-lang="de">Kopiere deinen Namen und füge ihn als Notiz in Revolut ein, damit wir deinen Platz bestätigen können:</span>
+      <span data-lang="en">Copy your name and paste it as a note in Revolut:</span>
+      <span data-lang="de">Kopiere deinen Namen und füge ihn als Notiz in Revolut ein:</span>
     </p>
-
     <div class="copy-box">
-      <div class="copy-text" id="copy-text">Anna Müller</div>
+      <div class="copy-text" id="copy-text"></div>
       <button class="copy-btn" id="copy-btn" onclick="copyName()">
-        <span data-lang="en">Copy</span>
-        <span data-lang="de">Kopieren</span>
+        <span data-lang="en">Copy</span><span data-lang="de">Kopieren</span>
       </button>
     </div>
-
-    <p style="font-size:13px; color:#b0a090; margin-bottom:20px;">
-      <span data-lang="en">No Revolut? You can pay by card on the next screen.</span>
-      <span data-lang="de">Kein Revolut? Auf der nächsten Seite kannst du per Karte zahlen.</span>
+    <p style="font-size:13px; color:#b0a090; margin-bottom:16px;">
+      <span data-lang="en">🍎 No Revolut? Pay by card on the next screen. Apple Pay also available.</span>
+      <span data-lang="de">🍎 Kein Revolut? Auf der nächsten Seite per Karte oder Apple Pay zahlen.</span>
     </p>
-
     <a class="modal-btn" id="modal-link" href="#" target="_blank" onclick="closeModal()">
       <span data-lang="en">Open Revolut & Pay →</span>
       <span data-lang="de">Revolut öffnen & zahlen →</span>
     </a>
     <button class="modal-cancel" onclick="closeModal()">
-      <span data-lang="en">Go back</span>
-      <span data-lang="de">Zurück</span>
+      <span data-lang="en">Go back</span><span data-lang="de">Zurück</span>
+    </button>
+  </div>
+</div>
+
+<!-- Rules Modal -->
+<div class="rules-modal" id="rules-modal">
+  <div class="rules-card">
+    <h3>🌴 Event Rules</h3>
+    <ul class="rules-list">
+      <li><span class="rule-icon">🎓</span><span>Students only. You must be an enrolled student at a Darmstadt university to attend.</span></li>
+      <li><span class="rule-icon">🍺</span><span>Alcohol responsibly. No excessive drinking. Anyone visibly intoxicated may be asked to leave.</span></li>
+      <li><span class="rule-icon">🤝</span><span>Respect everyone. Harassment of any kind will not be tolerated. Treat all guests with respect.</span></li>
+      <li><span class="rule-icon">🔇</span><span>Noise limits. We respect our neighbours. Music stops at the agreed time. No loud noise in corridors.</span></li>
+      <li><span class="rule-icon">🧹</span><span>Keep it clean. Help keep the common areas tidy. Report any damage immediately.</span></li>
+      <li><span class="rule-icon">💳</span><span>No refunds. Payments are non-refundable. You may transfer your spot to another student.</span></li>
+      <li><span class="rule-icon">📵</span><span>Photos & privacy. Ask before taking photos of others. No posting without consent.</span></li>
+      <li><span class="rule-icon">🚪</span><span>Organisers' decision is final. The organising team reserves the right to ask anyone to leave.</span></li>
+    </ul>
+    <p style="color:#b0a090; font-size:13px; margin-bottom:20px;">🚧 Full rules — coming soon (TBD)</p>
+    <button class="rules-close" onclick="closeRules()">
+      <span data-lang="en">Got it, I agree ✓</span>
+      <span data-lang="de">Verstanden, ich stimme zu ✓</span>
     </button>
   </div>
 </div>
 
 <script>
-  // ── CONFIG ─────────────────────────────────────────────────────────────────
+  // ── CONFIG ────────────────────────────────────────────────────────────────
   const REVOLUT_LINKS = {
     eb:  "https://revolut.me/arakhmetova09?currency=EUR&amount=1500&note=Hawaiian%20Party%20-%20Early%20Bird",
     std: "https://revolut.me/arakhmetova09?currency=EUR&amount=2000&note=Hawaiian%20Party%20-%20Standard",
     grp: "https://revolut.me/arakhmetova09?currency=EUR&amount=5000&note=Hawaiian%20Party%20-%20Group%203%20Persons",
   };
 
+  const TICKET_LABELS = { eb: "Early Bird — 15 €", std: "Standard — 20 €", grp: "Group 3 people — 50 €" };
   const EARLY_BIRD_DEADLINE = new Date("2026-05-15T23:59:59");
   const TOTAL_SPOTS = 30;
-  const TAKEN_SPOTS = 14; // обновляйте вручную
+  const TAKEN_SPOTS = 14;
 
-  // ── Spots ──────────────────────────────────────────────────────────────────
+  // ── Init ──────────────────────────────────────────────────────────────────
   document.getElementById("spots-text").textContent = `${TAKEN_SPOTS} / ${TOTAL_SPOTS}`;
   document.getElementById("progress-fill").style.width = `${Math.round(TAKEN_SPOTS / TOTAL_SPOTS * 100)}%`;
 
-  // ── Lang ───────────────────────────────────────────────────────────────────
+  // ── Lang ──────────────────────────────────────────────────────────────────
   let currentLang = "en";
 
   function setLang(lang) {
@@ -944,9 +854,7 @@
     document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add("active");
   }
 
-  // ── Countdown ──────────────────────────────────────────────────────────────
-  let selected = null;
-
+  // ── Countdown ─────────────────────────────────────────────────────────────
   function updateCountdown() {
     const diff = EARLY_BIRD_DEADLINE - new Date();
     if (diff <= 0) {
@@ -958,182 +866,176 @@
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
-    document.getElementById("cd-text").textContent =
-      d > 0 ? `${d}d ${h}h ${m}m` : `${h}h ${m}m`;
+    document.getElementById("cd-text").textContent = d > 0 ? `${d}d ${h}h ${m}m` : `${h}h ${m}m`;
   }
 
   updateCountdown();
   setInterval(updateCountdown, 60000);
 
-  // ── Ticket select ──────────────────────────────────────────────────────────
+  // ── State ─────────────────────────────────────────────────────────────────
+  let selected = null;
+  let selectedType = null;
+  let currentStep = 1;
+
+  // ── Ticket ────────────────────────────────────────────────────────────────
   function selectTicket(type, el) {
-    ["ticket-eb","ticket-std","ticket-grp"].forEach(id => {
-      const el2 = document.getElementById(id);
-      if (el2) el2.classList.remove("selected");
-    });
+    ["ticket-eb","ticket-std","ticket-grp"].forEach(id => document.getElementById(id)?.classList.remove("selected"));
     el.classList.add("selected");
     selected = type;
-    // для группы скрываем "Your full name" — Person 1 и есть плательщик
-    document.getElementById("fullname-field").style.display = type === "grp" ? "none" : "block";
-    document.getElementById("group-field").style.display = type === "grp" ? "block" : "none";
+    document.getElementById("ticket-error").style.display = "none";
+    document.getElementById("single-name-wrap").style.display = type === "grp" ? "none" : "block";
+    document.getElementById("group-names-wrap").style.display = type === "grp" ? "block" : "none";
   }
 
-  // ── Type select (student / friend) ─────────────────────────────────────────
-  let selectedType = null;
-
+  // ── Type ──────────────────────────────────────────────────────────────────
   function selectType(type, el) {
-    ["type-student","type-friend"].forEach(id => {
-      const el2 = document.getElementById(id);
-      if (el2) el2.classList.remove("selected");
-    });
+    ["type-student","type-friend"].forEach(id => document.getElementById(id)?.classList.remove("selected"));
     el.classList.add("selected");
     selectedType = type;
-    document.getElementById("friend-field").style.display = type === "friend" ? "block" : "none";
     document.getElementById("uni-field").style.display = type === "student" ? "block" : "none";
+    document.getElementById("friend-field").style.display = type === "friend" ? "block" : "none";
     document.getElementById("type-error").style.display = "none";
   }
 
-  // ── Copy ───────────────────────────────────────────────────────────────────
-  function copyName() {
-    const text = document.getElementById("copy-text").textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.getElementById("copy-btn");
-      const prev = btn.innerHTML;
-      btn.innerHTML = currentLang === "de" ? "✓ Kopiert" : "✓ Copied";
-      btn.classList.add("copied");
-      setTimeout(() => {
-        btn.innerHTML = prev;
-        btn.classList.remove("copied");
-      }, 2000);
-    });
+  // ── Step navigation ───────────────────────────────────────────────────────
+  function goStep(n) {
+    if (n > currentStep && !validateStep(currentStep)) return;
+
+    document.querySelectorAll(".step-panel").forEach(p => p.classList.remove("active"));
+    document.getElementById(`panel-${n}`).classList.add("active");
+
+    for (let i = 1; i <= 3; i++) {
+      const ind = document.getElementById(`step-ind-${i}`);
+      ind.classList.remove("active","done");
+      if (i < n) ind.classList.add("done");
+      else if (i === n) ind.classList.add("active");
+
+      // dot: show checkmark if done
+      const dot = ind.querySelector(".step-dot");
+      if (i < n) dot.textContent = "✓";
+      else dot.textContent = i;
+    }
+
+    for (let i = 1; i <= 2; i++) {
+      const line = document.getElementById(`line-${i}`);
+      line.classList.toggle("done", i < n);
+    }
+
+    if (n === 3) buildSummary();
+
+    currentStep = n;
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // ── Validate & Pay ─────────────────────────────────────────────────────────
-  function handlePay() {
-    let valid = true;
-
-    const nameEl = document.getElementById("fullname");
-    const nameErr = document.getElementById("name-error");
-    let name = "";
-    if (selected !== "grp") {
-      name = nameEl.value.trim();
-      if (!name || name.split(" ").filter(Boolean).length < 2) {
-        nameEl.classList.add("error");
-        nameErr.style.display = "block";
-        valid = false;
-      } else {
-        nameEl.classList.remove("error");
-        nameErr.style.display = "none";
+  // ── Validate ──────────────────────────────────────────────────────────────
+  function validateStep(step) {
+    if (step === 1) {
+      if (!selected) {
+        document.getElementById("ticket-error").style.display = "block";
+        return false;
       }
-    } else {
-      // для группы имя плательщика = Person 1
-      name = document.getElementById("group1").value.trim();
+      return true;
     }
 
-    if (!selected) { alert(currentLang === "de" ? "Bitte Ticket wählen." : "Please choose a ticket."); return; }
+    if (step === 2) {
+      let valid = true;
 
+      if (!selectedType) {
+        document.getElementById("type-error").style.display = "block";
+        valid = false;
+      }
+
+      if (selectedType === "student") {
+        const uni = document.getElementById("university");
+        const uniErr = document.getElementById("uni-error");
+        if (!uni.value) { uni.classList.add("error"); uniErr.style.display = "block"; valid = false; }
+        else { uni.classList.remove("error"); uniErr.style.display = "none"; }
+      }
+
+      if (selectedType === "friend") {
+        const fn = document.getElementById("friend-name");
+        const fe = document.getElementById("friend-error");
+        if (!fn.value.trim() || fn.value.trim().split(" ").filter(Boolean).length < 2) {
+          fn.classList.add("error"); fe.style.display = "block"; valid = false;
+        } else { fn.classList.remove("error"); fe.style.display = "none"; }
+      }
+
+      if (selected !== "grp") {
+        const nm = document.getElementById("fullname");
+        const ne = document.getElementById("name-error");
+        if (!nm.value.trim() || nm.value.trim().split(" ").filter(Boolean).length < 2) {
+          nm.classList.add("error"); ne.style.display = "block"; valid = false;
+        } else { nm.classList.remove("error"); ne.style.display = "none"; }
+      } else {
+        ["group1","group2","group3"].forEach(id => {
+          const el = document.getElementById(id);
+          const err = document.getElementById(`${id}-error`);
+          if (!el.value.trim() || el.value.trim().split(" ").filter(Boolean).length < 2) {
+            el.classList.add("error"); err.style.display = "block"; valid = false;
+          } else { el.classList.remove("error"); err.style.display = "none"; }
+        });
+      }
+
+      const emailEl = document.getElementById("email");
+      const emailErr = document.getElementById("email-error");
+      if (!emailEl.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+        emailEl.classList.add("error"); emailErr.style.display = "block"; valid = false;
+      } else { emailEl.classList.remove("error"); emailErr.style.display = "none"; }
+
+      const phoneEl = document.getElementById("phone");
+      const phoneErr = document.getElementById("phone-error");
+      if (!phoneEl.value.trim() || phoneEl.value.trim().replace(/\s/g,"").length < 7) {
+        phoneEl.classList.add("error"); phoneErr.style.display = "block"; valid = false;
+      } else { phoneEl.classList.remove("error"); phoneErr.style.display = "none"; }
+
+      const rulesEl = document.getElementById("rules-check");
+      const rulesErr = document.getElementById("rules-error");
+      const rulesChk = document.getElementById("rules-checkmark");
+      if (!rulesEl.checked) {
+        rulesChk.classList.add("error"); rulesErr.style.display = "block"; valid = false;
+      } else { rulesChk.classList.remove("error"); rulesErr.style.display = "none"; }
+
+      return valid;
+    }
+
+    return true;
+  }
+
+  // ── Summary ───────────────────────────────────────────────────────────────
+  function buildSummary() {
+    document.getElementById("sum-ticket").textContent = TICKET_LABELS[selected] || "—";
+
+    let names = "";
     if (selected === "grp") {
-      ["group1","group2","group3"].forEach((id, i) => {
-        const el2 = document.getElementById(id);
-        const err = document.getElementById(`${id}-error`);
-        if (!el2.value.trim() || el2.value.trim().split(" ").filter(Boolean).length < 2) {
-          el2.classList.add("error");
-          err.style.display = "block";
-          valid = false;
-        } else {
-          el2.classList.remove("error");
-          err.style.display = "none";
-        }
-      });
-    }
-
-    if (!selectedType) {
-      document.getElementById("type-error").style.display = "block";
-      valid = false;
+      names = [
+        document.getElementById("group1").value.trim(),
+        document.getElementById("group2").value.trim(),
+        document.getElementById("group3").value.trim(),
+      ].filter(Boolean).join(", ");
     } else {
-      document.getElementById("type-error").style.display = "none";
+      names = document.getElementById("fullname").value.trim();
     }
+    document.getElementById("sum-names").textContent = names;
+    document.getElementById("sum-email").textContent = document.getElementById("email").value.trim();
 
-    if (selectedType === "friend") {
-      const friendEl = document.getElementById("friend-name");
-      const friendErr = document.getElementById("friend-error");
-      if (!friendEl.value.trim() || friendEl.value.trim().split(" ").filter(Boolean).length < 2) {
-        friendEl.classList.add("error");
-        friendErr.style.display = "block";
-        valid = false;
-      } else {
-        friendEl.classList.remove("error");
-        friendErr.style.display = "none";
-      }
-    }
+    let uni = "";
+    if (selectedType === "student") uni = document.getElementById("university").value;
+    if (selectedType === "friend") uni = "Friend of " + document.getElementById("friend-name").value.trim();
+    document.getElementById("sum-uni").textContent = uni || "—";
 
-    if (selectedType === "student") {
-      const uniEl = document.getElementById("university");
-      const uniErr = document.getElementById("uni-error");
-      if (!uniEl.value) {
-        uniEl.classList.add("error");
-        uniErr.style.display = "block";
-        valid = false;
-      } else {
-        uniEl.classList.remove("error");
-        uniErr.style.display = "none";
-      }
-    }
+    const prices = { eb: "15.00 €", std: "20.00 €", grp: "50.00 €" };
+    document.getElementById("sum-total").textContent = prices[selected] || "—";
 
-    const uniEl = document.getElementById("university");
-    const uniErr = document.getElementById("uni-error");
-    if (!uniEl.value) {
-      uniEl.classList.add("error");
-      uniErr.style.display = "block";
-      valid = false;
-    } else {
-      uniEl.classList.remove("error");
-      uniErr.style.display = "none";
-    }
-
-    const emailEl = document.getElementById("email");
-    const emailErr = document.getElementById("email-error");
-    const emailVal = emailEl.value.trim();
-    if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-      emailEl.classList.add("error");
-      emailErr.style.display = "block";
-      valid = false;
-    } else {
-      emailEl.classList.remove("error");
-      emailErr.style.display = "none";
-    }
-
-    const phoneEl = document.getElementById("phone");
-    const phoneErr = document.getElementById("phone-error");
-    const phoneVal = phoneEl.value.trim().replace(/\s/g, "");
-    if (!phoneVal || phoneVal.length < 7) {
-      phoneEl.classList.add("error");
-      phoneErr.style.display = "block";
-      valid = false;
-    } else {
-      phoneEl.classList.remove("error");
-      phoneErr.style.display = "none";
-    }
-
-
-    const rulesEl = document.getElementById("rules-check");
-    const rulesCheckmark = document.getElementById("rules-checkmark");
-    const rulesErr = document.getElementById("rules-error");
-    if (!rulesEl.checked) {
-      rulesCheckmark.classList.add("error");
-      rulesErr.style.display = "block";
-      valid = false;
-    } else {
-      rulesCheckmark.classList.remove("error");
-      rulesErr.style.display = "none";
-    }
-
-    if (!valid) return;
-
-    // Build payment note text
-    const paymentNote = `Kostenbeteiligung Hawaiian Party — ${name}`;
-    document.getElementById("copy-text").textContent = paymentNote;
+    // set copy text
+    const payerName = selected === "grp"
+      ? document.getElementById("group1").value.trim()
+      : document.getElementById("fullname").value.trim();
+    document.getElementById("copy-text").textContent = `Kostenbeteiligung Hawaiian Party — ${payerName}`;
     document.getElementById("modal-link").href = REVOLUT_LINKS[selected];
+  }
+
+  // ── Pay modal ─────────────────────────────────────────────────────────────
+  function openPayModal() {
     document.getElementById("modal").classList.add("open");
   }
 
@@ -1145,16 +1047,72 @@
     if (e.target === document.getElementById("modal")) closeModal();
   });
 
-  // ── Rules ──────────────────────────────────────────────────────────────────
+  // ── Copy ──────────────────────────────────────────────────────────────────
+  function copyName() {
+    const text = document.getElementById("copy-text").textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById("copy-btn");
+      const prev = btn.innerHTML;
+      btn.innerHTML = "✓ Copied";
+      btn.classList.add("copied");
+      setTimeout(() => { btn.innerHTML = prev; btn.classList.remove("copied"); }, 2000);
+    });
+  }
+
+  // ── Confirm payment ───────────────────────────────────────────────────────
+  function confirmPayment() {
+    const amountEl = document.getElementById("confirm-amount");
+    const amountErr = document.getElementById("confirm-error");
+    const val = parseFloat(amountEl.value);
+
+    if (!val || val < 1) {
+      amountEl.classList.add("error");
+      amountErr.style.display = "block";
+      return;
+    }
+
+    amountEl.classList.remove("error");
+    amountErr.style.display = "none";
+
+    const name = selected === "grp"
+      ? document.getElementById("group1").value.trim()
+      : document.getElementById("fullname").value.trim();
+
+    const email = document.getElementById("email").value.trim();
+    const ticket = TICKET_LABELS[selected];
+    const amount = val.toFixed(2);
+
+    // Send to FormSubmit (бесплатный email сервис — замените на ваш email)
+    const form = document.createElement("form");
+    form.action = "https://formsubmit.co/aiahri0909@gmail.com";
+    form.method = "POST";
+    form.style.display = "none";
+
+    const fields = {
+      name, email, ticket, amount_sent: amount,
+      _subject: `🌴 Hawaiian Party — Payment confirmation: ${name}`,
+      _captcha: "false",
+      _next: window.location.origin + window.location.pathname.replace("index.html","") + "success.html",
+    };
+
+    Object.entries(fields).forEach(([k, v]) => {
+      const input = document.createElement("input");
+      input.name = k; input.value = v;
+      form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+  }
+
+  // ── Rules ─────────────────────────────────────────────────────────────────
   function openRules(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    e.preventDefault(); e.stopPropagation();
     document.getElementById("rules-modal").classList.add("open");
   }
 
   function closeRules() {
     document.getElementById("rules-modal").classList.remove("open");
-    // auto-check the rules checkbox after reading
     document.getElementById("rules-check").checked = true;
     document.getElementById("rules-checkmark").classList.remove("error");
     document.getElementById("rules-error").style.display = "none";

@@ -707,18 +707,33 @@
       </div>
     </div>
 
-    <!-- Group names -->
-    <div class="field" id="group-field" style="display:none;">
-      <label>
-        <span data-lang="en">All 3 names (comma separated)</span>
-        <span data-lang="de">Alle 3 Namen (durch Komma getrennt)</span>
-      </label>
-      <input type="text" id="groupnames"
-        placeholder="Anna Müller, Max Schmidt, Lisa Weber" />
-      <div class="error-msg" id="group-error">
-        <span data-lang="en">Please enter all 3 names</span>
-        <span data-lang="de">Bitte alle 3 Namen eingeben</span>
+    <!-- Group names — shown only for group ticket -->
+    <div id="group-field" style="display:none;">
+
+      <div class="field">
+        <label><span data-lang="en">Person 1 — Full name</span><span data-lang="de">Person 1 — Vor- und Nachname</span></label>
+        <input type="text" id="group1" placeholder="Anna Müller" />
+        <div class="error-msg" id="group1-error">
+          <span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span>
+        </div>
       </div>
+
+      <div class="field">
+        <label><span data-lang="en">Person 2 — Full name</span><span data-lang="de">Person 2 — Vor- und Nachname</span></label>
+        <input type="text" id="group2" placeholder="Max Schmidt" />
+        <div class="error-msg" id="group2-error">
+          <span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span data-lang="en">Person 3 — Full name</span><span data-lang="de">Person 3 — Vor- und Nachname</span></label>
+        <input type="text" id="group3" placeholder="Lisa Weber" />
+        <div class="error-msg" id="group3-error">
+          <span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span>
+        </div>
+      </div>
+
     </div>
 
     <!-- Email -->
@@ -749,8 +764,8 @@
       </div>
     </div>
 
-    <!-- University -->
-    <div class="field">
+    <!-- University — visible only for students -->
+    <div class="field" id="uni-field" style="display:none;">
       <label>
         <span data-lang="en">Your university</span>
         <span data-lang="de">Deine Hochschule</span>
@@ -769,19 +784,49 @@
       </div>
     </div>
 
-    <!-- Student checkbox -->
-    <label class="checkbox-label">
-      <input type="checkbox" id="student-check" />
-      <span class="checkmark" id="checkmark"></span>
-      <span class="check-text">
-        <span data-lang="en">I confirm I am a student in Darmstadt</span>
-        <span data-lang="de">Ich bestätige, dass ich in Darmstadt studiere</span>
-      </span>
-    </label>
-    <div class="error-msg" id="student-error">
-      <span data-lang="en">Please confirm you are a student</span>
-      <span data-lang="de">Bitte bestätigen, dass du studierst</span>
+    <!-- Who are you -->
+    <div class="field">
+      <label>
+        <span data-lang="en">How are you connected to Ketteler?</span>
+        <span data-lang="de">Wie bist du mit dem Ketteler verbunden?</span>
+      </label>
+      <div class="tickets" style="margin-bottom:0; gap:8px;">
+        <label class="ticket" id="type-student" onclick="selectType('student', this)" style="padding:12px 16px;">
+          <div class="radio-dot"></div>
+          <div class="ticket-info">
+            <div class="ticket-name" style="font-size:14px;">🎓 <span data-lang="en">I am a student</span><span data-lang="de">Ich bin Student/in</span></div>
+            <div class="ticket-desc"><span data-lang="en">Enrolled at a Darmstadt university</span><span data-lang="de">Eingeschrieben an einer Hochschule in Darmstadt</span></div>
+          </div>
+        </label>
+        <label class="ticket" id="type-friend" onclick="selectType('friend', this)" style="padding:12px 16px;">
+          <div class="radio-dot"></div>
+          <div class="ticket-info">
+            <div class="ticket-name" style="font-size:14px;">🏠 <span data-lang="en">My friend lives in Ketteler</span><span data-lang="de">Mein Freund/meine Freundin wohnt im Ketteler</span></div>
+            <div class="ticket-desc"><span data-lang="en">I was invited by a resident</span><span data-lang="de">Ich wurde von einem Bewohner eingeladen</span></div>
+          </div>
+        </label>
+      </div>
+      <div class="error-msg" id="type-error" style="margin-top:6px;">
+        <span data-lang="en">Please select an option</span>
+        <span data-lang="de">Bitte eine Option wählen</span>
+      </div>
     </div>
+
+    <!-- Friend name — shown only if "friend" selected -->
+    <div class="field" id="friend-field" style="display:none;">
+      <label>
+        <span data-lang="en">Name of your friend who lives in Ketteler</span>
+        <span data-lang="de">Name deines Freundes / deiner Freundin im Ketteler</span>
+      </label>
+      <input type="text" id="friend-name" placeholder="Max Müller" />
+      <div class="error-msg" id="friend-error">
+        <span data-lang="en">Please enter your friend's full name</span>
+        <span data-lang="de">Bitte den Namen deines Freundes eingeben</span>
+      </div>
+    </div>
+
+    <!-- University — shown only if "student" selected -->
+    <div id="uni-wrap">
 
     <!-- Rules checkbox -->
     <label class="checkbox-label" style="margin-top:10px;">
@@ -870,9 +915,9 @@
 <script>
   // ── CONFIG ─────────────────────────────────────────────────────────────────
   const REVOLUT_LINKS = {
-    eb:  "https://revolut.me/YOUR_USERNAME",  // 15 € Early Bird
-    std: "https://revolut.me/YOUR_USERNAME",  // 20 € Standard
-    grp: "https://revolut.me/YOUR_USERNAME",  // 50 € Group
+    eb:  "https://revolut.me/arakhmetova09?currency=EUR&amount=1500&note=Hawaiian%20Party%20-%20Early%20Bird",
+    std: "https://revolut.me/arakhmetova09?currency=EUR&amount=2000&note=Hawaiian%20Party%20-%20Standard",
+    grp: "https://revolut.me/arakhmetova09?currency=EUR&amount=5000&note=Hawaiian%20Party%20-%20Group%203%20Persons",
   };
 
   const EARLY_BIRD_DEADLINE = new Date("2026-05-15T23:59:59");
@@ -916,10 +961,28 @@
 
   // ── Ticket select ──────────────────────────────────────────────────────────
   function selectTicket(type, el) {
-    document.querySelectorAll(".ticket").forEach(t => t.classList.remove("selected"));
+    ["ticket-eb","ticket-std","ticket-grp"].forEach(id => {
+      const el2 = document.getElementById(id);
+      if (el2) el2.classList.remove("selected");
+    });
     el.classList.add("selected");
     selected = type;
     document.getElementById("group-field").style.display = type === "grp" ? "block" : "none";
+  }
+
+  // ── Type select (student / friend) ─────────────────────────────────────────
+  let selectedType = null;
+
+  function selectType(type, el) {
+    ["type-student","type-friend"].forEach(id => {
+      const el2 = document.getElementById(id);
+      if (el2) el2.classList.remove("selected");
+    });
+    el.classList.add("selected");
+    selectedType = type;
+    document.getElementById("friend-field").style.display = type === "friend" ? "block" : "none";
+    document.getElementById("uni-field").style.display = type === "student" ? "block" : "none";
+    document.getElementById("type-error").style.display = "none";
   }
 
   // ── Copy ───────────────────────────────────────────────────────────────────
@@ -956,16 +1019,50 @@
     if (!selected) { alert(currentLang === "de" ? "Bitte Ticket wählen." : "Please choose a ticket."); return; }
 
     if (selected === "grp") {
-      const grpEl = document.getElementById("groupnames");
-      const grpErr = document.getElementById("group-error");
-      const names = grpEl.value.split(",").map(n => n.trim()).filter(Boolean);
-      if (names.length < 3) {
-        grpEl.classList.add("error");
-        grpErr.style.display = "block";
+      ["group1","group2","group3"].forEach((id, i) => {
+        const el2 = document.getElementById(id);
+        const err = document.getElementById(`${id}-error`);
+        if (!el2.value.trim() || el2.value.trim().split(" ").filter(Boolean).length < 2) {
+          el2.classList.add("error");
+          err.style.display = "block";
+          valid = false;
+        } else {
+          el2.classList.remove("error");
+          err.style.display = "none";
+        }
+      });
+    }
+
+    if (!selectedType) {
+      document.getElementById("type-error").style.display = "block";
+      valid = false;
+    } else {
+      document.getElementById("type-error").style.display = "none";
+    }
+
+    if (selectedType === "friend") {
+      const friendEl = document.getElementById("friend-name");
+      const friendErr = document.getElementById("friend-error");
+      if (!friendEl.value.trim() || friendEl.value.trim().split(" ").filter(Boolean).length < 2) {
+        friendEl.classList.add("error");
+        friendErr.style.display = "block";
         valid = false;
       } else {
-        grpEl.classList.remove("error");
-        grpErr.style.display = "none";
+        friendEl.classList.remove("error");
+        friendErr.style.display = "none";
+      }
+    }
+
+    if (selectedType === "student") {
+      const uniEl = document.getElementById("university");
+      const uniErr = document.getElementById("uni-error");
+      if (!uniEl.value) {
+        uniEl.classList.add("error");
+        uniErr.style.display = "block";
+        valid = false;
+      } else {
+        uniEl.classList.remove("error");
+        uniErr.style.display = "none";
       }
     }
 
@@ -1004,17 +1101,6 @@
       phoneErr.style.display = "none";
     }
 
-    const checkEl = document.getElementById("student-check");
-    const checkmark = document.getElementById("checkmark");
-    const studentErr = document.getElementById("student-error");
-    if (!checkEl.checked) {
-      checkmark.classList.add("error");
-      studentErr.style.display = "block";
-      valid = false;
-    } else {
-      checkmark.classList.remove("error");
-      studentErr.style.display = "none";
-    }
 
     const rulesEl = document.getElementById("rules-check");
     const rulesCheckmark = document.getElementById("rules-checkmark");

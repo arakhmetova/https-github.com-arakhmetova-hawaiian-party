@@ -1087,19 +1087,22 @@
       : document.getElementById("fullname").value.trim();
 
     const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
     const ticket = TICKET_LABELS[selected];
     const amount = val.toFixed(2);
+    let uni = "";
+    if (selectedType === "student") uni = document.getElementById("university").value;
+    if (selectedType === "friend") uni = "Friend of " + document.getElementById("friend-name").value.trim();
 
     const successUrl = window.location.pathname.replace(/index\.html$/, "") + "success.html";
 
-    fetch("https://formsubmit.co/ajax/aiahri0909@gmail.com", {
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqO2NMEOzFwnS0kFk-_QV-1i8SXJqLpztilgFZ7HNt36hIkwX6PMFCokkDG-ZAdCU4/exec";
+
+    fetch(SCRIPT_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify({
-        name, email, ticket, amount_sent: amount,
-        _subject: `🌴 Hawaiian Party — Payment confirmation: ${name}`,
-        _captcha: "false",
-      }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, phone, ticket, amount_sent: amount, uni }),
+      mode: "no-cors",
     }).catch(() => {}).finally(() => {
       window.location.href = successUrl;
     });

@@ -1082,27 +1082,19 @@
     const ticket = TICKET_LABELS[selected];
     const amount = val.toFixed(2);
 
-    // Send to FormSubmit (бесплатный email сервис — замените на ваш email)
-    const form = document.createElement("form");
-    form.action = "https://formsubmit.co/aiahri0909@gmail.com";
-    form.method = "POST";
-    form.style.display = "none";
+    const successUrl = window.location.pathname.replace(/index\.html$/, "") + "success.html";
 
-    const fields = {
-      name, email, ticket, amount_sent: amount,
-      _subject: `🌴 Hawaiian Party — Payment confirmation: ${name}`,
-      _captcha: "false",
-      _next: window.location.origin + window.location.pathname.replace("index.html","") + "success.html",
-    };
-
-    Object.entries(fields).forEach(([k, v]) => {
-      const input = document.createElement("input");
-      input.name = k; input.value = v;
-      form.appendChild(input);
+    fetch("https://formsubmit.co/ajax/aiahri0909@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        name, email, ticket, amount_sent: amount,
+        _subject: `🌴 Hawaiian Party — Payment confirmation: ${name}`,
+        _captcha: "false",
+      }),
+    }).catch(() => {}).finally(() => {
+      window.location.href = successUrl;
     });
-
-    document.body.appendChild(form);
-    form.submit();
   }
 
   // ── Rules ─────────────────────────────────────────────────────────────────

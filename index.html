@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌴 Hawaiian Party — June 12</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background-color: #fdf6ee;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 28px;
+      max-width: 440px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.07);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: #fdf0e0;
+      padding: 40px 32px 32px;
+      text-align: center;
+      border-bottom: 1px solid #f0e6d6;
+    }
+
+    .hero-emoji {
+      font-size: 44px;
+      display: block;
+      margin-bottom: 14px;
+      letter-spacing: 6px;
+    }
+
+    .hero h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.5px;
+    }
+
+    .hero .meta {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #a08060;
+      font-weight: 500;
+    }
+
+    .hero .meta-small {
+      margin-top: 4px;
+      font-size: 12px;
+      color: #c0a080;
+    }
+
+    .students-badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: #f0e8d8;
+      color: #8a6030;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ── Lang switcher ── */
+    .lang-switcher {
+      display: flex;
+      justify-content: flex-end;
+      padding: 14px 20px 0;
+      gap: 4px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1.5px solid #ede8e0;
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #b0a090;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .lang-btn.active {
+      border-color: #c8873a;
+      color: #c8873a;
+      background: #fffbf5;
+    }
+
+    /* ── Body ── */
+    .body { padding: 28px 32px 32px; }
+
+    /* ── Early bird banner ── */
+    .eb-banner {
+      background: #fff8ee;
+      border: 1.5px solid #f5d9a0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #8a6020;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eb-banner strong { color: #6a4010; }
+
+    .countdown {
+      text-align: center;
+      font-size: 12px;
+      color: #b0a090;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .countdown b { color: #c8873a; }
+
+    /* ── Spots counter ── */
+    .spots-wrap {
+      margin-bottom: 24px;
+    }
+
+    .spots-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .spots-label {
+      font-size: 12px;
+      color: #b0a090;
+      font-weight: 600;
+    }
+
+    .spots-count {
+      font-size: 12px;
+      font-weight: 700;
+      color: #c8873a;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: #f0ebe4;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #f7c87a, #c8873a);
+      border-radius: 10px;
+      transition: width 0.4s ease;
+    }
+
+    /* ── Section label ── */
+    .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #c0a880;
+      margin-bottom: 12px;
+    }
+
+    /* ── Tickets ── */
+    .tickets {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .ticket {
+      border: 1.5px solid #ede8e0;
+      border-radius: 16px;
+      padding: 16px 18px;
+      cursor: pointer;
+      transition: all 0.18s;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      background: #fff;
+      user-select: none;
+    }
+
+    .ticket:hover { border-color: #d4a96a; background: #fffbf5; }
+    .ticket.selected { border-color: #c8873a; background: #fffbf5; }
+
+    .radio-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid #ddd;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s;
+    }
+
+    .ticket.selected .radio-dot {
+      border-color: #c8873a;
+      background: #c8873a;
+    }
+
+    .ticket.selected .radio-dot::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: white;
+    }
+
+    .ticket-info { flex: 1; }
+
+    .ticket-name { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+    .ticket-desc { font-size: 12px; color: #b0a090; margin-top: 2px; }
+    .ticket-price { font-size: 20px; font-weight: 700; color: #1a1a1a; }
+
+    .badge {
+      position: absolute;
+      top: -9px;
+      right: 14px;
+      background: #3aaa7a;
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    /* ── Divider ── */
+    .divider { height: 1px; background: #f0ebe4; margin: 20px 0; }
+
+    /* ── Inputs ── */
+    .field { margin-bottom: 16px; }
+
+    .field label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #c0a880;
+      margin-bottom: 8px;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid #ede8e0;
+      border-radius: 12px;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.18s;
+      font-family: inherit;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    .field input::placeholder { color: #c8bdb0; }
+    .field input:focus, .field select:focus { border-color: #c8873a; }
+    .field input.error, .field select.error { border-color: #e05050; }
+
+    .field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c0a880' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      cursor: pointer;
+    }
+
+    .error-msg {
+      color: #e05050;
+      font-size: 12px;
+      margin-top: 6px;
+      display: none;
+    }
+
+    /* ── Checkbox ── */
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+
+    .checkbox-label input[type="checkbox"] { display: none; }
+
+    .checkmark {
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid #ede8e0;
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s;
+      background: #fff;
+    }
+
+    .checkbox-label input:checked ~ .checkmark {
+      background: #1a1a1a;
+      border-color: #1a1a1a;
+    }
+
+    .checkbox-label input:checked ~ .checkmark::after {
+      content: '';
+      width: 5px;
+      height: 9px;
+      border: 2px solid white;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translateY(-1px);
+      display: block;
+    }
+
+    .checkmark.error { border-color: #e05050; }
+    .check-text { font-size: 14px; color: #555; line-height: 1.4; }
+
+    /* ── Rules link ── */
+    .rules-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: #c8873a;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-weight: 600;
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ── Rules modal ── */
+    .rules-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(20,15,10,0.5);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .rules-modal.open { display: flex; }
+
+    .rules-card {
+      background: white;
+      border-radius: 24px;
+      padding: 32px 28px;
+      max-width: 420px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      animation: slideUp 0.25s ease;
+    }
+
+    .rules-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+    }
+
+    .rules-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .rules-list li {
+      display: flex;
+      gap: 12px;
+      font-size: 14px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .rules-list li .rule-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .rules-close {
+      width: 100%;
+      padding: 14px;
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* ── Button ── */
+    .pay-btn {
+      width: 100%;
+      padding: 17px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s;
+      font-family: inherit;
+      letter-spacing: -0.2px;
+      margin-top: 20px;
+    }
+
+    .pay-btn:hover {
+      background: #333;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .pay-btn:active { transform: translateY(0); }
+
+    .pay-note {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 12px;
+      color: #c0a880;
+      line-height: 1.7;
+    }
+
+    /* ── Modal ── */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(20,15,10,0.45);
+      z-index: 100;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .modal.open { display: flex; }
+
+    .modal-card {
+      background: white;
+      border-radius: 28px 28px 0 0;
+      padding: 32px 28px 48px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      animation: slideUp 0.25s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-handle {
+      width: 36px;
+      height: 4px;
+      background: #ede8e0;
+      border-radius: 2px;
+      margin: 0 auto 24px;
+    }
+
+    .modal-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #1a1a1a; }
+    .modal-card p { color: #888; font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+
+    /* Copy box */
+    .copy-box {
+      background: #fdf6ee;
+      border: 1.5px solid #f0e0c0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .copy-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      flex: 1;
+      word-break: break-word;
+    }
+
+    .copy-btn {
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: all 0.18s;
+      flex-shrink: 0;
+    }
+
+    .copy-btn.copied {
+      background: #3aaa7a;
+    }
+
+    .modal-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      margin-bottom: 12px;
+      font-family: inherit;
+      transition: background 0.18s;
+    }
+
+    .modal-btn:hover { background: #333; }
+
+    .modal-cancel {
+      background: none;
+      border: none;
+      color: #b0a090;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* ── i18n hidden ── */
+    [data-lang] { display: none; }
+    .lang-en [data-lang="en"] { display: inline; }
+    .lang-de [data-lang="de"] { display: inline; }
+    .lang-en [data-lang-block="en"] { display: block; }
+    .lang-de [data-lang-block="de"] { display: block; }
+  </style>
+</head>
+<body class="lang-en">
+
+<div class="card">
+
+  <!-- Lang switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('de')">DE</button>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <span class="hero-emoji">🌴 🌴</span>
+    <h1>Hawaiian Party</h1>
+    <div class="meta">
+      <span data-lang="en">Friday, June 12 · Ketteler Wohnheim</span>
+      <span data-lang="de">Freitag, 12. Juni · Ketteler Wohnheim</span>
+    </div>
+    <div class="meta-small">Schleiermacherstraße 14, Darmstadt</div>
+    <div class="students-badge">
+      🎓 <span data-lang="en">Students only</span><span data-lang="de">Nur Studierende</span>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="body">
+
+    <!-- Early bird banner -->
+    <div class="eb-banner" id="eb-banner">
+      🐚 <span>
+        <strong data-lang="en">Early Bird until May 15</strong>
+        <strong data-lang="de">Early Bird bis 15. Mai</strong>
+        <span data-lang="en"> — save 5 € if you pay now</span>
+        <span data-lang="de"> — jetzt 5 € sparen</span>
+      </span>
+    </div>
+
+    <div class="countdown" id="countdown-wrap">
+      <span data-lang="en">Early Bird closes in </span>
+      <span data-lang="de">Early Bird endet in </span>
+      <b id="cd-text">—</b>
+    </div>
+
+    <!-- Spots counter -->
+    <div class="spots-wrap">
+      <div class="spots-row">
+        <span class="spots-label">
+          <span data-lang="en">Spots taken</span>
+          <span data-lang="de">Plätze belegt</span>
+        </span>
+        <span class="spots-count" id="spots-text">14 / 30</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width: 47%"></div>
+      </div>
+    </div>
+
+    <!-- Ticket label -->
+    <div class="label">
+      <span data-lang="en">Your ticket</span>
+      <span data-lang="de">Dein Ticket</span>
+    </div>
+
+    <!-- Tickets -->
+    <div class="tickets">
+
+      <label class="ticket" id="ticket-eb" onclick="selectTicket('eb', this)">
+        <div class="radio-dot"></div>
+        <div class="ticket-info">
+          <div class="ticket-name">
+            <span data-lang="en">Early Bird</span>
+            <span data-lang="de">Early Bird</span>
+          </div>
+          <div class="ticket-desc">
+            <span data-lang="en">Until May 15, 2026</span>
+            <span data-lang="de">Bis 15. Mai 2026</span>
+          </div>
+        </div>
+        <div class="ticket-price">15 €</div>
+        <div class="badge">
+          <span data-lang="en">Save 5 €</span>
+          <span data-lang="de">5 € sparen</span>
+        </div>
+      </label>
+
+      <label class="ticket" id="ticket-std" onclick="selectTicket('std', this)">
+        <div class="radio-dot"></div>
+        <div class="ticket-info">
+          <div class="ticket-name">Standard</div>
+          <div class="ticket-desc">
+            <span data-lang="en">Regular price</span>
+            <span data-lang="de">Normalpreis</span>
+          </div>
+        </div>
+        <div class="ticket-price">20 €</div>
+      </label>
+
+      <label class="ticket" id="ticket-grp" onclick="selectTicket('grp', this)">
+        <div class="radio-dot"></div>
+        <div class="ticket-info">
+          <div class="ticket-name">
+            <span data-lang="en">Group · 3 people</span>
+            <span data-lang="de">Gruppe · 3 Personen</span>
+          </div>
+          <div class="ticket-desc">
+            <span data-lang="en">Instead of 60 €</span>
+            <span data-lang="de">Statt 60 €</span>
+          </div>
+        </div>
+        <div class="ticket-price">50 €</div>
+        <div class="badge">
+          <span data-lang="en">Save 10 €</span>
+          <span data-lang="de">10 € sparen</span>
+        </div>
+      </label>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Full name -->
+    <div class="field">
+      <label>
+        <span data-lang="en">Your full name</span>
+        <span data-lang="de">Vor- und Nachname</span>
+      </label>
+      <input type="text" id="fullname" autocomplete="name"
+        placeholder="Anna Müller" />
+      <div class="error-msg" id="name-error">
+        <span data-lang="en">Please enter your first and last name</span>
+        <span data-lang="de">Bitte Vor- und Nachnamen eingeben</span>
+      </div>
+    </div>
+
+    <!-- Group names -->
+    <div class="field" id="group-field" style="display:none;">
+      <label>
+        <span data-lang="en">All 3 names (comma separated)</span>
+        <span data-lang="de">Alle 3 Namen (durch Komma getrennt)</span>
+      </label>
+      <input type="text" id="groupnames"
+        placeholder="Anna Müller, Max Schmidt, Lisa Weber" />
+      <div class="error-msg" id="group-error">
+        <span data-lang="en">Please enter all 3 names</span>
+        <span data-lang="de">Bitte alle 3 Namen eingeben</span>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="field">
+      <label>
+        <span data-lang="en">Email</span>
+        <span data-lang="de">E-Mail</span>
+      </label>
+      <input type="email" id="email" autocomplete="email"
+        placeholder="anna@tu-darmstadt.de" />
+      <div class="error-msg" id="email-error">
+        <span data-lang="en">Please enter a valid email</span>
+        <span data-lang="de">Bitte gültige E-Mail eingeben</span>
+      </div>
+    </div>
+
+    <!-- Phone -->
+    <div class="field">
+      <label>
+        <span data-lang="en">Phone number</span>
+        <span data-lang="de">Telefonnummer</span>
+      </label>
+      <input type="tel" id="phone" autocomplete="tel"
+        placeholder="+49 151 234 567 89" />
+      <div class="error-msg" id="phone-error">
+        <span data-lang="en">Please enter a valid phone number</span>
+        <span data-lang="de">Bitte gültige Telefonnummer eingeben</span>
+      </div>
+    </div>
+
+    <!-- University -->
+    <div class="field">
+      <label>
+        <span data-lang="en">Your university</span>
+        <span data-lang="de">Deine Hochschule</span>
+      </label>
+      <select id="university">
+        <option value="">
+          — Select —
+        </option>
+        <option value="TU Darmstadt">TU Darmstadt</option>
+        <option value="Hochschule Darmstadt (h_da)">Hochschule Darmstadt (h_da)</option>
+        <option value="Evangelische Hochschule Darmstadt">Evangelische Hochschule Darmstadt</option>
+      </select>
+      <div class="error-msg" id="uni-error">
+        <span data-lang="en">Please select your university</span>
+        <span data-lang="de">Bitte Hochschule auswählen</span>
+      </div>
+    </div>
+
+    <!-- Student checkbox -->
+    <label class="checkbox-label">
+      <input type="checkbox" id="student-check" />
+      <span class="checkmark" id="checkmark"></span>
+      <span class="check-text">
+        <span data-lang="en">I confirm I am a student in Darmstadt</span>
+        <span data-lang="de">Ich bestätige, dass ich in Darmstadt studiere</span>
+      </span>
+    </label>
+    <div class="error-msg" id="student-error">
+      <span data-lang="en">Please confirm you are a student</span>
+      <span data-lang="de">Bitte bestätigen, dass du studierst</span>
+    </div>
+
+    <!-- Rules checkbox -->
+    <label class="checkbox-label" style="margin-top:10px;">
+      <input type="checkbox" id="rules-check" />
+      <span class="checkmark" id="rules-checkmark"></span>
+      <span class="check-text">
+        <span data-lang="en">I have read and agree to the </span>
+        <span data-lang="de">Ich habe die </span>
+        <button class="rules-link" onclick="openRules(event)">
+          <span data-lang="en">event rules</span>
+          <span data-lang="de">Veranstaltungsregeln</span>
+        </button>
+        <span data-lang="de"> gelesen und stimme zu</span>
+      </span>
+    </label>
+    <div class="error-msg" id="rules-error" style="margin-bottom: 4px;">
+      <span data-lang="en">Please read and accept the event rules</span>
+      <span data-lang="de">Bitte Veranstaltungsregeln lesen und akzeptieren</span>
+    </div>
+
+    <button class="pay-btn" onclick="handlePay()">
+      <span data-lang="en">Continue to payment →</span>
+      <span data-lang="de">Weiter zur Zahlung →</span>
+    </button>
+
+    <div class="pay-note">
+      <span data-lang="en">Secure payment via Revolut · Cards also accepted</span>
+      <span data-lang="de">Sichere Zahlung per Revolut · Kartenzahlung möglich</span>
+      <br/>Kostenbeteiligung — private Veranstaltung
+    </div>
+
+  </div>
+</div>
+
+<!-- Rules Modal -->
+<div class="rules-modal" id="rules-modal">
+  <div class="rules-card">
+    <h3>🌴 Event Rules</h3>
+    <p style="color:#b0a090; font-size:14px; line-height:1.7; margin-bottom:24px;">
+      🚧 <em>Event rules are being finalised — check back soon.</em>
+    </p>
+    <button class="rules-close" onclick="closeRules()">
+      <span data-lang="en">Got it, I agree ✓</span>
+      <span data-lang="de">Verstanden, ich stimme zu ✓</span>
+    </button>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+    <h2>
+      <span data-lang="en">Almost there 🌴</span>
+      <span data-lang="de">Fast geschafft 🌴</span>
+    </h2>
+    <p>
+      <span data-lang="en">Copy your name and paste it as a note in Revolut so we can confirm your spot:</span>
+      <span data-lang="de">Kopiere deinen Namen und füge ihn als Notiz in Revolut ein, damit wir deinen Platz bestätigen können:</span>
+    </p>
+
+    <div class="copy-box">
+      <div class="copy-text" id="copy-text">Anna Müller</div>
+      <button class="copy-btn" id="copy-btn" onclick="copyName()">
+        <span data-lang="en">Copy</span>
+        <span data-lang="de">Kopieren</span>
+      </button>
+    </div>
+
+    <p style="font-size:13px; color:#b0a090; margin-bottom:20px;">
+      <span data-lang="en">No Revolut? You can pay by card on the next screen.</span>
+      <span data-lang="de">Kein Revolut? Auf der nächsten Seite kannst du per Karte zahlen.</span>
+    </p>
+
+    <a class="modal-btn" id="modal-link" href="#" target="_blank" onclick="closeModal()">
+      <span data-lang="en">Open Revolut & Pay →</span>
+      <span data-lang="de">Revolut öffnen & zahlen →</span>
+    </a>
+    <button class="modal-cancel" onclick="closeModal()">
+      <span data-lang="en">Go back</span>
+      <span data-lang="de">Zurück</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  // ── CONFIG ─────────────────────────────────────────────────────────────────
+  const REVOLUT_LINKS = {
+    eb:  "https://revolut.me/YOUR_USERNAME",  // 15 € Early Bird
+    std: "https://revolut.me/YOUR_USERNAME",  // 20 € Standard
+    grp: "https://revolut.me/YOUR_USERNAME",  // 50 € Group
+  };
+
+  const EARLY_BIRD_DEADLINE = new Date("2026-05-15T23:59:59");
+  const TOTAL_SPOTS = 30;
+  const TAKEN_SPOTS = 14; // обновляйте вручную
+
+  // ── Spots ──────────────────────────────────────────────────────────────────
+  document.getElementById("spots-text").textContent = `${TAKEN_SPOTS} / ${TOTAL_SPOTS}`;
+  document.getElementById("progress-fill").style.width = `${Math.round(TAKEN_SPOTS / TOTAL_SPOTS * 100)}%`;
+
+  // ── Lang ───────────────────────────────────────────────────────────────────
+  let currentLang = "en";
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.body.className = `lang-${lang}`;
+    document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
+    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add("active");
+  }
+
+  // ── Countdown ──────────────────────────────────────────────────────────────
+  let selected = null;
+
+  function updateCountdown() {
+    const diff = EARLY_BIRD_DEADLINE - new Date();
+    if (diff <= 0) {
+      document.getElementById("ticket-eb").style.display = "none";
+      document.getElementById("eb-banner").style.display = "none";
+      document.getElementById("countdown-wrap").style.display = "none";
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    document.getElementById("cd-text").textContent =
+      d > 0 ? `${d}d ${h}h ${m}m` : `${h}h ${m}m`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+
+  // ── Ticket select ──────────────────────────────────────────────────────────
+  function selectTicket(type, el) {
+    document.querySelectorAll(".ticket").forEach(t => t.classList.remove("selected"));
+    el.classList.add("selected");
+    selected = type;
+    document.getElementById("group-field").style.display = type === "grp" ? "block" : "none";
+  }
+
+  // ── Copy ───────────────────────────────────────────────────────────────────
+  function copyName() {
+    const text = document.getElementById("copy-text").textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById("copy-btn");
+      const prev = btn.innerHTML;
+      btn.innerHTML = currentLang === "de" ? "✓ Kopiert" : "✓ Copied";
+      btn.classList.add("copied");
+      setTimeout(() => {
+        btn.innerHTML = prev;
+        btn.classList.remove("copied");
+      }, 2000);
+    });
+  }
+
+  // ── Validate & Pay ─────────────────────────────────────────────────────────
+  function handlePay() {
+    let valid = true;
+
+    const nameEl = document.getElementById("fullname");
+    const nameErr = document.getElementById("name-error");
+    const name = nameEl.value.trim();
+    if (!name || name.split(" ").filter(Boolean).length < 2) {
+      nameEl.classList.add("error");
+      nameErr.style.display = "block";
+      valid = false;
+    } else {
+      nameEl.classList.remove("error");
+      nameErr.style.display = "none";
+    }
+
+    if (!selected) { alert(currentLang === "de" ? "Bitte Ticket wählen." : "Please choose a ticket."); return; }
+
+    if (selected === "grp") {
+      const grpEl = document.getElementById("groupnames");
+      const grpErr = document.getElementById("group-error");
+      const names = grpEl.value.split(",").map(n => n.trim()).filter(Boolean);
+      if (names.length < 3) {
+        grpEl.classList.add("error");
+        grpErr.style.display = "block";
+        valid = false;
+      } else {
+        grpEl.classList.remove("error");
+        grpErr.style.display = "none";
+      }
+    }
+
+    const uniEl = document.getElementById("university");
+    const uniErr = document.getElementById("uni-error");
+    if (!uniEl.value) {
+      uniEl.classList.add("error");
+      uniErr.style.display = "block";
+      valid = false;
+    } else {
+      uniEl.classList.remove("error");
+      uniErr.style.display = "none";
+    }
+
+    const emailEl = document.getElementById("email");
+    const emailErr = document.getElementById("email-error");
+    const emailVal = emailEl.value.trim();
+    if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      emailEl.classList.add("error");
+      emailErr.style.display = "block";
+      valid = false;
+    } else {
+      emailEl.classList.remove("error");
+      emailErr.style.display = "none";
+    }
+
+    const phoneEl = document.getElementById("phone");
+    const phoneErr = document.getElementById("phone-error");
+    const phoneVal = phoneEl.value.trim().replace(/\s/g, "");
+    if (!phoneVal || phoneVal.length < 7) {
+      phoneEl.classList.add("error");
+      phoneErr.style.display = "block";
+      valid = false;
+    } else {
+      phoneEl.classList.remove("error");
+      phoneErr.style.display = "none";
+    }
+
+    const checkEl = document.getElementById("student-check");
+    const checkmark = document.getElementById("checkmark");
+    const studentErr = document.getElementById("student-error");
+    if (!checkEl.checked) {
+      checkmark.classList.add("error");
+      studentErr.style.display = "block";
+      valid = false;
+    } else {
+      checkmark.classList.remove("error");
+      studentErr.style.display = "none";
+    }
+
+    const rulesEl = document.getElementById("rules-check");
+    const rulesCheckmark = document.getElementById("rules-checkmark");
+    const rulesErr = document.getElementById("rules-error");
+    if (!rulesEl.checked) {
+      rulesCheckmark.classList.add("error");
+      rulesErr.style.display = "block";
+      valid = false;
+    } else {
+      rulesCheckmark.classList.remove("error");
+      rulesErr.style.display = "none";
+    }
+
+    if (!valid) return;
+
+    // Build payment note text
+    const paymentNote = `Kostenbeteiligung Hawaiian Party — ${name}`;
+    document.getElementById("copy-text").textContent = paymentNote;
+    document.getElementById("modal-link").href = REVOLUT_LINKS[selected];
+    document.getElementById("modal").classList.add("open");
+  }
+
+  function closeModal() {
+    document.getElementById("modal").classList.remove("open");
+  }
+
+  document.getElementById("modal").addEventListener("click", e => {
+    if (e.target === document.getElementById("modal")) closeModal();
+  });
+
+  // ── Rules ──────────────────────────────────────────────────────────────────
+  function openRules(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    document.getElementById("rules-modal").classList.add("open");
+  }
+
+  function closeRules() {
+    document.getElementById("rules-modal").classList.remove("open");
+    // auto-check the rules checkbox after reading
+    document.getElementById("rules-check").checked = true;
+    document.getElementById("rules-checkmark").classList.remove("error");
+    document.getElementById("rules-error").style.display = "none";
+  }
+
+  document.getElementById("rules-modal").addEventListener("click", e => {
+    if (e.target === document.getElementById("rules-modal")) closeRules();
+  });
+</script>
+
+</body>
+</html>

@@ -1098,14 +1098,11 @@
 
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqO2NMEOzFwnS0kFk-_QV-1i8SXJqLpztilgFZ7HNt36hIkwX6PMFCokkDG-ZAdCU4/exec";
 
-    fetch(SCRIPT_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, phone, ticket, amount_sent: amount, uni }),
-      mode: "no-cors",
-    }).catch(() => {}).finally(() => {
-      window.location.href = successUrl;
-    });
+    const params = new URLSearchParams({ name, email, phone, ticket, amount_sent: amount, uni });
+    const img = new Image();
+    img.src = SCRIPT_URL + "?" + params.toString();
+    img.onload = img.onerror = () => {};
+    setTimeout(() => { window.location.href = successUrl; }, 1000);
   }
 
   // ── Rules ─────────────────────────────────────────────────────────────────

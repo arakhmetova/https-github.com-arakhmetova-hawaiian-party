@@ -694,6 +694,7 @@
     <div class="divider"></div>
 
     <!-- Full name -->
+    <div id="fullname-field">
     <div class="field">
       <label>
         <span data-lang="en">Your full name</span>
@@ -705,6 +706,7 @@
         <span data-lang="en">Please enter your first and last name</span>
         <span data-lang="de">Bitte Vor- und Nachnamen eingeben</span>
       </div>
+    </div>
     </div>
 
     <!-- Group names — shown only for group ticket -->
@@ -967,6 +969,8 @@
     });
     el.classList.add("selected");
     selected = type;
+    // для группы скрываем "Your full name" — Person 1 и есть плательщик
+    document.getElementById("fullname-field").style.display = type === "grp" ? "none" : "block";
     document.getElementById("group-field").style.display = type === "grp" ? "block" : "none";
   }
 
@@ -1006,14 +1010,20 @@
 
     const nameEl = document.getElementById("fullname");
     const nameErr = document.getElementById("name-error");
-    const name = nameEl.value.trim();
-    if (!name || name.split(" ").filter(Boolean).length < 2) {
-      nameEl.classList.add("error");
-      nameErr.style.display = "block";
-      valid = false;
+    let name = "";
+    if (selected !== "grp") {
+      name = nameEl.value.trim();
+      if (!name || name.split(" ").filter(Boolean).length < 2) {
+        nameEl.classList.add("error");
+        nameErr.style.display = "block";
+        valid = false;
+      } else {
+        nameEl.classList.remove("error");
+        nameErr.style.display = "none";
+      }
     } else {
-      nameEl.classList.remove("error");
-      nameErr.style.display = "none";
+      // для группы имя плательщика = Person 1
+      name = document.getElementById("group1").value.trim();
     }
 
     if (!selected) { alert(currentLang === "de" ? "Bitte Ticket wählen." : "Please choose a ticket."); return; }

@@ -1099,10 +1099,10 @@
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyblrE-JHvdrLLxwqMxVR7yk2lAVq_lfPrIyYRleeE_bIWy6QOqPvQX4ty_mjKTBEo/exec";
 
     const params = new URLSearchParams({ name, email, phone, ticket, amount_sent: amount, uni });
-    const img = new Image();
-    img.src = SCRIPT_URL + "?" + params.toString();
-    img.onload = img.onerror = () => {};
-    setTimeout(() => { window.location.href = successUrl; }, 1000);
+    const script = document.createElement("script");
+    script.src = SCRIPT_URL + "?" + params.toString();
+    document.body.appendChild(script);
+    setTimeout(() => { window.location.href = successUrl; }, 1500);
   }
 
   // ── Rules ─────────────────────────────────────────────────────────────────

@@ -505,8 +505,8 @@
         🐚 <span>
           <strong data-lang="en">Early Bird until May 15</strong>
           <strong data-lang="de">Early Bird bis 15. Mai</strong>
-          <span data-lang="en"> — save 5 € now</span>
-          <span data-lang="de"> — jetzt 5 € sparen</span>
+          <span data-lang="en"> — save 3 € now</span>
+          <span data-lang="de"> — jetzt 3 € sparen</span>
         </span>
       </div>
 
@@ -533,8 +533,8 @@
             <div class="ticket-name">🐦 Early Bird</div>
             <div class="ticket-desc"><span data-lang="en">Until May 15, 2026</span><span data-lang="de">Bis 15. Mai 2026</span></div>
           </div>
-          <div class="ticket-price">15 €</div>
-          <div class="badge"><span data-lang="en">Save 5 €</span><span data-lang="de">5 € sparen</span></div>
+          <div class="ticket-price">17 €</div>
+          <div class="badge"><span data-lang="en">Save 3 €</span><span data-lang="de">3 € sparen</span></div>
         </label>
 
         <label class="ticket" id="ticket-std" onclick="selectTicket('std', this)">
@@ -552,13 +552,13 @@
             <div class="ticket-name">👥 <span data-lang="en">Group · 3 people</span><span data-lang="de">Gruppe · 3 Personen</span></div>
             <div class="ticket-desc"><span data-lang="en">Instead of 60 €</span><span data-lang="de">Statt 60 €</span></div>
           </div>
-          <div class="ticket-price">50 €</div>
-          <div class="badge"><span data-lang="en">Save 10 €</span><span data-lang="de">10 € sparen</span></div>
+          <div class="ticket-price">48 €</div>
+          <div class="badge"><span data-lang="en">Save 12 €</span><span data-lang="de">12 € sparen</span></div>
         </label>
       </div>
 
       <div style="margin-top:10px; padding:12px 14px; background:#f0faf4; border-radius:12px; font-size:13px; color:#3a7a58; line-height:1.5;">
-        💡 <span data-lang="en">Coming as a group of 3? Pay together and save 10 € total — only 16.67 € per person.</span><span data-lang="de">Kommt ihr zu dritt? Zahlt zusammen und spart 10 € — nur 16,67 € pro Person.</span>
+        💡 <span data-lang="en">Coming as a group of 3? Pay together and save 12 € total — only 16 € per person, the best deal!</span><span data-lang="de">Kommt ihr zu dritt? Zahlt zusammen und spart 12 € — nur 16 € pro Person, das beste Angebot!</span>
       </div>
 
       <div class="error-msg" id="ticket-error" style="margin-bottom:12px;">
@@ -751,8 +751,8 @@
           <span data-lang="de">Gib die letzten 4 Ziffern deines Revolut-Überweisungsbetrags ein. Zu finden in Revolut → Aktivität → deine Überweisung.</span>
         </p>
         <div class="field" style="margin-bottom:10px;">
-          <label><span data-lang="en">Amount you sent (e.g. 15.00)</span><span data-lang="de">Gesendeter Betrag (z. B. 15.00)</span></label>
-          <input type="number" id="confirm-amount" placeholder="15.00" step="0.01" min="1" />
+          <label><span data-lang="en">Amount you sent (e.g. 17.00)</span><span data-lang="de">Gesendeter Betrag (z. B. 17.00)</span></label>
+          <input type="number" id="confirm-amount" placeholder="17.00" step="0.01" min="1" />
           <div class="field-hint"><span data-lang="en">Exactly as shown in Revolut</span><span data-lang="de">Genau wie in Revolut angezeigt</span></div>
           <div class="error-msg" id="confirm-error">
             <span data-lang="en">Please enter the amount you sent</span>
@@ -834,12 +834,12 @@
 <script>
   // ── CONFIG ────────────────────────────────────────────────────────────────
   const REVOLUT_LINKS = {
-    eb:  "https://revolut.me/arakhmetova09?currency=EUR&amount=1500&note=Hawaiian%20Party%20-%20Early%20Bird",
+    eb:  "https://revolut.me/arakhmetova09?currency=EUR&amount=1700&note=Hawaiian%20Party%20-%20Early%20Bird",
     std: "https://revolut.me/arakhmetova09?currency=EUR&amount=2000&note=Hawaiian%20Party%20-%20Standard",
-    grp: "https://revolut.me/arakhmetova09?currency=EUR&amount=5000&note=Hawaiian%20Party%20-%20Group%203%20Persons",
+    grp: "https://revolut.me/arakhmetova09?currency=EUR&amount=4800&note=Hawaiian%20Party%20-%20Group%203%20Persons",
   };
 
-  const TICKET_LABELS = { eb: "Early Bird — 15 €", std: "Standard — 20 €", grp: "Group 3 people — 50 €" };
+  const TICKET_LABELS = { eb: "Early Bird — 17 €", std: "Standard — 20 €", grp: "Group 3 people — 48 €" };
   const EARLY_BIRD_DEADLINE = new Date("2026-05-15T23:59:59");
   const TOTAL_SPOTS = 30;
   const TAKEN_SPOTS = 14;
@@ -1027,7 +1027,7 @@
     if (selectedType === "friend") uni = "Friend of " + document.getElementById("friend-name").value.trim();
     document.getElementById("sum-uni").textContent = uni || "—";
 
-    const prices = { eb: "15.00 €", std: "20.00 €", grp: "50.00 €" };
+    const prices = { eb: "17.00 €", std: "20.00 €", grp: "48.00 €" };
     document.getElementById("sum-total").textContent = prices[selected] || "—";
 
     // set copy text

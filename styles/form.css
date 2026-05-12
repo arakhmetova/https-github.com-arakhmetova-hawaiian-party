@@ -1,0 +1,462 @@
+/* ════════════════════════════════════════════════════════════════════════ */
+/* Form-Specific Styles                                                    */
+/* ════════════════════════════════════════════════════════════════════════ */
+
+/* ── Step Panels ── */
+.step-panel {
+  display: none;
+}
+
+.step-panel.active {
+  display: block;
+}
+
+.step-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.step-subtitle {
+  font-size: 13px;
+  color: #b0a090;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* ── Progress Steps ── */
+.progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 20px 32px 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.step-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #e8e0d8;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #c0a880;
+  transition: all 0.3s;
+  position: relative;
+  z-index: 1;
+}
+
+.step.active .step-dot {
+  border-color: #c8873a;
+  color: #c8873a;
+  background: #fffbf5;
+}
+
+.step.done .step-dot {
+  border-color: #3aaa7a;
+  background: #3aaa7a;
+  color: white;
+}
+
+.step-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #c0a880;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.step.active .step-label {
+  color: #c8873a;
+}
+
+.step.done .step-label {
+  color: #3aaa7a;
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #e8e0d8;
+  margin-bottom: 20px;
+  transition: background 0.3s;
+}
+
+.step-line.done {
+  background: #3aaa7a;
+}
+
+/* ── Ticket Section ── */
+.tickets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.ticket {
+  border: 1.5px solid #ede8e0;
+  border-radius: 16px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  background: #fff;
+  user-select: none;
+}
+
+.ticket:hover {
+  border-color: #d4a96a;
+  background: #fffbf5;
+}
+
+.ticket.selected {
+  border-color: #c8873a;
+  background: #fffbf5;
+}
+
+.radio-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid #ddd;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s;
+}
+
+.ticket.selected .radio-dot {
+  border-color: #c8873a;
+  background: #c8873a;
+}
+
+.ticket.selected .radio-dot::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+}
+
+.ticket-info {
+  flex: 1;
+}
+
+.ticket-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.ticket-desc {
+  font-size: 12px;
+  color: #b0a090;
+  margin-top: 2px;
+}
+
+.ticket-price {
+  font-size: 19px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.badge {
+  position: absolute;
+  top: -9px;
+  right: 14px;
+  background: #3aaa7a;
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+/* ── Spots & Countdown ── */
+.eb-banner {
+  background: #fff8ee;
+  border: 1.5px solid #f5d9a0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #8a6020;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countdown {
+  text-align: center;
+  font-size: 12px;
+  color: #b0a090;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.countdown b {
+  color: #c8873a;
+}
+
+.spots-wrap {
+  margin-bottom: 20px;
+}
+
+.spots-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.spots-label {
+  font-size: 12px;
+  color: #b0a090;
+  font-weight: 600;
+}
+
+.spots-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: #c8873a;
+}
+
+.progress-bar {
+  height: 5px;
+  background: #f0ebe4;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f7c87a, #c8873a);
+  border-radius: 10px;
+}
+
+/* ── Section Labels ── */
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #c0a880;
+  margin-bottom: 10px;
+}
+
+/* ── Form Fields ── */
+.field {
+  margin-bottom: 14px;
+}
+
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #c0a880;
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1.5px solid #ede8e0;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.18s;
+  font-family: inherit;
+  color: #1a1a1a;
+  background: #fff;
+}
+
+.field input::placeholder {
+  color: #c8bdb0;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #c8873a;
+}
+
+.field input.error,
+.field select.error {
+  border-color: #e05050;
+}
+
+.field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c0a880' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+
+.field-hint {
+  font-size: 12px;
+  color: #b0a090;
+  margin-top: 5px;
+}
+
+.error-msg {
+  color: #e05050;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+/* ── Checkbox ── */
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 1.5px solid #ede8e0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s;
+  background: #fff;
+  margin-top: 1px;
+}
+
+.checkbox-label input:checked ~ .checkmark {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.checkbox-label input:checked ~ .checkmark::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: 2px solid white;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+  display: block;
+}
+
+.checkmark.error {
+  border-color: #e05050;
+}
+
+.check-text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.rules-link {
+  color: #c8873a;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Type Options ── */
+.type-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+/* ── Summary Box ── */
+.summary-box {
+  background: #fdf6ee;
+  border: 1.5px solid #f0e0c0;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 4px 0;
+  color: #666;
+}
+
+.summary-row.total {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  border-top: 1px solid #f0e0c0;
+  margin-top: 8px;
+  padding-top: 10px;
+}
+
+.summary-label {
+  color: #b0a090;
+  font-size: 12px;
+}
+
+/* ── Confirm Box ── */
+.confirm-box {
+  background: #f0fbf5;
+  border: 1.5px solid #b0e0c8;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.confirm-box p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.confirm-box strong {
+  color: #1a1a1a;
+}
+
+.pay-note {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 12px;
+  color: #c0a880;
+  line-height: 1.7;
+}

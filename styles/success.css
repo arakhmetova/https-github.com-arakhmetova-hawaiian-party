@@ -1,0 +1,99 @@
+/* ════════════════════════════════════════════════════════════════════════ */
+/* Success Page Styles                                                     */
+/* ════════════════════════════════════════════════════════════════════════ */
+
+.card {
+  max-width: 400px;
+  padding: 48px 36px;
+  text-align: center;
+}
+
+.icon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 24px;
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+p {
+  font-size: 15px;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.info-box {
+  background: #fdf6ee;
+  border: 1.5px solid #f0e0c0;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #555;
+  padding: 8px 0;
+  border-bottom: 1px solid #f5ece0;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.info-label {
+  color: #b0a090;
+  font-size: 12px;
+}
+
+.info-val {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: #1a1a1a;
+  color: white;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.18s;
+}
+
+.back-btn:hover {
+  background: #333;
+}

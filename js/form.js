@@ -150,6 +150,14 @@ function buildSummary() {
 
   document.getElementById("sum-total").textContent = TICKET_PRICES[getState("selectedTicket")] || "—";
 
+  // Pre-fill confirm amount based on ticket
+  const amountEl = document.getElementById("confirm-amount");
+  const price = getState("selectedTicket") === "grp" ? "12.00" : "5.00";
+  if (amountEl) {
+    amountEl.placeholder = price;
+    amountEl.value = price;
+  }
+
   const payerName =
     getState("selectedTicket") === "grp"
       ? document.getElementById("group1")?.value.trim() || ""

@@ -24,14 +24,31 @@ function copyName() {
   const btn = document.getElementById("copy-btn");
   const prev = btn.innerHTML;
 
-  navigator.clipboard.writeText(text).then(() => {
+  const done = () => {
     btn.classList.add("copied");
     btn.innerHTML = getState("currentLang") === "en" ? "Copied!" : "Kopiert!";
     setTimeout(() => {
       btn.innerHTML = prev;
       btn.classList.remove("copied");
     }, 2000);
-  });
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+
+function fallbackCopy(text, done) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.cssText = "position:fixed;opacity:0;top:0;left:0";
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand("copy"); done(); } catch (e) {}
+  document.body.removeChild(ta);
 }
 
 /**

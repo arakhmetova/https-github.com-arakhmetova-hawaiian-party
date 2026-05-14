@@ -166,6 +166,15 @@ function buildSummary() {
 
   document.getElementById("sum-total").textContent = TICKET_PRICES[getState("selectedTicket")] || "—";
 
+  const doorRow = document.getElementById("sum-door-row");
+  const doorEl = document.getElementById("sum-door");
+  if (getState("selectedTicket") === "grp") {
+    doorEl.textContent = "21 € (3 × 7 €)";
+    doorRow.style.display = "";
+  } else {
+    doorRow.style.display = "none";
+  }
+
   // Pre-fill confirm amount based on ticket
   const amountEl = document.getElementById("confirm-amount");
   const price = getState("selectedTicket") === "grp" ? "12.00" : "5.00";

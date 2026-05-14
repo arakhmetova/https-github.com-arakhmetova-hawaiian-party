@@ -30,6 +30,20 @@ function selectTicket(type, el) {
 
   document.getElementById("single-name-wrap").style.display = type === "grp" ? "none" : "block";
   document.getElementById("group-names-wrap").style.display = type === "grp" ? "block" : "none";
+
+  const isGrp = type === "grp";
+  const onlineAmount = document.getElementById("hero-online-amount");
+  const onlineSub = document.getElementById("hero-online-sub");
+  const doorAmount = document.getElementById("hero-door-amount");
+  const doorSub = document.getElementById("hero-door-sub");
+  if (onlineAmount) onlineAmount.textContent = isGrp ? "12 €" : "5 €";
+  if (onlineSub) onlineSub.innerHTML = isGrp
+    ? '<span data-lang="en">for 3 people · PayPal</span><span data-lang="de">für 3 Personen · PayPal</span>'
+    : "PayPal";
+  if (doorAmount) doorAmount.textContent = isGrp ? "21 €" : "7 €";
+  if (doorSub) doorSub.innerHTML = isGrp
+    ? '<span data-lang="en">for 3 at the door</span><span data-lang="de">für 3 an der Abendkasse</span>'
+    : '<span data-lang="en">if spots remain</span><span data-lang="de">falls noch Plätze frei</span>';
 }
 
 /**

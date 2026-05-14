@@ -295,29 +295,13 @@
 
       <div class="divider"></div>
 
-      <!-- Confirm payment -->
-      <div class="confirm-box">
-        <p>
-          <strong>
-            <span data-lang="en">Already paid?</span>
-            <span data-lang="de">Bereits gezahlt?</span>
-          </strong><br/>
-          <span data-lang="en">Enter the exact amount you sent via PayPal to confirm your registration.</span>
-          <span data-lang="de">Gib den genauen Betrag ein, den du per PayPal geschickt hast, um deine Anmeldung zu bestätigen.</span>
-        </p>
-        <div class="field" style="margin-bottom:10px;">
-          <label><span data-lang="en">Amount you sent (e.g. 5.00)</span><span data-lang="de">Gesendeter Betrag (z. B. 5.00)</span></label>
-          <input type="number" id="confirm-amount" placeholder="5.00" step="0.01" min="1" />
-          <div class="field-hint"><span data-lang="en">Exactly as shown in PayPal</span><span data-lang="de">Genau wie in PayPal angezeigt</span></div>
-          <div class="error-msg" id="confirm-error">
-            <span data-lang="en">Please enter the amount you sent</span>
-            <span data-lang="de">Bitte gesendeten Betrag eingeben</span>
-          </div>
-        </div>
-        <button class="btn-primary" onclick="confirmPayment()" style="background:#3aaa7a;">
-          <span data-lang="en">Confirm payment ✓</span>
-          <span data-lang="de">Zahlung bestätigen ✓</span>
-        </button>
+      <!-- Tip -->
+      <div class="tip-hint">
+        <span class="tip-hint-icon">🌺</span>
+        <span>
+          <span data-lang="en">Enjoyed the vibe? Send a little extra to the same PayPal link — it goes straight to our fund for the next party 🎉</span>
+          <span data-lang="de">Hat es dir gefallen? Schick einfach etwas mehr an denselben PayPal-Link — es geht direkt in unseren Fonds für die nächste Party 🎉</span>
+        </span>
       </div>
 
       <button class="btn-secondary" onclick="goStep(2)">
@@ -339,28 +323,60 @@
 <div class="modal" id="modal">
   <div class="modal-card">
     <div class="modal-handle"></div>
-    <h2><span data-lang="en">Almost there 🌴</span><span data-lang="de">Fast geschafft 🌴</span></h2>
-    <p>
-      <span data-lang="en">Copy your name and paste it as a note in PayPal so we can identify your payment:</span>
-      <span data-lang="de">Kopiere deinen Namen und füge ihn als Notiz in PayPal ein, damit wir deine Zahlung zuordnen können:</span>
-    </p>
-    <div class="copy-box">
-      <div class="copy-text" id="copy-text"></div>
-      <button class="copy-btn" id="copy-btn" onclick="copyName()">
-        <span data-lang="en">Copy</span><span data-lang="de">Kopieren</span>
+
+    <!-- Step A: copy name + go to PayPal -->
+    <div id="modal-step-a">
+      <h2><span data-lang="en">Almost there 🌴</span><span data-lang="de">Fast geschafft 🌴</span></h2>
+      <p>
+        <span data-lang="en">Copy your name and paste it as a note in PayPal so we can identify your payment:</span>
+        <span data-lang="de">Kopiere deinen Namen und füge ihn als Notiz in PayPal ein, damit wir deine Zahlung zuordnen können:</span>
+      </p>
+      <div class="copy-box">
+        <div class="copy-text" id="copy-text"></div>
+        <button class="copy-btn" id="copy-btn" onclick="copyName()">
+          <span data-lang="en">Copy</span><span data-lang="de">Kopieren</span>
+        </button>
+      </div>
+      <p style="font-size:13px; color:#b0a090; margin-bottom:16px;">
+        <span data-lang="en">You can pay with card or your PayPal balance on the next screen.</span>
+        <span data-lang="de">Auf der nächsten Seite kannst du per Karte oder PayPal-Guthaben zahlen.</span>
+      </p>
+      <a class="modal-btn" id="modal-link" href="#" target="_blank" onclick="showModalConfirm()">
+        <span data-lang="en">Open PayPal & Pay →</span>
+        <span data-lang="de">PayPal öffnen & zahlen →</span>
+      </a>
+      <button class="modal-cancel" onclick="closePayModal()">
+        <span data-lang="en">Go back</span><span data-lang="de">Zurück</span>
       </button>
     </div>
-    <p style="font-size:13px; color:#b0a090; margin-bottom:16px;">
-      <span data-lang="en">You can pay with card or your PayPal balance on the next screen.</span>
-      <span data-lang="de">Auf der nächsten Seite kannst du per Karte oder PayPal-Guthaben zahlen.</span>
-    </p>
-    <a class="modal-btn" id="modal-link" href="#" target="_blank">
-      <span data-lang="en">Open PayPal & Pay →</span>
-      <span data-lang="de">PayPal öffnen & zahlen →</span>
-    </a>
-    <button class="modal-cancel" onclick="closePayModal()">
-      <span data-lang="en">Go back</span><span data-lang="de">Zurück</span>
-    </button>
+
+    <!-- Step B: return here and confirm -->
+    <div id="modal-step-b" style="display:none;">
+      <h2><span data-lang="en">Payment sent? ✓</span><span data-lang="de">Gezahlt? ✓</span></h2>
+      <p>
+        <span data-lang="en">Welcome back! Enter the exact amount you sent via PayPal to confirm your spot:</span>
+        <span data-lang="de">Willkommen zurück! Gib den genauen Betrag ein, den du per PayPal geschickt hast:</span>
+      </p>
+      <div class="field" style="margin-bottom:12px; text-align:left;">
+        <label style="font-size:13px; color:#888;">
+          <span data-lang="en">Amount you sent (e.g. 5.00)</span>
+          <span data-lang="de">Gesendeter Betrag (z. B. 5.00)</span>
+        </label>
+        <input type="number" id="confirm-amount-modal" placeholder="5.00" step="0.01" min="1" style="margin-top:6px;" />
+        <div class="error-msg" id="confirm-error-modal" style="display:none;">
+          <span data-lang="en">Please enter the amount you sent</span>
+          <span data-lang="de">Bitte gesendeten Betrag eingeben</span>
+        </div>
+      </div>
+      <button class="modal-btn" onclick="confirmPaymentModal()" style="background:#3aaa7a;">
+        <span data-lang="en">Confirm my spot ✓</span>
+        <span data-lang="de">Platz bestätigen ✓</span>
+      </button>
+      <button class="modal-cancel" onclick="showModalPaypal()">
+        <span data-lang="en">Go back to PayPal</span><span data-lang="de">Zurück zu PayPal</span>
+      </button>
+    </div>
+
   </div>
 </div>
 

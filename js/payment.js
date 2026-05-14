@@ -3,10 +3,25 @@
 /* ════════════════════════════════════════════════════════════════════════ */
 
 /**
- * Open payment modal
+ * Open payment modal (always starts at step A)
  */
 function openPayModal() {
+  showModalPaypal();
   document.getElementById("modal").classList.add("open");
+}
+
+function showModalPaypal() {
+  document.getElementById("modal-step-a").style.display = "block";
+  document.getElementById("modal-step-b").style.display = "none";
+}
+
+function showModalConfirm() {
+  setTimeout(() => {
+    document.getElementById("modal-step-a").style.display = "none";
+    document.getElementById("modal-step-b").style.display = "block";
+    document.getElementById("confirm-amount-modal").value = "";
+    document.getElementById("confirm-error-modal").style.display = "none";
+  }, 300);
 }
 
 /**
@@ -51,27 +66,7 @@ function fallbackCopy(text, done) {
   document.body.removeChild(ta);
 }
 
-/**
- * Confirm payment and submit form data
- */
-function confirmPayment() {
-  const amountEl = document.getElementById("confirm-amount");
-  const amountErr = document.getElementById("confirm-error");
-  const val = parseFloat(amountEl.value);
-
-  if (!val || val < 1) {
-    amountErr.textContent =
-      getState("currentLang") === "en"
-        ? "Please enter a valid amount"
-        : "Bitte geben Sie einen gültigen Betrag ein";
-    amountErr.style.display = "block";
-    amountEl.classList.add("error");
-    return;
-  }
-
-  amountEl.classList.remove("error");
-  amountErr.style.display = "none";
-
+function _buildSubmitParams(amount) {
   const name =
     getState("selectedTicket") === "grp"
       ? [
@@ -86,7 +81,6 @@ function confirmPayment() {
   const email = document.getElementById("email").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const ticket = TICKET_LABELS[getState("selectedTicket")];
-  const amount = val.toFixed(2);
 
   let uni = "";
   if (getState("selectedType") === "student") {
@@ -95,24 +89,34 @@ function confirmPayment() {
     uni = "Friend of " + document.getElementById("friend-name").value.trim();
   }
 
-  const successUrl = window.location.pathname.replace(/index\.html$/, "") + "success.html";
+  return new URLSearchParams({ name, email, phone, ticket, amount_sent: amount, uni });
+}
 
-  const params = new URLSearchParams({
-    name,
-    email,
-    phone,
-    ticket,
-    amount_sent: amount,
-    uni,
-  });
-
+function _submitAndRedirect(params) {
   const script = document.createElement("script");
   script.src = SCRIPT_URL + "?" + params.toString();
   document.body.appendChild(script);
+  const successUrl = window.location.pathname.replace(/index\.html$/, "") + "success.html";
+  setTimeout(() => { window.location.href = successUrl; }, 1500);
+}
 
-  setTimeout(() => {
-    window.location.href = successUrl;
-  }, 1500);
+/**
+ * Confirm payment from inside the modal (step B)
+ */
+function confirmPaymentModal() {
+  const amountEl = document.getElementById("confirm-amount-modal");
+  const amountErr = document.getElementById("confirm-error-modal");
+  const val = parseFloat(amountEl.value);
+
+  if (!val || val < 1) {
+    amountErr.style.display = "block";
+    amountEl.classList.add("error");
+    return;
+  }
+
+  amountEl.classList.remove("error");
+  amountErr.style.display = "none";
+  _submitAndRedirect(_buildSubmitParams(val.toFixed(2)));
 }
 
 /**

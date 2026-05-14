@@ -130,6 +130,26 @@
   font-family: inherit;
 }
 
+#modal-step-b input[type="number"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e8ddd0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.18s;
+}
+
+#modal-step-b input[type="number"]:focus {
+  border-color: #c0a880;
+}
+
+#modal-step-b input[type="number"].error {
+  border-color: #e05050;
+}
+
 /* ── Rules Modal ── */
 .rules-modal {
   display: none;

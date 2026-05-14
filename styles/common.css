@@ -29,59 +29,80 @@ body {
 
 /* ── Hero Section ── */
 .hero {
-  background: linear-gradient(180deg, #c03820 0%, #e06030 50%, #f0a050 100%);
-  padding: 36px 32px 28px;
+  background: linear-gradient(180deg, #7b2000 0%, #c84010 35%, #e86828 65%, #f0a050 100%);
+  padding: 20px 32px 24px;
   text-align: center;
   border-bottom: none;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-emoji {
-  font-size: 44px;
-  display: block;
-  margin-bottom: 12px;
-  letter-spacing: 6px;
+/* SVG palm silhouettes via pseudo-elements */
+.hero-palms {
+  position: relative;
+  height: 56px;
+  margin-bottom: 4px;
+  pointer-events: none;
+}
+
+.hero-palms::before,
+.hero-palms::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  height: 56px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
+  opacity: 0.55;
+}
+
+.hero-palms::before {
+  left: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 90'%3E%3Cpath d='M38 90 Q36 60 30 40 Q20 20 5 10 Q15 18 28 38 Q32 55 34 90Z' fill='%23200800'/%3E%3Cpath d='M30 40 Q10 30 2 15 Q14 22 30 40Z' fill='%23200800'/%3E%3Cpath d='M30 42 Q18 25 8 28 Q18 28 30 42Z' fill='%23200800'/%3E%3Cpath d='M31 38 Q22 18 25 5 Q28 20 31 38Z' fill='%23200800'/%3E%3Cpath d='M32 37 Q38 15 50 8 Q40 20 32 37Z' fill='%23200800'/%3E%3Cpath d='M33 40 Q45 28 55 30 Q44 28 33 40Z' fill='%23200800'/%3E%3C/svg%3E");
+}
+
+.hero-palms::after {
+  right: 10px;
+  transform: scaleX(-1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 90'%3E%3Cpath d='M38 90 Q36 60 30 40 Q20 20 5 10 Q15 18 28 38 Q32 55 34 90Z' fill='%23200800'/%3E%3Cpath d='M30 40 Q10 30 2 15 Q14 22 30 40Z' fill='%23200800'/%3E%3Cpath d='M30 42 Q18 25 8 28 Q18 28 30 42Z' fill='%23200800'/%3E%3Cpath d='M31 38 Q22 18 25 5 Q28 20 31 38Z' fill='%23200800'/%3E%3Cpath d='M32 37 Q38 15 50 8 Q40 20 32 37Z' fill='%23200800'/%3E%3Cpath d='M33 40 Q45 28 55 30 Q44 28 33 40Z' fill='%23200800'/%3E%3C/svg%3E");
 }
 
 .hero h1 {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: -0.5px;
   background: linear-gradient(90deg, #ffb347, #ff6fa8, #ffe066);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  margin-bottom: 2px;
 }
 
 .hero .meta {
-  margin-top: 6px;
+  margin-top: 4px;
   font-size: 14px;
   color: rgba(255,255,255,0.85);
   font-weight: 500;
 }
 
 .hero .meta-small {
-  margin-top: 4px;
+  margin-top: 2px;
   font-size: 12px;
   color: rgba(255,255,255,0.6);
 }
 
-.hero .eligibility {
-  margin-top: 12px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.7);
-  line-height: 1.6;
-}
-
 .students-badge {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 8px;
   background: rgba(255,255,255,0.15);
   color: rgba(255,255,255,0.9);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.25);
 }

@@ -158,11 +158,17 @@ function buildSummary() {
     amountEl.value = price;
   }
 
-  const payerName =
-    getState("selectedTicket") === "grp"
-      ? document.getElementById("group1")?.value.trim() || ""
-      : document.getElementById("fullname")?.value.trim() || "";
+  let copyText;
+  if (getState("selectedTicket") === "grp") {
+    const g1 = document.getElementById("group1")?.value.trim() || "";
+    const g2 = document.getElementById("group2")?.value.trim() || "";
+    const g3 = document.getElementById("group3")?.value.trim() || "";
+    copyText = `Hawaiian Party — ${g1}, ${g2}, ${g3} — 12 €`;
+  } else {
+    const name = document.getElementById("fullname")?.value.trim() || "";
+    copyText = `Hawaiian Party — ${name} — 5 €`;
+  }
 
-  document.getElementById("copy-text").textContent = `Hawaiian Party — ${payerName}`;
+  document.getElementById("copy-text").textContent = copyText;
   document.getElementById("modal-link").href = PAYPAL_LINKS[getState("selectedTicket")];
 }

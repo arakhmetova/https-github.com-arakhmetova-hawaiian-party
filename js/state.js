@@ -8,6 +8,7 @@ let state = {
   selectedTicket: null,
   selectedType: null,
   currentStep: 1,
+  bringGuest: false,
 };
 
 /**
@@ -37,5 +38,6 @@ function resetState() {
     selectedTicket: null,
     selectedType: null,
     currentStep: 1,
+    bringGuest: false,
   };
 }

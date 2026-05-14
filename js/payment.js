@@ -15,6 +15,29 @@ function showModalPaypal() {
   document.getElementById("modal-step-b").style.display = "none";
 }
 
+function toggleGuest() {
+  const active = !getState("bringGuest");
+  updateState("bringGuest", active);
+  document.getElementById("guest-toggle-check").classList.toggle("checked", active);
+  document.getElementById("guest-fields").style.display = active ? "block" : "none";
+
+  const onlineAmount = document.getElementById("hero-online-amount");
+  const onlineSub = document.getElementById("hero-online-sub");
+  const doorAmount = document.getElementById("hero-door-amount");
+  const doorSub = document.getElementById("hero-door-sub");
+  if (active) {
+    if (onlineAmount) onlineAmount.textContent = "10 €";
+    if (onlineSub) onlineSub.innerHTML = '<span data-lang="en">for 2 people · PayPal</span><span data-lang="de">für 2 Personen · PayPal</span>';
+    if (doorAmount) doorAmount.textContent = "14 €";
+    if (doorSub) doorSub.innerHTML = '<span data-lang="en">for 2 at the door</span><span data-lang="de">für 2 an der Abendkasse</span>';
+  } else {
+    if (onlineAmount) onlineAmount.textContent = "5 €";
+    if (onlineSub) onlineSub.textContent = "PayPal";
+    if (doorAmount) doorAmount.textContent = "7 €";
+    if (doorSub) doorSub.innerHTML = '<span data-lang="en">if spots remain</span><span data-lang="de">falls noch Plätze frei</span>';
+  }
+}
+
 function showModalConfirm() {
   setTimeout(() => {
     document.getElementById("modal-step-a").style.display = "none";
@@ -89,7 +112,10 @@ function _buildSubmitParams(amount) {
     uni = "Friend of " + document.getElementById("friend-name").value.trim();
   }
 
-  return new URLSearchParams({ name, email, phone, ticket, amount_sent: amount, uni });
+  const guestName = getState("bringGuest") ? (document.getElementById("guest-name")?.value.trim() || "") : "";
+  const guestEmail = getState("bringGuest") ? (document.getElementById("guest-email")?.value.trim() || "") : "";
+
+  return new URLSearchParams({ name, email, phone, ticket, amount_sent: amount, uni, guest_name: guestName, guest_email: guestEmail });
 }
 
 function _submitAndRedirect(params) {

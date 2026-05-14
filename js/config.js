@@ -6,6 +6,7 @@
 const PAYPAL_LINKS = {
   std: "https://www.paypal.me/arakhmetova09/5",
   grp: "https://www.paypal.me/arakhmetova09/12",
+  duo: "https://www.paypal.me/arakhmetova09/10",
 };
 
 // Ticket display labels

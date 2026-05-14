@@ -252,6 +252,42 @@
         <span data-lang="de">Bitte Regeln lesen und akzeptieren</span>
       </div>
 
+      <!-- +1 Guest -->
+      <div class="guest-toggle" id="guest-toggle-wrap" style="display:none;">
+        <label class="guest-toggle-label" onclick="toggleGuest()">
+          <span class="guest-toggle-check" id="guest-toggle-check"></span>
+          <span class="guest-toggle-text">
+            <span class="guest-toggle-title">
+              <span data-lang="en">Bringing a guest? +1 person — <strong>10 € total</strong></span>
+              <span data-lang="de">Bringst du jemanden mit? +1 Person — <strong>10 € gesamt</strong></span>
+            </span>
+            <span class="guest-toggle-sub">
+              <span data-lang="en">Your friend can invite one person with them</span>
+              <span data-lang="de">Dein Freund darf eine Person mitbringen</span>
+            </span>
+          </span>
+        </label>
+
+        <div class="guest-fields" id="guest-fields" style="display:none;">
+          <div class="field">
+            <label><span data-lang="en">Guest full name</span><span data-lang="de">Vollständiger Name des Gastes</span></label>
+            <input type="text" id="guest-name" placeholder="Max Müller" />
+            <div class="error-msg" id="guest-name-error">
+              <span data-lang="en">Please enter guest's first and last name</span>
+              <span data-lang="de">Bitte Vor- und Nachnamen des Gastes eingeben</span>
+            </div>
+          </div>
+          <div class="field">
+            <label><span data-lang="en">Guest email</span><span data-lang="de">E-Mail des Gastes</span></label>
+            <input type="email" id="guest-email" placeholder="guest@email.com" />
+            <div class="error-msg" id="guest-email-error">
+              <span data-lang="en">Please enter a valid email address</span>
+              <span data-lang="de">Bitte gültige E-Mail-Adresse eingeben</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <button class="btn-primary" onclick="goStep(3)" style="margin-top:16px;">
         <span data-lang="en">Review & Pay →</span>
         <span data-lang="de">Überprüfen & Zahlen →</span>
@@ -277,6 +313,7 @@
         <div class="summary-row"><span class="summary-label"><span data-lang="en">Name(s)</span><span data-lang="de">Name(n)</span></span><span id="sum-names">—</span></div>
         <div class="summary-row"><span class="summary-label">Email</span><span id="sum-email">—</span></div>
         <div class="summary-row"><span class="summary-label"><span data-lang="en">University / Invited by</span><span data-lang="de">Hochschule / Eingeladen von</span></span><span id="sum-uni">—</span></div>
+        <div class="summary-row" id="sum-guest-row" style="display:none;"><span class="summary-label"><span data-lang="en">Guest</span><span data-lang="de">Gast</span></span><span id="sum-guest">—</span></div>
         <div class="summary-row total"><span><span data-lang="en">Total</span><span data-lang="de">Gesamt</span></span><span id="sum-total">—</span></div>
         <div class="summary-row" id="sum-door-row" style="display:none; color:#b0a090; font-size:12px; padding-top:6px;">
           <span class="summary-label"><span data-lang="en">vs Abendkasse</span><span data-lang="de">vs Abendkasse</span></span>

@@ -61,7 +61,15 @@ function selectType(type, el) {
   updateState("selectedType", type);
   document.getElementById("uni-field").style.display = type === "student" ? "block" : "none";
   document.getElementById("friend-field").style.display = type === "friend" ? "block" : "none";
+  document.getElementById("guest-toggle-wrap").style.display = type === "friend" ? "block" : "none";
   document.getElementById("type-error").style.display = "none";
+
+  // Reset guest state when switching type
+  if (type !== "friend" && getState("bringGuest")) {
+    updateState("bringGuest", false);
+    document.getElementById("guest-toggle-check").classList.remove("checked");
+    document.getElementById("guest-fields").style.display = "none";
+  }
 }
 
 /**

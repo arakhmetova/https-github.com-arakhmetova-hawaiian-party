@@ -130,6 +130,19 @@ function validateStep(step) {
     if (rulesErr) rulesErr.style.display = rulesOk ? "none" : "block";
     if (!rulesOk) valid = false;
 
+    // Guest fields (if opted in)
+    if (getState("bringGuest")) {
+      const guestName = document.getElementById("guest-name");
+      const guestNameOk = guestName && isValidFullName(guestName.value);
+      setFieldError(guestName, document.getElementById("guest-name-error"), !guestNameOk);
+      if (!guestNameOk) valid = false;
+
+      const guestEmail = document.getElementById("guest-email");
+      const guestEmailOk = guestEmail && isValidEmail(guestEmail.value);
+      setFieldError(guestEmail, document.getElementById("guest-email-error"), !guestEmailOk);
+      if (!guestEmailOk) valid = false;
+    }
+
     return valid;
   }
 
@@ -164,36 +177,64 @@ function buildSummary() {
   }
   document.getElementById("sum-uni").textContent = uni || "—";
 
-  document.getElementById("sum-total").textContent = TICKET_PRICES[getState("selectedTicket")] || "—";
+  const isGrp = getState("selectedTicket") === "grp";
+  const hasGuest = getState("bringGuest");
+
+  // Total price
+  let totalPrice, totalAmount;
+  if (isGrp) {
+    totalPrice = "12.00 €"; totalAmount = "12.00";
+  } else if (hasGuest) {
+    totalPrice = "10.00 €"; totalAmount = "10.00";
+  } else {
+    totalPrice = "5.00 €"; totalAmount = "5.00";
+  }
+  document.getElementById("sum-total").textContent = totalPrice;
+
+  // Guest row
+  const guestRow = document.getElementById("sum-guest-row");
+  const guestEl = document.getElementById("sum-guest");
+  if (hasGuest) {
+    const gName = document.getElementById("guest-name")?.value.trim() || "";
+    const gEmail = document.getElementById("guest-email")?.value.trim() || "";
+    guestEl.textContent = `${gName} · ${gEmail}`;
+    guestRow.style.display = "";
+  } else {
+    guestRow.style.display = "none";
+  }
 
   const doorRow = document.getElementById("sum-door-row");
   const doorEl = document.getElementById("sum-door");
-  if (getState("selectedTicket") === "grp") {
+  if (isGrp) {
     doorEl.textContent = "21 € (3 × 7 €)";
     doorRow.style.display = "";
   } else {
     doorRow.style.display = "none";
   }
 
-  // Pre-fill confirm amount based on ticket
-  const amountEl = document.getElementById("confirm-amount");
-  const price = getState("selectedTicket") === "grp" ? "12.00" : "5.00";
-  if (amountEl) {
-    amountEl.placeholder = price;
-    amountEl.value = price;
-  }
-
-  let copyText;
-  if (getState("selectedTicket") === "grp") {
+  // Copy text and PayPal link
+  let copyText, paypalLink;
+  if (isGrp) {
     const g1 = document.getElementById("group1")?.value.trim() || "";
     const g2 = document.getElementById("group2")?.value.trim() || "";
     const g3 = document.getElementById("group3")?.value.trim() || "";
     copyText = `Hawaiian Party — ${g1}, ${g2}, ${g3} — 12 €`;
+    paypalLink = PAYPAL_LINKS.grp;
+  } else if (hasGuest) {
+    const name = document.getElementById("fullname")?.value.trim() || "";
+    const gName = document.getElementById("guest-name")?.value.trim() || "";
+    copyText = `Hawaiian Party — ${name} + ${gName} — 10 €`;
+    paypalLink = PAYPAL_LINKS.duo;
   } else {
     const name = document.getElementById("fullname")?.value.trim() || "";
     copyText = `Hawaiian Party — ${name} — 5 €`;
+    paypalLink = PAYPAL_LINKS.std;
   }
 
   document.getElementById("copy-text").textContent = copyText;
-  document.getElementById("modal-link").href = PAYPAL_LINKS[getState("selectedTicket")];
+  document.getElementById("modal-link").href = paypalLink;
+
+  // Pre-fill modal confirm amount
+  const amountModalEl = document.getElementById("confirm-amount-modal");
+  if (amountModalEl) amountModalEl.placeholder = totalAmount;
 }

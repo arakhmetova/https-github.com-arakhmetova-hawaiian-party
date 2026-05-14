@@ -26,4 +26,4 @@ const TAKEN_SPOTS = 14;
 
 // Google Sheets Script URL for data submission
 const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyblrE-JHvdrLLxwqMxVR7yk2lAVq_lfPrIyYRleeE_bIWy6QOqPvQX4ty_mjKTBEo/exec";
+  "https://script.google.com/macros/s/AKfycbzqo8NOaIvQicWvr43McIassICj69DdnksLaYTq48bLvfI7IYXEQkYBeXB0-p1Mbfzf/exec";

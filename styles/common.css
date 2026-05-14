@@ -82,6 +82,74 @@ body {
   border-radius: 20px;
 }
 
+/* ── Price Compare ── */
+.price-compare {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.price-col {
+  flex: 1;
+  max-width: 130px;
+  border-radius: 14px;
+  padding: 12px 10px;
+  text-align: center;
+}
+
+.price-col--online {
+  background: #e8f5ee;
+  border: 1.5px solid #b5dfc8;
+}
+
+.price-col--door {
+  background: #f5f0eb;
+  border: 1.5px solid #e0d4c4;
+}
+
+.price-col-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #7a9a88;
+  margin-bottom: 4px;
+}
+
+.price-col--door .price-col-label {
+  color: #b0a090;
+}
+
+.price-col-amount {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2a7a50;
+  line-height: 1;
+}
+
+.price-col--door .price-col-amount {
+  color: #b0a090;
+}
+
+.price-col-sub {
+  font-size: 11px;
+  color: #7a9a88;
+  margin-top: 4px;
+}
+
+.price-col--door .price-col-sub {
+  color: #c0a880;
+}
+
+.price-col-divider {
+  font-size: 12px;
+  font-weight: 600;
+  color: #c0b0a0;
+  flex-shrink: 0;
+}
+
 /* ── Language Switcher ── */
 .lang-switcher {
   display: flex;

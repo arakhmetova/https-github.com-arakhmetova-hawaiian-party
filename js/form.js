@@ -45,8 +45,6 @@ function setFieldError(fieldEl, errorEl, show) {
  * @returns {boolean}
  */
 function validateStep(step) {
-  const lang = getState("currentLang");
-
   if (step === 1) {
     const hasTicket = !!getState("selectedTicket");
     setFieldError(null, document.getElementById("ticket-error"), !hasTicket);
@@ -86,6 +84,24 @@ function validateStep(step) {
         setFieldError(el, errEl, !ok);
         if (!ok) valid = false;
       });
+      // Check all three names are different
+      const g1 = document.getElementById("group1")?.value.trim().toLowerCase();
+      const g2 = document.getElementById("group2")?.value.trim().toLowerCase();
+      const g3 = document.getElementById("group3")?.value.trim().toLowerCase();
+      if (g1 && g2 && g3 && (g1 === g2 || g2 === g3 || g1 === g3)) {
+        ["group1", "group2", "group3"].forEach((id) => {
+          const el = document.getElementById(id);
+          const errEl = document.getElementById(id + "-error");
+          if (errEl) {
+            errEl.textContent = getState("currentLang") === "en"
+              ? "All three names must be different people"
+              : "Alle drei Namen müssen verschiedene Personen sein";
+            errEl.style.display = "block";
+          }
+          if (el) el.classList.add("error");
+        });
+        valid = false;
+      }
     } else {
       const fullname = document.getElementById("fullname");
       const nameOk = fullname && isValidFullName(fullname.value);

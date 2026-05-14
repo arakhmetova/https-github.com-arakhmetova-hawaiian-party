@@ -11,6 +11,10 @@
 body {
   font-family: 'DM Sans', -apple-system, sans-serif;
   background-color: #f5ede0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600' viewBox='0 0 400 600'%3E%3C!-- left palm --%3E%3Cpath d='M60 600 Q58 480 50 400 Q38 300 10 200 Q30 280 48 390 Q54 470 56 600Z' fill='%23d4a870' opacity='0.35'/%3E%3Cpath d='M50 400 Q20 370 0 320 Q22 355 50 400Z' fill='%23d4a870' opacity='0.35'/%3E%3Cpath d='M50 400 Q25 360 15 330 Q30 360 50 400Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M51 395 Q35 340 40 290 Q44 340 51 395Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M52 390 Q65 330 80 300 Q66 330 52 390Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M53 400 Q75 370 90 350 Q74 368 53 400Z' fill='%23d4a870' opacity='0.3'/%3E%3C!-- right palm --%3E%3Cpath d='M340 600 Q342 480 350 400 Q362 300 390 200 Q370 280 352 390 Q346 470 344 600Z' fill='%23d4a870' opacity='0.35'/%3E%3Cpath d='M350 400 Q380 370 400 320 Q378 355 350 400Z' fill='%23d4a870' opacity='0.35'/%3E%3Cpath d='M350 400 Q375 360 385 330 Q370 360 350 400Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M349 395 Q365 340 360 290 Q356 340 349 395Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M348 390 Q335 330 320 300 Q334 330 348 390Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M347 400 Q325 370 310 350 Q326 368 347 400Z' fill='%23d4a870' opacity='0.3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   align-items: center;

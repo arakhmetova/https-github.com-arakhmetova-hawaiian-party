@@ -11,7 +11,7 @@ function isValidFullName(name) {
   if (!name || !name.trim()) return false;
   const words = name.trim().split(/\s+/);
   if (words.length < 2) return false;
-  return words.every((w) => w.replace(/[-']/g, "").length >= 3 && /^[A-Za-zÀ-ÖØ-öø-ÿ'\-]+$/.test(w));
+  return words.every((w) => w.replace(/[-']/g, "").length >= 2 && /^[A-Za-zÀ-ÖØ-öø-ÿ'\-]+$/.test(w));
 }
 
 /**

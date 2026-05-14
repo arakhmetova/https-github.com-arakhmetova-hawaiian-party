@@ -17,7 +17,7 @@ function closePayModal() {
 }
 
 /**
- * Copy participant name to clipboard for Revolut
+ * Copy participant name to clipboard for PayPal note
  */
 function copyName() {
   const text = document.getElementById("copy-text").textContent;
@@ -42,7 +42,6 @@ function confirmPayment() {
   const amountErr = document.getElementById("confirm-error");
   const val = parseFloat(amountEl.value);
 
-  // Validate amount
   if (!val || val < 1) {
     amountErr.textContent =
       getState("currentLang") === "en"
@@ -56,13 +55,12 @@ function confirmPayment() {
   amountEl.classList.remove("error");
   amountErr.style.display = "none";
 
-  // Prepare data
   const name =
     getState("selectedTicket") === "grp"
       ? [
-          document.getElementById("group-name-1")?.value.trim() || "",
-          document.getElementById("group-name-2")?.value.trim() || "",
-          document.getElementById("group-name-3")?.value.trim() || "",
+          document.getElementById("group1")?.value.trim() || "",
+          document.getElementById("group2")?.value.trim() || "",
+          document.getElementById("group3")?.value.trim() || "",
         ]
           .filter(Boolean)
           .join(", ")
@@ -80,10 +78,8 @@ function confirmPayment() {
     uni = "Friend of " + document.getElementById("friend-name").value.trim();
   }
 
-  // Determine success URL
   const successUrl = window.location.pathname.replace(/index\.html$/, "") + "success.html";
 
-  // Submit data via Google Sheets Script
   const params = new URLSearchParams({
     name,
     email,
@@ -97,7 +93,6 @@ function confirmPayment() {
   script.src = SCRIPT_URL + "?" + params.toString();
   document.body.appendChild(script);
 
-  // Redirect to success page after a delay
   setTimeout(() => {
     window.location.href = successUrl;
   }, 1500);

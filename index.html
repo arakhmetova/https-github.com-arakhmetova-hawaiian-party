@@ -58,19 +58,9 @@
     <!-- ── STEP 1: Ticket ── -->
     <div class="step-panel active" id="panel-1">
 
-      <div class="eb-banner" id="eb-banner">
-        🐚 <span>
-          <strong data-lang="en">Early Bird until May 15</strong>
-          <strong data-lang="de">Early Bird bis 15. Mai</strong>
-          <span data-lang="en"> — save 3 € now</span>
-          <span data-lang="de"> — jetzt 3 € sparen</span>
-        </span>
-      </div>
-
-      <div class="countdown" id="countdown-wrap">
-        <span data-lang="en">Closes in </span>
-        <span data-lang="de">Endet in </span>
-        <b id="cd-text">—</b>
+      <!-- Price motivation banner -->
+      <div style="margin-bottom:16px; padding:14px 16px; background:#fff3cd; border-radius:14px; font-size:14px; color:#7a5c00; line-height:1.5; border: 1px solid #f0d080;">
+        💡 <span data-lang="en"><strong>Buy online — pay only 5 €.</strong> At the door (Abendkasse) everyone pays 7 €. Save 2 € and skip the queue!</span><span data-lang="de"><strong>Online kaufen — nur 5 €.</strong> An der Abendkasse zahlen alle 7 €. Spar 2 € und überspringe die Schlange!</span>
       </div>
 
       <div class="spots-wrap">
@@ -84,38 +74,29 @@
       <div class="label"><span data-lang="en">Choose your ticket</span><span data-lang="de">Ticket wählen</span></div>
 
       <div class="tickets">
-        <label class="ticket" id="ticket-eb" onclick="selectTicket('eb', this)">
-          <div class="radio-dot"></div>
-          <div class="ticket-info">
-            <div class="ticket-name">🐦 Early Bird</div>
-            <div class="ticket-desc"><span data-lang="en">Until May 15, 2026</span><span data-lang="de">Bis 15. Mai 2026</span></div>
-          </div>
-          <div class="ticket-price">17 €</div>
-          <div class="badge"><span data-lang="en">Save 3 €</span><span data-lang="de">3 € sparen</span></div>
-        </label>
-
         <label class="ticket" id="ticket-std" onclick="selectTicket('std', this)">
           <div class="radio-dot"></div>
           <div class="ticket-info">
-            <div class="ticket-name">🎉 Standard</div>
-            <div class="ticket-desc"><span data-lang="en">Regular price</span><span data-lang="de">Normalpreis</span></div>
+            <div class="ticket-name">🎉 <span data-lang="en">Online ticket — 1 person</span><span data-lang="de">Online-Ticket — 1 Person</span></div>
+            <div class="ticket-desc"><span data-lang="en">Pay now, save at the door</span><span data-lang="de">Jetzt zahlen, an der Kasse sparen</span></div>
           </div>
-          <div class="ticket-price">20 €</div>
+          <div class="ticket-price">5 €</div>
+          <div class="badge"><span data-lang="en">vs 7 € at door</span><span data-lang="de">statt 7 € Abendkasse</span></div>
         </label>
 
         <label class="ticket" id="ticket-grp" onclick="selectTicket('grp', this)">
           <div class="radio-dot"></div>
           <div class="ticket-info">
             <div class="ticket-name">👥 <span data-lang="en">Group · 3 people</span><span data-lang="de">Gruppe · 3 Personen</span></div>
-            <div class="ticket-desc"><span data-lang="en">Instead of 60 €</span><span data-lang="de">Statt 60 €</span></div>
+            <div class="ticket-desc"><span data-lang="en">Only 4 € per person — online only</span><span data-lang="de">Nur 4 € pro Person — nur online</span></div>
           </div>
-          <div class="ticket-price">48 €</div>
-          <div class="badge"><span data-lang="en">Save 12 €</span><span data-lang="de">12 € sparen</span></div>
+          <div class="ticket-price">12 €</div>
+          <div class="badge"><span data-lang="en">Best deal!</span><span data-lang="de">Bestes Angebot!</span></div>
         </label>
       </div>
 
       <div style="margin-top:10px; padding:12px 14px; background:#f0faf4; border-radius:12px; font-size:13px; color:#3a7a58; line-height:1.5;">
-        💡 <span data-lang="en">Coming as a group of 3? Pay together and save 12 € total — only 16 € per person, the best deal!</span><span data-lang="de">Kommt ihr zu dritt? Zahlt zusammen und spart 12 € — nur 16 € pro Person, das beste Angebot!</span>
+        👥 <span data-lang="en">Coming as a group of 3? Pay 12 € together — that's only 4 € each! Group tickets are only available online, not at the door.</span><span data-lang="de">Kommt ihr zu dritt? Zahlt zusammen 12 € — das sind nur 4 € pro Person! Gruppentickets gibt es nur online, nicht an der Abendkasse.</span>
       </div>
 
       <div class="error-msg" id="ticket-error" style="margin-bottom:12px;">
@@ -182,8 +163,8 @@
         <input type="text" id="friend-name" placeholder="Max Müller" />
         <div class="field-hint"><span data-lang="en">So we can verify with the resident</span><span data-lang="de">Damit wir beim Bewohner nachfragen können</span></div>
         <div class="error-msg" id="friend-error">
-          <span data-lang="en">Please enter your friend's full name</span>
-          <span data-lang="de">Bitte Namen des Freundes eingeben</span>
+          <span data-lang="en">Please enter your friend's full name (first and last name)</span>
+          <span data-lang="de">Bitte vollständigen Namen des Freundes eingeben (Vor- und Nachname)</span>
         </div>
       </div>
 
@@ -194,30 +175,33 @@
         <div class="field">
           <label><span data-lang="en">Your full name</span><span data-lang="de">Vor- und Nachname</span></label>
           <input type="text" id="fullname" autocomplete="name" placeholder="Anna Müller" />
-          <div class="field-hint"><span data-lang="en">First and last name</span><span data-lang="de">Vor- und Nachname</span></div>
+          <div class="field-hint"><span data-lang="en">First name(s) and last name(s), capitalised — e.g. Anna Maria Müller-Schmidt</span><span data-lang="de">Vornamen und Nachnamen, großgeschrieben — z. B. Anna Maria Müller-Schmidt</span></div>
           <div class="error-msg" id="name-error">
-            <span data-lang="en">Please enter your first and last name</span>
-            <span data-lang="de">Bitte Vor- und Nachnamen eingeben</span>
+            <span data-lang="en">Please enter your first and last name (at least 2 words, each at least 3 characters)</span>
+            <span data-lang="de">Bitte Vor- und Nachnamen eingeben (mindestens 2 Wörter, je mindestens 3 Zeichen)</span>
           </div>
         </div>
       </div>
 
       <div id="group-names-wrap" style="display:none;">
         <div class="label"><span data-lang="en">Names of all 3 people</span><span data-lang="de">Namen aller 3 Personen</span></div>
+        <div style="margin-bottom:10px; padding:10px 12px; background:#f5f0eb; border-radius:10px; font-size:13px; color:#7a6a5a; line-height:1.5;">
+          ✍️ <span data-lang="en">Enter first name(s) and last name(s) for each person, capitalised — e.g. Anna Maria Müller-Schmidt</span><span data-lang="de">Vornamen und Nachnamen für jede Person, großgeschrieben — z. B. Anna Maria Müller-Schmidt</span>
+        </div>
         <div class="field">
           <label><span data-lang="en">Person 1 (you — the one paying)</span><span data-lang="de">Person 1 (du — zahlende Person)</span></label>
           <input type="text" id="group1" placeholder="Anna Müller" />
-          <div class="error-msg" id="group1-error"><span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span></div>
+          <div class="error-msg" id="group1-error"><span data-lang="en">Please enter full name (at least 2 words, each at least 3 characters)</span><span data-lang="de">Bitte vollständigen Namen eingeben (mindestens 2 Wörter, je mindestens 3 Zeichen)</span></div>
         </div>
         <div class="field">
           <label><span data-lang="en">Person 2</span><span data-lang="de">Person 2</span></label>
           <input type="text" id="group2" placeholder="Max Schmidt" />
-          <div class="error-msg" id="group2-error"><span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span></div>
+          <div class="error-msg" id="group2-error"><span data-lang="en">Please enter full name (at least 2 words, each at least 3 characters)</span><span data-lang="de">Bitte vollständigen Namen eingeben (mindestens 2 Wörter, je mindestens 3 Zeichen)</span></div>
         </div>
         <div class="field">
           <label><span data-lang="en">Person 3</span><span data-lang="de">Person 3</span></label>
           <input type="text" id="group3" placeholder="Lisa Weber" />
-          <div class="error-msg" id="group3-error"><span data-lang="en">Please enter full name</span><span data-lang="de">Bitte Namen eingeben</span></div>
+          <div class="error-msg" id="group3-error"><span data-lang="en">Please enter full name (at least 2 words, each at least 3 characters)</span><span data-lang="de">Bitte vollständigen Namen eingeben (mindestens 2 Wörter, je mindestens 3 Zeichen)</span></div>
         </div>
       </div>
 
@@ -225,10 +209,10 @@
       <div class="field">
         <label>Email</label>
         <input type="email" id="email" autocomplete="email" placeholder="anna@tu-darmstadt.de" />
-        <div class="field-hint"><span data-lang="en">We'll send you a confirmation</span><span data-lang="de">Wir schicken dir eine Bestätigung</span></div>
+        <div class="field-hint"><span data-lang="en">⚠️ Use your real email — your payment confirmation will be sent there</span><span data-lang="de">⚠️ Bitte deine echte E-Mail angeben — die Zahlungsbestätigung wird dorthin geschickt</span></div>
         <div class="error-msg" id="email-error">
-          <span data-lang="en">Please enter a valid email</span>
-          <span data-lang="de">Bitte gültige E-Mail eingeben</span>
+          <span data-lang="en">Please enter a valid email address</span>
+          <span data-lang="de">Bitte gültige E-Mail-Adresse eingeben</span>
         </div>
       </div>
 
@@ -236,10 +220,10 @@
       <div class="field">
         <label><span data-lang="en">Phone number</span><span data-lang="de">Telefonnummer</span></label>
         <input type="tel" id="phone" autocomplete="tel" placeholder="+49 151 234 567 89" />
-        <div class="field-hint"><span data-lang="en">In case we need to reach you</span><span data-lang="de">Falls wir dich kontaktieren müssen</span></div>
+        <div class="field-hint"><span data-lang="en">International format, e.g. +49 151 234 567 89</span><span data-lang="de">Internationales Format, z. B. +49 151 234 567 89</span></div>
         <div class="error-msg" id="phone-error">
-          <span data-lang="en">Please enter a valid phone number</span>
-          <span data-lang="de">Bitte gültige Telefonnummer eingeben</span>
+          <span data-lang="en">Please enter a valid phone number (international format, e.g. +49 151 234 567 89)</span>
+          <span data-lang="de">Bitte gültige Telefonnummer eingeben (internationales Format, z. B. +49 151 234 567 89)</span>
         </div>
       </div>
 
@@ -277,8 +261,8 @@
 
       <div class="step-title"><span data-lang="en">Review & pay</span><span data-lang="de">Überprüfen & zahlen</span></div>
       <div class="step-subtitle">
-        <span data-lang="en">Check your details and complete payment via Revolut.</span>
-        <span data-lang="de">Überprüfe deine Angaben und zahle via Revolut.</span>
+        <span data-lang="en">Check your details and complete payment via PayPal.</span>
+        <span data-lang="de">Überprüfe deine Angaben und zahle via PayPal.</span>
       </div>
 
       <!-- Summary -->
@@ -295,8 +279,8 @@
       </div>
 
       <button class="btn-primary" onclick="openPayModal()">
-        <span data-lang="en">Pay via Revolut →</span>
-        <span data-lang="de">Per Revolut zahlen →</span>
+        <span data-lang="en">Pay via PayPal →</span>
+        <span data-lang="de">Per PayPal zahlen →</span>
       </button>
 
       <div class="divider"></div>
@@ -308,13 +292,13 @@
             <span data-lang="en">Already paid?</span>
             <span data-lang="de">Bereits gezahlt?</span>
           </strong><br/>
-          <span data-lang="en">Paste the last 4 digits of your Revolut transfer amount below to confirm. Find it in Revolut → Activity → your transfer.</span>
-          <span data-lang="de">Gib die letzten 4 Ziffern deines Revolut-Überweisungsbetrags ein. Zu finden in Revolut → Aktivität → deine Überweisung.</span>
+          <span data-lang="en">Enter the exact amount you sent via PayPal to confirm your registration.</span>
+          <span data-lang="de">Gib den genauen Betrag ein, den du per PayPal geschickt hast, um deine Anmeldung zu bestätigen.</span>
         </p>
         <div class="field" style="margin-bottom:10px;">
-          <label><span data-lang="en">Amount you sent (e.g. 17.00)</span><span data-lang="de">Gesendeter Betrag (z. B. 17.00)</span></label>
-          <input type="number" id="confirm-amount" placeholder="17.00" step="0.01" min="1" />
-          <div class="field-hint"><span data-lang="en">Exactly as shown in Revolut</span><span data-lang="de">Genau wie in Revolut angezeigt</span></div>
+          <label><span data-lang="en">Amount you sent (e.g. 5.00)</span><span data-lang="de">Gesendeter Betrag (z. B. 5.00)</span></label>
+          <input type="number" id="confirm-amount" placeholder="5.00" step="0.01" min="1" />
+          <div class="field-hint"><span data-lang="en">Exactly as shown in PayPal</span><span data-lang="de">Genau wie in PayPal angezeigt</span></div>
           <div class="error-msg" id="confirm-error">
             <span data-lang="en">Please enter the amount you sent</span>
             <span data-lang="de">Bitte gesendeten Betrag eingeben</span>
@@ -332,8 +316,8 @@
       </button>
 
       <div class="pay-note">
-        <span data-lang="en">Secure payment via Revolut · Cards also accepted</span>
-        <span data-lang="de">Sichere Zahlung per Revolut · Kartenzahlung möglich</span>
+        <span data-lang="en">Secure payment via PayPal · Cards also accepted</span>
+        <span data-lang="de">Sichere Zahlung per PayPal · Kartenzahlung möglich</span>
         <br/>Kostenbeteiligung — private Veranstaltung
       </div>
     </div>
@@ -347,8 +331,8 @@
     <div class="modal-handle"></div>
     <h2><span data-lang="en">Almost there 🌴</span><span data-lang="de">Fast geschafft 🌴</span></h2>
     <p>
-      <span data-lang="en">Copy your name and paste it as a note in Revolut:</span>
-      <span data-lang="de">Kopiere deinen Namen und füge ihn als Notiz in Revolut ein:</span>
+      <span data-lang="en">Copy your name and paste it as a note in PayPal so we can identify your payment:</span>
+      <span data-lang="de">Kopiere deinen Namen und füge ihn als Notiz in PayPal ein, damit wir deine Zahlung zuordnen können:</span>
     </p>
     <div class="copy-box">
       <div class="copy-text" id="copy-text"></div>
@@ -357,12 +341,12 @@
       </button>
     </div>
     <p style="font-size:13px; color:#b0a090; margin-bottom:16px;">
-      <span data-lang="en">🍎 No Revolut? Pay by card on the next screen. Apple Pay also available.</span>
-      <span data-lang="de">🍎 Kein Revolut? Auf der nächsten Seite per Karte oder Apple Pay zahlen.</span>
+      <span data-lang="en">💳 You can pay with card or your PayPal balance on the next screen.</span>
+      <span data-lang="de">💳 Auf der nächsten Seite kannst du per Karte oder PayPal-Guthaben zahlen.</span>
     </p>
     <a class="modal-btn" id="modal-link" href="#" target="_blank" onclick="closeModal()">
-      <span data-lang="en">Open Revolut & Pay →</span>
-      <span data-lang="de">Revolut öffnen & zahlen →</span>
+      <span data-lang="en">Open PayPal & Pay →</span>
+      <span data-lang="de">PayPal öffnen & zahlen →</span>
     </a>
     <button class="modal-cancel" onclick="closeModal()">
       <span data-lang="en">Go back</span><span data-lang="de">Zurück</span>
@@ -375,16 +359,16 @@
   <div class="rules-card">
     <h3>🌴 Event Rules</h3>
     <ul class="rules-list">
-      <li><span class="rule-icon">🎓</span><span>Students only. You must be an enrolled student at a Darmstadt university to attend.</span></li>
-      <li><span class="rule-icon">🍺</span><span>Alcohol responsibly. No excessive drinking. Anyone visibly intoxicated may be asked to leave.</span></li>
-      <li><span class="rule-icon">🤝</span><span>Respect everyone. Harassment of any kind will not be tolerated. Treat all guests with respect.</span></li>
-      <li><span class="rule-icon">🔇</span><span>Noise limits. We respect our neighbours. Music stops at the agreed time. No loud noise in corridors.</span></li>
-      <li><span class="rule-icon">🧹</span><span>Keep it clean. Help keep the common areas tidy. Report any damage immediately.</span></li>
-      <li><span class="rule-icon">💳</span><span>Refund policy. If you can't attend, let us know at least 24 hours before the event and we'll refund you in full. No-shows are non-refundable.</span></li>
-      <li><span class="rule-icon">📵</span><span>Photos & privacy. Ask before taking photos of others. No posting without consent.</span></li>
-      <li><span class="rule-icon">🚪</span><span>Organisers' decision is final. The organising team reserves the right to ask anyone to leave.</span></li>
+      <li><span class="rule-icon">💶</span><span><strong>Pricing:</strong> Online tickets cost <strong>5 €</strong> per person (group of 3: <strong>12 € total</strong>, i.e. 4 € each). At the door (Abendkasse) the price is <strong>7 € for everyone</strong> — no exceptions and no group deal at the door.</span></li>
+      <li><span class="rule-icon">🎓</span><span><strong>Students & residents' friends only.</strong> You must be an enrolled student at a Darmstadt university, or personally invited by a Ketteler resident, to attend.</span></li>
+      <li><span class="rule-icon">🤝</span><span><strong>Respect everyone.</strong> Harassment of any kind will not be tolerated. Treat all guests with respect.</span></li>
+      <li><span class="rule-icon">🍺</span><span><strong>Drink responsibly.</strong> No excessive drinking. Anyone visibly intoxicated may be asked to leave.</span></li>
+      <li><span class="rule-icon">🔇</span><span><strong>Noise limits.</strong> We respect our neighbours. Music stops at the agreed time. No loud noise in corridors.</span></li>
+      <li><span class="rule-icon">🧹</span><span><strong>Keep it clean.</strong> Help keep the common areas tidy. Report any damage immediately.</span></li>
+      <li><span class="rule-icon">💳</span><span><strong>Refund policy.</strong> If you can't attend, let us know at least 24 hours before the event and we'll refund you in full. No-shows are non-refundable.</span></li>
+      <li><span class="rule-icon">📵</span><span><strong>Photos & privacy.</strong> Ask before taking photos of others. No posting without consent.</span></li>
+      <li><span class="rule-icon">🚪</span><span><strong>Organisers' decision is final.</strong> The organising team reserves the right to ask anyone to leave.</span></li>
     </ul>
-    <p style="color:#b0a090; font-size:13px; margin-bottom:20px;">🚧 Full rules — coming soon (TBD)</p>
     <button class="rules-close" onclick="closeRules()">
       <span data-lang="en">Got it, I agree ✓</span>
       <span data-lang="de">Verstanden, ich stimme zu ✓</span>

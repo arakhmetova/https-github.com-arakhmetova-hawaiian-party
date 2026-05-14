@@ -66,8 +66,8 @@
 }
 
 .step.done .step-dot {
-  border-color: #3aaa7a;
-  background: #3aaa7a;
+  border-color: #3a8a50;
+  background: #3a8a50;
   color: white;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .step.done .step-label {
-  color: #3aaa7a;
+  color: #3a8a50;
 }
 
 .step-line {
@@ -96,7 +96,7 @@
 }
 
 .step-line.done {
-  background: #3aaa7a;
+  background: #3a8a50;
 }
 
 /* ── Ticket Section ── */
@@ -182,7 +182,7 @@
   position: absolute;
   top: -9px;
   right: 14px;
-  background: #3aaa7a;
+  background: #3a8a50;
   color: white;
   font-size: 9px;
   font-weight: 700;

@@ -10,7 +10,7 @@
 
 body {
   font-family: 'DM Sans', -apple-system, sans-serif;
-  background-color: #fdf6ee;
+  background: linear-gradient(160deg, #f5a44a 0%, #e8693a 50%, #c0442a 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -24,15 +24,15 @@ body {
   max-width: 440px;
   width: 100%;
   overflow: hidden;
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.22);
 }
 
 /* ── Hero Section ── */
 .hero {
-  background: #fdf0e0;
+  background: linear-gradient(180deg, #c03820 0%, #e06030 50%, #f0a050 100%);
   padding: 36px 32px 28px;
   text-align: center;
-  border-bottom: 1px solid #f0e6d6;
+  border-bottom: none;
 }
 
 .hero-emoji {
@@ -43,43 +43,47 @@ body {
 }
 
 .hero h1 {
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 700;
-  color: #1a1a1a;
   letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #ffb347, #ff6fa8, #ffe066);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero .meta {
   margin-top: 6px;
   font-size: 14px;
-  color: #a08060;
+  color: rgba(255,255,255,0.85);
   font-weight: 500;
 }
 
 .hero .meta-small {
   margin-top: 4px;
   font-size: 12px;
-  color: #c0a080;
+  color: rgba(255,255,255,0.6);
 }
 
 .hero .eligibility {
   margin-top: 12px;
   font-size: 13px;
-  color: #a08060;
+  color: rgba(255,255,255,0.7);
   line-height: 1.6;
 }
 
 .students-badge {
   display: inline-block;
   margin-top: 10px;
-  background: #f0e8d8;
-  color: #8a6030;
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
   padding: 4px 12px;
   border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.25);
 }
 
 /* ── Price Compare ── */
@@ -100,13 +104,13 @@ body {
 }
 
 .price-col--online {
-  background: #e8f5ee;
-  border: 1.5px solid #b5dfc8;
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.4);
 }
 
 .price-col--door {
-  background: #f5f0eb;
-  border: 1.5px solid #e0d4c4;
+  background: rgba(0,0,0,0.12);
+  border: 1.5px solid rgba(255,255,255,0.15);
 }
 
 .price-col-label {
@@ -114,39 +118,39 @@ body {
   font-weight: 700;
   letter-spacing: 0.6px;
   text-transform: uppercase;
-  color: #7a9a88;
+  color: rgba(255,255,255,0.9);
   margin-bottom: 4px;
 }
 
 .price-col--door .price-col-label {
-  color: #b0a090;
+  color: rgba(255,255,255,0.5);
 }
 
 .price-col-amount {
   font-size: 28px;
   font-weight: 700;
-  color: #2a7a50;
+  color: #fff;
   line-height: 1;
 }
 
 .price-col--door .price-col-amount {
-  color: #b0a090;
+  color: rgba(255,255,255,0.45);
 }
 
 .price-col-sub {
   font-size: 11px;
-  color: #7a9a88;
+  color: rgba(255,255,255,0.75);
   margin-top: 4px;
 }
 
 .price-col--door .price-col-sub {
-  color: #c0a880;
+  color: rgba(255,255,255,0.4);
 }
 
 .price-col-divider {
   font-size: 12px;
   font-weight: 600;
-  color: #c0b0a0;
+  color: rgba(255,255,255,0.5);
   flex-shrink: 0;
 }
 
@@ -181,7 +185,7 @@ body {
 .btn-primary {
   width: 100%;
   padding: 16px;
-  background: #1a1a1a;
+  background: #3a8a50;
   color: #fff;
   border: none;
   border-radius: 14px;
@@ -194,9 +198,9 @@ body {
 }
 
 .btn-primary:hover {
-  background: #333;
+  background: #2e7040;
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(58, 138, 80, 0.3);
 }
 
 .btn-primary:active {

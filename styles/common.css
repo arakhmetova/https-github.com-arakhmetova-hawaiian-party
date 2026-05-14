@@ -11,7 +11,7 @@
 body {
   font-family: 'DM Sans', -apple-system, sans-serif;
   background-color: #f5ede0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600' viewBox='0 0 400 600'%3E%3C!-- left palm --%3E%3Cpath d='M60 600 Q58 480 50 400 Q38 300 10 200 Q30 280 48 390 Q54 470 56 600Z' fill='%23d4a870' opacity='0.35'/%3E%3Cpath d='M50 400 Q20 370 0 320 Q22 355 50 400Z' fill='%23d4a870' opacity='0.35'/%3E%3Cpath d='M50 400 Q25 360 15 330 Q30 360 50 400Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M51 395 Q35 340 40 290 Q44 340 51 395Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M52 390 Q65 330 80 300 Q66 330 52 390Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M53 400 Q75 370 90 350 Q74 368 53 400Z' fill='%23d4a870' opacity='0.3'/%3E%3C!-- right palm --%3E%3Cpath d='M340 600 Q342 480 350 400 Q362 300 390 200 Q370 280 352 390 Q346 470 344 600Z' fill='%23d4a870' opacity='0.35'/%3E%3Cpath d='M350 400 Q380 370 400 320 Q378 355 350 400Z' fill='%23d4a870' opacity='0.35'/%3E%3Cpath d='M350 400 Q375 360 385 330 Q370 360 350 400Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M349 395 Q365 340 360 290 Q356 340 349 395Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M348 390 Q335 330 320 300 Q334 330 348 390Z' fill='%23d4a870' opacity='0.3'/%3E%3Cpath d='M347 400 Q325 370 310 350 Q326 368 347 400Z' fill='%23d4a870' opacity='0.3'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='700' viewBox='0 0 500 700'%3E%3Cg opacity='0.28' fill='%23b8895a'%3E%3C!-- left palm trunk: leans right from top-left corner --%3E%3Cpath d='M20 0 Q40 100 70 220 Q90 320 80 500 Q72 500 68 320 Q58 200 2 0Z'/%3E%3C!-- left palm leaves --%3E%3Cpath d='M70 220 Q30 180 0 140 Q35 175 70 220Z'/%3E%3Cpath d='M70 220 Q20 200 5 170 Q30 195 70 220Z'/%3E%3Cpath d='M70 220 Q50 170 55 130 Q58 170 70 220Z'/%3E%3Cpath d='M70 220 Q100 170 120 145 Q98 172 70 220Z'/%3E%3Cpath d='M70 220 Q105 195 125 175 Q102 193 70 220Z'/%3E%3Cpath d='M70 220 Q90 185 95 160 Q88 183 70 220Z'/%3E%3C/g%3E%3Cg opacity='0.28' fill='%23b8895a'%3E%3C!-- right palm trunk: leans left from top-right corner --%3E%3Cpath d='M480 0 Q460 100 430 220 Q410 320 420 500 Q428 500 432 320 Q442 200 498 0Z'/%3E%3C!-- right palm leaves --%3E%3Cpath d='M430 220 Q470 180 500 140 Q465 175 430 220Z'/%3E%3Cpath d='M430 220 Q480 200 495 170 Q470 195 430 220Z'/%3E%3Cpath d='M430 220 Q450 170 445 130 Q442 170 430 220Z'/%3E%3Cpath d='M430 220 Q400 170 380 145 Q402 172 430 220Z'/%3E%3Cpath d='M430 220 Q395 195 375 175 Q398 193 430 220Z'/%3E%3Cpath d='M430 220 Q410 185 405 160 Q412 183 430 220Z'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -152,8 +152,9 @@ body {
 .lang-switcher {
   display: flex;
   justify-content: flex-end;
-  padding: 16px 24px 0;
+  padding: 16px 24px 8px;
   gap: 6px;
+  background: #fffaf5;
 }
 
 .lang-btn {

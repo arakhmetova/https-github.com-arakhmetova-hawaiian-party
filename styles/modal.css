@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════════════ */
-/* Modal Styles                                                            */
+/* Modal Styles — Dark Hawaiian theme                                      */
 /* ════════════════════════════════════════════════════════════════════════ */
 
 /* ── Payment Modal ── */
@@ -7,18 +7,17 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(20, 15, 10, 0.45);
+  background: rgba(0, 0, 0, 0.65);
   z-index: 100;
   align-items: flex-end;
   justify-content: center;
 }
 
-.modal.open {
-  display: flex;
-}
+.modal.open { display: flex; }
 
 .modal-card {
-  background: white;
+  background: #251810;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 28px 28px 0 0;
   padding: 28px 28px 48px;
   max-width: 440px;
@@ -28,20 +27,14 @@
 }
 
 @keyframes slideUp {
-  from {
-    transform: translateY(40px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 
 .modal-handle {
   width: 36px;
   height: 4px;
-  background: #ede8e0;
+  background: rgba(255,255,255,0.12);
   border-radius: 2px;
   margin: 0 auto 20px;
 }
@@ -50,19 +43,19 @@
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 8px;
-  color: #1a1a1a;
+  color: rgba(255,255,255,0.95);
 }
 
 .modal-card p {
-  color: #888;
+  color: rgba(255,255,255,0.45);
   font-size: 14px;
   line-height: 1.6;
   margin-bottom: 14px;
 }
 
 .copy-box {
-  background: #fdf6ee;
-  border: 1.5px solid #f0e0c0;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(232,130,42,0.3);
   border-radius: 12px;
   padding: 12px 14px;
   display: flex;
@@ -76,13 +69,13 @@
 .copy-text {
   font-size: 13px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: rgba(255,255,255,0.9);
   flex: 1;
   word-break: break-word;
 }
 
 .copy-btn {
-  background: #1a1a1a;
+  background: #e8822a;
   color: white;
   border: none;
   border-radius: 8px;
@@ -96,20 +89,18 @@
   flex-shrink: 0;
 }
 
-.copy-btn.copied {
-  background: #3aaa7a;
-}
+.copy-btn.copied { background: #3aaa7a; }
 
 .modal-btn {
   display: block;
   width: 100%;
   padding: 15px;
-  background: #1a1a1a;
+  background: #e8822a;
   color: white;
   border: none;
   border-radius: 14px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   text-decoration: none;
   margin-bottom: 10px;
@@ -117,14 +108,12 @@
   transition: background 0.18s;
 }
 
-.modal-btn:hover {
-  background: #333;
-}
+.modal-btn:hover { background: #d06818; }
 
 .modal-cancel {
   background: none;
   border: none;
-  color: #b0a090;
+  color: rgba(255,255,255,0.3);
   font-size: 14px;
   cursor: pointer;
   font-family: inherit;
@@ -133,41 +122,37 @@
 #modal-step-b input[type="number"] {
   width: 100%;
   padding: 12px 14px;
-  border: 1.5px solid #e8ddd0;
+  border: 1.5px solid rgba(255,255,255,0.1);
   border-radius: 10px;
   font-size: 15px;
   font-family: inherit;
   box-sizing: border-box;
   outline: none;
   transition: border-color 0.18s;
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.9);
 }
 
-#modal-step-b input[type="number"]:focus {
-  border-color: #c0a880;
-}
-
-#modal-step-b input[type="number"].error {
-  border-color: #e05050;
-}
+#modal-step-b input[type="number"]:focus { border-color: #e8822a; }
+#modal-step-b input[type="number"].error { border-color: #e05050; }
 
 /* ── Rules Modal ── */
 .rules-modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(20, 15, 10, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   z-index: 200;
   align-items: center;
   justify-content: center;
   padding: 24px;
 }
 
-.rules-modal.open {
-  display: flex;
-}
+.rules-modal.open { display: flex; }
 
 .rules-card {
-  background: white;
+  background: #251810;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 24px;
   padding: 28px 24px;
   max-width: 420px;
@@ -180,7 +165,7 @@
 .rules-card h3 {
   font-size: 18px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: rgba(255,255,255,0.95);
   margin-bottom: 16px;
 }
 
@@ -196,7 +181,7 @@
   display: flex;
   gap: 10px;
   font-size: 14px;
-  color: #444;
+  color: rgba(255,255,255,0.6);
   line-height: 1.5;
 }
 
@@ -209,12 +194,12 @@
 .rules-close {
   width: 100%;
   padding: 14px;
-  background: #1a1a1a;
+  background: #e8822a;
   color: white;
   border: none;
   border-radius: 12px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   font-family: inherit;
 }

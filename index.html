@@ -24,8 +24,8 @@
     <div class="hero-palms" aria-hidden="true"></div>
     <h1>🌴 Hawaiian Party 🌴</h1>
     <div class="meta">
-      <span data-lang="en">Friday, June 12 · Ketteler Wohnheim</span>
-      <span data-lang="de">Freitag, 12. Juni · Ketteler Wohnheim</span>
+      <span data-lang="en">Friday, June 12 · 21:00 · Ketteler Wohnheim</span>
+      <span data-lang="de">Freitag, 12. Juni · 21:00 · Ketteler Wohnheim</span>
     </div>
     <div class="meta-small">Schleiermacherstraße 14, Darmstadt</div>
     <div class="students-badge"><span data-lang="en">Students & friends of residents only</span><span data-lang="de">Nur Studierende & Freunde der Bewohner</span></div>
@@ -69,13 +69,6 @@
     <div class="step-panel active" id="panel-1">
 
 
-<div class="spots-wrap">
-        <div class="spots-row">
-          <span class="spots-label"><span data-lang="en">Spots taken</span><span data-lang="de">Plätze belegt</span></span>
-          <span class="spots-count" id="spots-text"></span>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-      </div>
 
       <div class="label"><span data-lang="en">Choose your ticket</span><span data-lang="de">Ticket wählen</span></div>
 
@@ -101,8 +94,8 @@
         </label>
       </div>
 
-      <div style="margin-top:10px; padding:12px 14px; background:#f0faf4; border-radius:12px; font-size:13px; color:#3a7a58; line-height:1.5;">
-        <span data-lang="en">Coming as a group of 3? Pay 12 € together — that's only 4 € each. Group tickets are only available online, not at the door.</span><span data-lang="de">Kommt ihr zu dritt? Zahlt zusammen 12 € — das sind nur 4 € pro Person. Gruppentickets gibt es nur online, nicht an der Abendkasse.</span>
+      <div style="margin-top:10px; padding:13px 16px; background:rgba(232,130,42,0.12); border:1.5px solid rgba(232,130,42,0.35); border-radius:12px; font-size:13px; color:rgba(255,255,255,0.75); line-height:1.6;">
+        <span data-lang="en">Coming as a group of 3? Pay <strong style="color:#f5a050;">12 € together</strong> — that's only <strong style="color:#f5a050;">4 € each</strong>. Group tickets are only available online, not at the door.</span><span data-lang="de">Kommt ihr zu dritt? Zahlt zusammen <strong style="color:#f5a050;">12 € zusammen</strong> — das sind nur <strong style="color:#f5a050;">4 € pro Person</strong>. Gruppentickets gibt es nur online, nicht an der Abendkasse.</span>
       </div>
 
       <div class="error-msg" id="ticket-error" style="margin-bottom:12px;">
@@ -110,7 +103,7 @@
         <span data-lang="de">Bitte Ticket wählen</span>
       </div>
 
-      <button class="btn-primary" onclick="goStep(2)">
+      <button class="btn-primary" onclick="goStep(2)" style="margin-top:16px;">
         <span data-lang="en">Next →</span>
         <span data-lang="de">Weiter →</span>
       </button>
@@ -148,20 +141,12 @@
         <span data-lang="de">Bitte eine Option wählen</span>
       </div>
 
-      <!-- University (student only) -->
-      <div class="field" id="uni-field" style="display:none; margin-top:14px;">
-        <label><span data-lang="en">Your university</span><span data-lang="de">Deine Hochschule</span></label>
-        <select id="university">
-          <option value="">— <span data-lang="en">Select</span><span data-lang="de">Auswählen</span> —</option>
-          <option value="TU Darmstadt">TU Darmstadt</option>
-          <option value="Hochschule Darmstadt (h_da)">Hochschule Darmstadt (h_da)</option>
-          <option value="Evangelische Hochschule Darmstadt">Evangelische Hochschule Darmstadt</option>
-        </select>
-        <div class="error-msg" id="uni-error">
-          <span data-lang="en">Please select your university</span>
-          <span data-lang="de">Bitte Hochschule auswählen</span>
-        </div>
+      <!-- Student notice -->
+      <div id="uni-field" style="display:none; margin-top:12px; padding:12px 14px; background:rgba(232,130,42,0.1); border:1.5px solid rgba(232,130,42,0.3); border-radius:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.6;">
+        <span data-lang="en">Please bring your <strong style="color:#f5a050;">student ID</strong> — we'll check it at the door.</span>
+        <span data-lang="de">Bitte bringe deinen <strong style="color:#f5a050;">Studierendenausweis</strong> mit — wir kontrollieren ihn am Eingang.</span>
       </div>
+      <input type="hidden" id="university" value="student" />
 
       <!-- Friend name (friend only) -->
       <div class="field" id="friend-field" style="display:none; margin-top:14px;">
@@ -222,16 +207,6 @@
         </div>
       </div>
 
-      <!-- Phone -->
-      <div class="field">
-        <label><span data-lang="en">Phone number</span><span data-lang="de">Telefonnummer</span></label>
-        <input type="tel" id="phone" autocomplete="tel" placeholder="+49 151 234 567 89" />
-        <div class="field-hint"><span data-lang="en">International format, e.g. +49 151 234 567 89</span><span data-lang="de">Internationales Format, z. B. +49 151 234 567 89</span></div>
-        <div class="error-msg" id="phone-error">
-          <span data-lang="en">Please enter a valid phone number (international format, e.g. +49 151 234 567 89)</span>
-          <span data-lang="de">Bitte gültige Telefonnummer eingeben (internationales Format, z. B. +49 151 234 567 89)</span>
-        </div>
-      </div>
 
       <!-- Rules -->
       <label class="checkbox-label">
@@ -315,13 +290,13 @@
         <div class="summary-row"><span class="summary-label"><span data-lang="en">University / Invited by</span><span data-lang="de">Hochschule / Eingeladen von</span></span><span id="sum-uni">—</span></div>
         <div class="summary-row" id="sum-guest-row" style="display:none;"><span class="summary-label"><span data-lang="en">Guest</span><span data-lang="de">Gast</span></span><span id="sum-guest">—</span></div>
         <div class="summary-row total"><span><span data-lang="en">Total</span><span data-lang="de">Gesamt</span></span><span id="sum-total">—</span></div>
-        <div class="summary-row" id="sum-door-row" style="display:none; color:#b0a090; font-size:12px; padding-top:6px;">
+        <div class="summary-row" id="sum-door-row" style="display:none; color:rgba(255,255,255,0.25); font-size:12px; padding-top:6px;">
           <span class="summary-label"><span data-lang="en">vs Abendkasse</span><span data-lang="de">vs Abendkasse</span></span>
           <span id="sum-door">—</span>
         </div>
       </div>
 
-      <div style="margin-bottom:16px; padding:12px 14px; background:#f0faf4; border-radius:12px; font-size:13px; color:#3a7a58; line-height:1.6;">
+      <div style="margin-bottom:16px; padding:12px 14px; background:rgba(255,255,255,0.04); border-radius:12px; font-size:13px; color:rgba(255,255,255,0.45); line-height:1.6;">
         <span data-lang="en">Can't make it? Let us know <strong>at least 24 hours before</strong> the event and we'll refund you in full.</span><span data-lang="de">Kannst du nicht kommen? Meld dich <strong>mindestens 24 Stunden vorher</strong> und wir erstatten dir den vollen Betrag.</span>
       </div>
 
@@ -334,10 +309,9 @@
 
       <!-- Tip -->
       <div class="tip-hint">
-        <span class="tip-hint-icon">🌺</span>
         <span>
-          <span data-lang="en">Enjoyed the vibe? Send a little extra to the same PayPal link — it goes straight to our fund for the next party 🎉</span>
-          <span data-lang="de">Hat es dir gefallen? Schick einfach etwas mehr an denselben PayPal-Link — es geht direkt in unseren Fonds für die nächste Party 🎉</span>
+          <span data-lang="en">Want to support us? Send a little extra to the same PayPal link.</span>
+          <span data-lang="de">Möchtest du uns unterstützen? Schick einfach etwas mehr an denselben PayPal-Link.</span>
         </span>
       </div>
 

@@ -59,14 +59,6 @@ function validateStep(step) {
     setFieldError(null, document.getElementById("type-error"), !hasType);
     if (!hasType) valid = false;
 
-    // University (student only)
-    if (getState("selectedType") === "student") {
-      const uni = document.getElementById("university");
-      const uniOk = uni && uni.value.trim();
-      setFieldError(uni, document.getElementById("uni-error"), !uniOk);
-      if (!uniOk) valid = false;
-    }
-
     // Friend name (friend only)
     if (getState("selectedType") === "friend") {
       const friendName = document.getElementById("friend-name");
@@ -114,12 +106,6 @@ function validateStep(step) {
     const emailOk = emailEl && isValidEmail(emailEl.value);
     setFieldError(emailEl, document.getElementById("email-error"), !emailOk);
     if (!emailOk) valid = false;
-
-    // Phone
-    const phoneEl = document.getElementById("phone");
-    const phoneOk = phoneEl && isValidPhone(phoneEl.value);
-    setFieldError(phoneEl, document.getElementById("phone-error"), !phoneOk);
-    if (!phoneOk) valid = false;
 
     // Rules checkbox
     const rulesCheck = document.getElementById("rules-check");

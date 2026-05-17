@@ -32,21 +32,21 @@
 h1 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: rgba(255,255,255,0.95);
   margin-bottom: 12px;
   letter-spacing: -0.5px;
 }
 
 p {
   font-size: 15px;
-  color: #888;
+  color: rgba(255,255,255,0.5);
   line-height: 1.7;
   margin-bottom: 32px;
 }
 
 .info-box {
-  background: #fdf6ee;
-  border: 1.5px solid #f0e0c0;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(255,255,255,0.1);
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 32px;
@@ -58,9 +58,9 @@ p {
   align-items: center;
   gap: 12px;
   font-size: 14px;
-  color: #555;
+  color: rgba(255,255,255,0.7);
   padding: 8px 0;
-  border-bottom: 1px solid #f5ece0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 
 .info-row:last-child {
@@ -73,19 +73,19 @@ p {
 }
 
 .info-label {
-  color: #b0a090;
+  color: rgba(255,255,255,0.35);
   font-size: 12px;
 }
 
 .info-val {
   font-weight: 600;
-  color: #1a1a1a;
+  color: rgba(255,255,255,0.9);
 }
 
 .back-btn {
   display: inline-block;
   padding: 14px 28px;
-  background: #1a1a1a;
+  background: #e8822a;
   color: white;
   border-radius: 14px;
   font-size: 14px;
@@ -95,5 +95,5 @@ p {
 }
 
 .back-btn:hover {
-  background: #333;
+  background: #d06818;
 }

@@ -4,9 +4,9 @@
 
 // PayPal payment links for each ticket type
 const PAYPAL_LINKS = {
-  std: "https://www.paypal.me/arakhmetova09/5",
-  grp: "https://www.paypal.me/arakhmetova09/12",
-  duo: "https://www.paypal.me/arakhmetova09/10",
+  std: "https://www.paypal.com/pool/9pfOvXkFAc?sr=ancr",
+  grp: "https://www.paypal.com/pool/9pfOvXkFAc?sr=ancr",
+  duo: "https://www.paypal.com/pool/9pfOvXkFAc?sr=ancr",
 };
 
 // Ticket display labels

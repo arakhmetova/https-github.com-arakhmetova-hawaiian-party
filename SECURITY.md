@@ -1,21 +1,25 @@
 # Security Policy
 
-## Supported Versions
-
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
-
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you discover a security vulnerability, please email **aiahri0909@gmail.com** instead of opening a public issue.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+We will respond within 48 hours.
+
+## What happens after you report
+
+- We will acknowledge your report within 48 hours
+- We will investigate and fix the issue as quickly as possible
+- We will notify you when the fix is deployed
+
+## Scope
+
+- Registration form at ketteler-party.social
+- Cloudflare Worker proxy
+- Google Apps Script backend
+
+## Out of Scope
+
+- Spam submissions (handled server-side with token validation)
+- PayPal payment processing (managed by PayPal)
+- Denial of service attacks

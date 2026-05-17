@@ -118,11 +118,10 @@ function _buildSubmitParams(amount) {
 }
 
 function _submitAndRedirect(params) {
-  const script = document.createElement("script");
-  script.src = SCRIPT_URL + "?" + params.toString();
-  document.body.appendChild(script);
   const successUrl = window.location.pathname.replace(/index\.html$/, "") + "success.html";
-  setTimeout(() => { window.location.href = successUrl; }, 1500);
+  fetch(SCRIPT_URL + "?" + params.toString(), { method: "GET", mode: "no-cors" })
+    .catch(() => {})
+    .finally(() => { window.location.href = successUrl; });
 }
 
 /**
@@ -132,8 +131,12 @@ function confirmPaymentModal() {
   const amountEl = document.getElementById("confirm-amount-modal");
   const amountErr = document.getElementById("confirm-error-modal");
   const val = parseFloat(amountEl.value);
+  const validAmounts = [5, 10, 12];
 
-  if (!val || val < 1) {
+  if (!val || !validAmounts.includes(val)) {
+    amountErr.textContent = getState("currentLang") === "en"
+      ? "Please enter the exact amount: 5, 10, or 12 €"
+      : "Bitte gib den genauen Betrag ein: 5, 10 oder 12 €";
     amountErr.style.display = "block";
     amountEl.classList.add("error");
     return;

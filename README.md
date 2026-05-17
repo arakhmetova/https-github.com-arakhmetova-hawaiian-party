@@ -5,6 +5,11 @@ Your project has been reorganized for better maintainability and readability. Th
 
 ---
 
+## Build the website
+1. Run ```npm install```  
+2. Run ```npm run build``` to build the website obscusfated.  
+
+
 ## 📁 Project Structure
 
 ```

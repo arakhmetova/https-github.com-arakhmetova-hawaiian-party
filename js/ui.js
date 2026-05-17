@@ -31,6 +31,15 @@ function selectTicket(type, el) {
   document.getElementById("single-name-wrap").style.display = type === "grp" ? "none" : "block";
   document.getElementById("group-names-wrap").style.display = type === "grp" ? "block" : "none";
 
+  if (type === "grp") {
+    document.getElementById("guest-toggle-wrap").style.display = "none";
+    if (getState("bringGuest")) {
+      updateState("bringGuest", false);
+      document.getElementById("guest-toggle-check").classList.remove("checked");
+      document.getElementById("guest-fields").style.display = "none";
+    }
+  }
+
   const isGrp = type === "grp";
   const onlineAmount = document.getElementById("hero-online-amount");
   const onlineSub = document.getElementById("hero-online-sub");
@@ -61,7 +70,8 @@ function selectType(type, el) {
   updateState("selectedType", type);
   document.getElementById("uni-field").style.display = type === "student" ? "block" : "none";
   document.getElementById("friend-field").style.display = type === "friend" ? "block" : "none";
-  document.getElementById("guest-toggle-wrap").style.display = type === "friend" ? "block" : "none";
+  const isGrpTicket = getState("selectedTicket") === "grp";
+  document.getElementById("guest-toggle-wrap").style.display = (type === "friend" && !isGrpTicket) ? "block" : "none";
   document.getElementById("type-error").style.display = "none";
 
   // Reset guest state when switching type

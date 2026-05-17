@@ -114,7 +114,8 @@ function _buildSubmitParams(amount) {
   const guestName = getState("bringGuest") ? (document.getElementById("guest-name")?.value.trim() || "") : "";
   const guestEmail = getState("bringGuest") ? (document.getElementById("guest-email")?.value.trim() || "") : "";
 
-  return new URLSearchParams({ name, email, ticket, amount_sent: amount, uni, guest_name: guestName, guest_email: guestEmail });
+  const paymentNote = document.getElementById("payment-note")?.value.trim() || "";
+  return new URLSearchParams({ name, email, ticket, amount_sent: amount, uni, guest_name: guestName, guest_email: guestEmail, payment_note: paymentNote });
 }
 
 let _submitting = false;
@@ -146,6 +147,14 @@ function confirmPaymentModal() {
 
   amountEl.classList.remove("error");
   amountErr.style.display = "none";
+
+  const btn = document.getElementById("confirm-btn");
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = getState("currentLang") === "en" ? "Sending..." : "Wird gesendet...";
+    btn.style.opacity = "0.7";
+  }
+
   _submitAndRedirect(_buildSubmitParams(val.toFixed(2)));
 }
 

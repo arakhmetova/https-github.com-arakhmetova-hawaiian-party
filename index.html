@@ -379,7 +379,14 @@
           <span data-lang="de">Bitte gesendeten Betrag eingeben</span>
         </div>
       </div>
-      <button class="modal-btn" onclick="confirmPaymentModal()" style="background:#3aaa7a;">
+      <div class="field" style="margin-bottom:16px; text-align:left;">
+        <label style="font-size:13px; color:#888;">
+          <span data-lang="en">Paid under a different name? Leave a note (optional)</span>
+          <span data-lang="de">Unter anderem Namen gezahlt? Hinterlasse eine Notiz (optional)</span>
+        </label>
+        <input type="text" id="payment-note" placeholder="e.g. paid from my partner's account" style="margin-top:6px;" />
+      </div>
+      <button class="modal-btn" id="confirm-btn" onclick="confirmPaymentModal()" style="background:#3aaa7a;">
         <span data-lang="en">Confirm my spot ✓</span>
         <span data-lang="de">Platz bestätigen ✓</span>
       </button>

@@ -102,7 +102,6 @@ function _buildSubmitParams(amount) {
       : document.getElementById("fullname")?.value.trim() || "";
 
   const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
   const ticket = TICKET_LABELS[getState("selectedTicket")];
 
   let uni = "";
@@ -115,7 +114,7 @@ function _buildSubmitParams(amount) {
   const guestName = getState("bringGuest") ? (document.getElementById("guest-name")?.value.trim() || "") : "";
   const guestEmail = getState("bringGuest") ? (document.getElementById("guest-email")?.value.trim() || "") : "";
 
-  return new URLSearchParams({ name, email, phone, ticket, amount_sent: amount, uni, guest_name: guestName, guest_email: guestEmail });
+  return new URLSearchParams({ name, email, ticket, amount_sent: amount, uni, guest_name: guestName, guest_email: guestEmail });
 }
 
 function _submitAndRedirect(params) {

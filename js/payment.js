@@ -117,7 +117,11 @@ function _buildSubmitParams(amount) {
   return new URLSearchParams({ name, email, ticket, amount_sent: amount, uni, guest_name: guestName, guest_email: guestEmail });
 }
 
+let _submitting = false;
+
 function _submitAndRedirect(params) {
+  if (_submitting) return;
+  _submitting = true;
   const successUrl = window.location.pathname.replace(/index\.html$/, "") + "success.html";
   fetch(SCRIPT_URL + "?" + params.toString(), { method: "GET", mode: "no-cors" })
     .catch(() => {})

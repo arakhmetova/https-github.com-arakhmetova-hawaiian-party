@@ -101,14 +101,14 @@ function _buildSubmitParams(amount) {
           .join(", ")
       : document.getElementById("fullname")?.value.trim() || "";
 
-  const email = document.getElementById("email").value.trim();
+  const email = document.getElementById("email")?.value.trim() || "";
   const ticket = TICKET_LABELS[getState("selectedTicket")];
 
   let uni = "";
   if (getState("selectedType") === "student") {
-    uni = document.getElementById("university").value;
+    uni = "student";
   } else if (getState("selectedType") === "friend") {
-    uni = "Friend of " + document.getElementById("friend-name").value.trim();
+    uni = "Friend of " + (document.getElementById("friend-name")?.value.trim() || "");
   }
 
   const guestName = getState("bringGuest") ? (document.getElementById("guest-name")?.value.trim() || "") : "";

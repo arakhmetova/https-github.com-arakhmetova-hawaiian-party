@@ -136,7 +136,11 @@ function _submitAndRedirect(params) {
   if (_submitting) return;
   _submitting = true;
   const successUrl = window.location.pathname.replace(/index\.html$/, "") + "success.html";
-  fetch(SCRIPT_URL + "?" + params.toString(), { method: "GET", mode: "no-cors" })
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params.toString(),
+  })
     .catch(() => {})
     .finally(() => { window.location.href = successUrl; });
 }

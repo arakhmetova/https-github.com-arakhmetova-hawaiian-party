@@ -11,7 +11,14 @@ function isValidFullName(name) {
   if (!name || !name.trim()) return false;
   const words = name.trim().split(/\s+/);
   if (words.length < 2) return false;
-  return words.every((w) => w.replace(/[-']/g, "").length >= 2 && /^[A-Za-zÀ-ÖØ-öø-ÿ'\-]+$/.test(w));
+  return words.every((w) => {
+    const letters = w.replace(/[-']/g, "");
+    if (letters.length < 2) return false;
+    if (!/^[A-Za-zÀ-ÖØ-öø-ÿ'\-]+$/.test(w)) return false;
+    // reject words where all characters are the same letter (e.g. "bbbb", "jjjj")
+    if (new Set(letters.toLowerCase()).size < 2) return false;
+    return true;
+  });
 }
 
 /**

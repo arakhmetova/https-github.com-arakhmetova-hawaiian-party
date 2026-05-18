@@ -232,14 +232,28 @@ function handleResidentResponse(p) {
   sheet.getRange(row, COL_RESIDENT_STATUS).setValue(response);
 
   const guestName = sheet.getRange(row, COL_NAME).getValue();
+  const guestEmail = sheet.getRange(row, COL_EMAIL).getValue();
+  const firstName = guestName.split(" ")[0];
 
   if (response === "approved") {
     return HtmlService.createHtmlOutput(
       "<p>Thank you! We have noted that you know <strong>" + guestName + "</strong>.</p>"
     );
   } else {
+    if (guestEmail) {
+      const subject = "Your registration for the Hawaiian Party — update";
+      const body =
+"Hi " + firstName + ",\n\n" +
+"Unfortunately, we were unable to verify your registration — the resident you listed was not able to confirm that they know you. As a result, we cannot reserve a spot for you at the party.\n\n" +
+"We will refund your payment in full within 3 days.\n\n" +
+"If you have any questions, please reach out within 24 hours:\n" +
+"aigul.akhmetova@ketteler-wohnheim.de\n\n" +
+"Sorry for the inconvenience.\n" +
+"The Ketteler Party Team";
+      GmailApp.sendEmail(guestEmail, subject, body);
+    }
     return HtmlService.createHtmlOutput(
-      "<p>Thank you for letting us know. We will review this registration manually.</p>"
+      "<p>Thank you for letting us know. The guest will be notified.</p>"
     );
   }
 }

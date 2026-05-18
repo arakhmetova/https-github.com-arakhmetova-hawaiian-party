@@ -127,7 +127,8 @@ function _buildSubmitParams(amount) {
 
   const paymentNote = document.getElementById("payment-note")?.value.trim() || "";
   const honeypot = document.getElementById("website")?.value || "";
-  return new URLSearchParams({ name, email, ticket, amount_sent: amount, uni, guest_name: guestName, guest_email: guestEmail, payment_note: paymentNote, website: honeypot });
+  const nonce = getNonce() || "";
+  return new URLSearchParams({ name, email, ticket, amount_sent: amount, uni, guest_name: guestName, guest_email: guestEmail, payment_note: paymentNote, website: honeypot, nonce });
 }
 
 let _submitting = false;

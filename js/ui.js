@@ -93,6 +93,15 @@ async function goStep(n) {
       const friendName = document.getElementById("friend-name");
       const friendErr = document.getElementById("friend-error");
       if (friendName && friendName.value.trim()) {
+        const words = friendName.value.trim().split(/\s+/).filter(w => w.length > 0);
+        if (words.length < 2) {
+          friendErr.textContent = getState("currentLang") === "en"
+            ? "Please enter both first and last name."
+            : "Bitte Vor- und Nachname eingeben.";
+          friendErr.style.display = "block";
+          friendName.classList.add("error");
+          return;
+        }
         const btn = document.getElementById("btn-step2-next");
         const prevHtml = btn ? btn.innerHTML : null;
         if (btn) {

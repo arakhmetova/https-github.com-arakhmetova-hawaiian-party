@@ -93,7 +93,17 @@ async function goStep(n) {
       const friendName = document.getElementById("friend-name");
       const friendErr = document.getElementById("friend-error");
       if (friendName && friendName.value.trim()) {
+        const btn = document.getElementById("btn-step2-next");
+        const prevHtml = btn ? btn.innerHTML : null;
+        if (btn) {
+          btn.disabled = true;
+          btn.innerHTML = getState("currentLang") === "en" ? "Verifying..." : "Wird geprüft...";
+        }
         const valid = await validateResident(friendName.value.trim());
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = prevHtml;
+        }
         if (!valid) {
           friendErr.textContent = getState("currentLang") === "en"
             ? "We couldn't find this resident. Please check the name."

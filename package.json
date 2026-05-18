@@ -1,10 +1,16 @@
 {
 
   "scripts": {
+
     "build": "javascript-obfuscator js/ --output dist/js/ --options-preset medium-obfuscation --disable-console-output true --string-array-encoding rc4 --numbers-to-expressions true --split-strings true --split-strings-chunk-length 5"
-  }, 
-  
+
+  },
+
   "devDependencies": {
+
     "javascript-obfuscator": "^5.4.2"
+
   }
+
 }
+

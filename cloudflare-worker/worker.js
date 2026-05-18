@@ -1,4 +1,4 @@
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz-6KfTQljoOzFdbdjPwlofRXt9ecaW1Qkfer6yk3uq3Xn2oFfwdKqW_ckd9fMObaN1/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9DEjGCeYyWYj2f101cwfAs8p7AJZ0lIF9P6gruzenRZQhuxyoSHhlFggLWoAo1tjn/exec";
 const SECRET_TOKEN = "hwp-2026-k3tt3l3r";
 const ALLOWED_ORIGIN = "https://ketteler-party.social";
 

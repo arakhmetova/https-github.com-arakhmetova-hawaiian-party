@@ -69,11 +69,28 @@ function normalize(s) {
 
 function findResident(input) {
   const q = normalize(input);
-  return RESIDENTS.find(r => {
+
+  // 1. Exact full name match
+  const exact = RESIDENTS.find(r => normalize(r.first + " " + r.last) === q);
+  if (exact) return exact;
+
+  // 2. First name only match (unique)
+  const byFirst = RESIDENTS.filter(r => normalize(r.first) === q);
+  if (byFirst.length === 1) return byFirst[0];
+
+  // 3. Input starts with first name (e.g. "Alex" matches "Alexander")
+  const byPrefix = RESIDENTS.filter(r => normalize(r.first).startsWith(q) || q.startsWith(normalize(r.first)));
+  if (byPrefix.length === 1) return byPrefix[0];
+
+  // 4. Fuzzy: input is contained in full name or vice versa
+  const words = q.split(" ");
+  const fuzzy = RESIDENTS.filter(r => {
     const full = normalize(r.first + " " + r.last);
-    const firstOnly = normalize(r.first);
-    return full === q || firstOnly === q;
-  }) || null;
+    return words.every(w => full.includes(w));
+  });
+  if (fuzzy.length === 1) return fuzzy[0];
+
+  return null;
 }
 
 function getScriptUrl() {

@@ -187,30 +187,23 @@ If you have any questions, just reply to this email.
 The Ketteler Party Team`;
 
   const htmlBody = `
-<div style="font-family:'DM Sans',Arial,sans-serif;max-width:480px;margin:0 auto;background:#fffaf5;border-radius:16px;overflow:hidden;border:1px solid #f0e8dc;">
-  <div style="background:linear-gradient(160deg,#e8622a,#f0924a 60%,#f7b870);padding:24px 28px;text-align:center;">
-    <div style="font-size:28px;">🌴</div>
-    <div style="color:#fff;font-size:18px;font-weight:700;margin-top:6px;">Hawaiian Party — June 12</div>
-  </div>
-  <div style="padding:28px;">
-    <p style="margin:0 0 8px;font-size:16px;color:#1a1a1a;">Hi <strong>${resident.first}</strong>!</p>
-    <p style="margin:0 0 20px;font-size:14px;color:#555;line-height:1.6;">
-      <strong>${guestName}</strong> just registered for the Hawaiian Party on June 12 and said they know you.<br/>
-      Do you know this person?
-    </p>
-    <a href="${yesUrl}" style="display:block;text-align:center;background:#3a8a50;color:#fff;text-decoration:none;padding:14px;border-radius:12px;font-size:15px;font-weight:600;margin-bottom:10px;">
-      Yes, I know them
-    </a>
-    <a href="${noUrl}" style="display:block;text-align:center;background:#fff;color:#b0a090;text-decoration:none;padding:13px;border-radius:12px;font-size:14px;font-weight:600;border:1.5px solid #ede8e0;">
-      No, I don't know them
-    </a>
-    <p style="margin:20px 0 0;font-size:12px;color:#b0a090;text-align:center;">
-      If you have any questions, just reply to this email.
-    </p>
-  </div>
+<div style="font-family:Arial,sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;">
+  <p style="margin:0 0 6px;font-size:16px;color:#1a1a1a;">Hi <strong>${resident.first}</strong>,</p>
+  <p style="margin:0 0 24px;font-size:15px;color:#444;line-height:1.6;">
+    <strong>${guestName}</strong> just registered for the Hawaiian Party on June 12 and listed you as their friend. Do you know this person?
+  </p>
+  <a href="${yesUrl}" style="display:block;text-align:center;background:#3a8a50;color:#fff;text-decoration:none;padding:14px;border-radius:10px;font-size:15px;font-weight:600;margin-bottom:10px;">
+    Yes, I know them
+  </a>
+  <a href="${noUrl}" style="display:block;text-align:center;background:#f5f5f5;color:#666;text-decoration:none;padding:13px;border-radius:10px;font-size:14px;font-weight:600;">
+    No, I don't know them
+  </a>
+  <p style="margin:24px 0 0;font-size:12px;color:#aaa;">
+    Hawaiian Party — Ketteler Wohnheim, June 12
+  </p>
 </div>`;
 
-  const options = { htmlBody };
+  const options = { htmlBody, noReply: true };
   GmailApp.sendEmail(resident.wohnheim, subject, plainBody, options);
   GmailApp.sendEmail(resident.private, subject, plainBody, options);
 }

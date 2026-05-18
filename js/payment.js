@@ -140,6 +140,7 @@ function _submitAndRedirect(params) {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: params.toString(),
+    mode: "cors",
   })
     .catch(() => {})
     .finally(() => { window.location.href = successUrl; });

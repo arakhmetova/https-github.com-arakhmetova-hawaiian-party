@@ -19,8 +19,10 @@ function getNonce() {
 }
 
 function initApp() {
-  document.getElementById("spots-text").textContent = `${TAKEN_SPOTS} / ${TOTAL_SPOTS}`;
-  document.getElementById("progress-fill").style.width = `${Math.round((TAKEN_SPOTS / TOTAL_SPOTS) * 100)}%`;
+  const spotsText = document.getElementById("spots-text");
+  if (spotsText) spotsText.textContent = `${TAKEN_SPOTS} / ${TOTAL_SPOTS}`;
+  const progressFill = document.getElementById("progress-fill");
+  if (progressFill) progressFill.style.width = `${Math.round((TAKEN_SPOTS / TOTAL_SPOTS) * 100)}%`;
 
   setLang("en");
   setupPaymentModalClosers();

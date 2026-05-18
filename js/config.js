@@ -25,5 +25,5 @@ const TICKET_PRICES = {
 const TOTAL_SPOTS = 30;
 const TAKEN_SPOTS = 14;
 
-// Google Apps Script URL
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz-6KfTQljoOzFdbdjPwlofRXt9ecaW1Qkfer6yk3uq3Xn2oFfwdKqW_ckd9fMObaN1/exec";
+// Cloudflare Worker URL (proxies to Google Apps Script, adds CORS + token)
+const SCRIPT_URL = "https://hawaiian-party.aigul-akhmetova.workers.dev";

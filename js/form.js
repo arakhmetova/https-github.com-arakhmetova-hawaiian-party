@@ -24,8 +24,19 @@ function isValidFullName(name) {
 /**
  * Validate email format.
  */
+const BLOCKED_EMAIL_DOMAINS = [
+  "test.com", "fake.com", "example.com", "mailinator.com", "guerrillamail.com",
+  "tempmail.com", "throwam.com", "yopmail.com", "sharklasers.com", "guerrillamailblock.com",
+  "grr.la", "spam4.me", "trashmail.com", "dispostable.com", "maildrop.cc",
+  "10minutemail.com", "temp-mail.org", "fakeinbox.com", "mailnull.com", "spamgourmet.com",
+];
+
 function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
+  const e = email.trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)) return false;
+  const domain = e.split("@")[1];
+  if (BLOCKED_EMAIL_DOMAINS.includes(domain)) return false;
+  return true;
 }
 
 /**

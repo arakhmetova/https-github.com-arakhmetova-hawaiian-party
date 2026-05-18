@@ -198,8 +198,8 @@ The Ketteler Party Team`;
   <a href="${noUrl}" style="display:block;text-align:center;background:#f5f5f5;color:#666;text-decoration:none;padding:13px;border-radius:10px;font-size:14px;font-weight:600;">
     No, I don't know them
   </a>
-  <p style="margin:24px 0 0;font-size:12px;color:#aaa;">
-    Hawaiian Party — Ketteler Wohnheim, June 12
+  <p style="margin:24px 0 0;font-size:12px;color:#aaa;line-height:1.6;">
+    This message was sent by Ketteler Wohnheim residents organising the Hawaiian Party on June 12. We ask residents to confirm their guests to keep the event safe and welcoming for everyone.
   </p>
 </div>`;
 

@@ -86,8 +86,25 @@ function selectType(type, el) {
  * Navigate to a specific step
  * @param {number} n - Step number (1, 2, or 3)
  */
-function goStep(n) {
-  if (n > getState("currentStep") && !validateStep(getState("currentStep"))) return;
+async function goStep(n) {
+  if (n > getState("currentStep")) {
+    if (!validateStep(getState("currentStep"))) return;
+    if (getState("currentStep") === 2 && getState("selectedType") === "friend") {
+      const friendName = document.getElementById("friend-name");
+      const friendErr = document.getElementById("friend-error");
+      if (friendName && friendName.value.trim()) {
+        const valid = await validateResident(friendName.value.trim());
+        if (!valid) {
+          friendErr.textContent = getState("currentLang") === "en"
+            ? "We couldn't find this resident. Please check the name."
+            : "Dieser Bewohner wurde nicht gefunden. Bitte Namen prüfen.";
+          friendErr.style.display = "block";
+          friendName.classList.add("error");
+          return;
+        }
+      }
+    }
+  }
 
   document.querySelectorAll(".step-panel").forEach((p) => p.classList.remove("active"));
   document.getElementById(`panel-${n}`).classList.add("active");

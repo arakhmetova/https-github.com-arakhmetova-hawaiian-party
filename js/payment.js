@@ -2,6 +2,17 @@
 /* Payment Functions                                                       */
 /* ════════════════════════════════════════════════════════════════════════ */
 
+async function validateResident(name) {
+  try {
+    const url = SCRIPT_URL + "?action=validate_resident&name=" + encodeURIComponent(name);
+    const res = await fetch(url);
+    const data = await res.json();
+    return data.valid === true;
+  } catch (e) {
+    return true; // fail open — don't block user if network error
+  }
+}
+
 /**
  * Open payment modal (always starts at step A)
  */

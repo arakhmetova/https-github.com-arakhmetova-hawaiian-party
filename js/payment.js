@@ -126,7 +126,8 @@ function _buildSubmitParams(amount) {
   const guestEmail = getState("bringGuest") ? (document.getElementById("guest-email")?.value.trim() || "") : "";
 
   const paymentNote = document.getElementById("payment-note")?.value.trim() || "";
-  return new URLSearchParams({ name, email, ticket, amount_sent: amount, uni, guest_name: guestName, guest_email: guestEmail, payment_note: paymentNote });
+  const honeypot = document.getElementById("website")?.value || "";
+  return new URLSearchParams({ name, email, ticket, amount_sent: amount, uni, guest_name: guestName, guest_email: guestEmail, payment_note: paymentNote, website: honeypot });
 }
 
 let _submitting = false;

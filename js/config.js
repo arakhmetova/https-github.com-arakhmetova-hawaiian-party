@@ -22,7 +22,7 @@ const TICKET_PRICES = {
 };
 
 // Event capacity
-const TOTAL_SPOTS = 30;
+const TOTAL_SPOTS = 250;
 const TAKEN_SPOTS = 14;
 
 // Cloudflare Worker URL (proxies to Google Apps Script, adds CORS + token)

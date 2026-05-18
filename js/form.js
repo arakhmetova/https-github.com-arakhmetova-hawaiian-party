@@ -124,7 +124,8 @@ function validateStep(step) {
       if (!guestNameOk) valid = false;
 
       const guestEmail = document.getElementById("guest-email");
-      const guestEmailOk = guestEmail && isValidEmail(guestEmail.value);
+      const mainEmail = document.getElementById("email")?.value.trim() || "";
+      const guestEmailOk = guestEmail && isValidEmail(guestEmail.value) && guestEmail.value.trim() !== mainEmail;
       setFieldError(guestEmail, document.getElementById("guest-email-error"), !guestEmailOk);
       if (!guestEmailOk) valid = false;
     }

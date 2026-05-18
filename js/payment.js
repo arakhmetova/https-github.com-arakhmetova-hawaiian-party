@@ -136,15 +136,32 @@ let _submitting = false;
 function _submitAndRedirect(params) {
   if (_submitting) return;
   _submitting = true;
+
+  const btn = document.getElementById("confirm-btn");
   const successUrl = window.location.pathname.replace(/index\.html$/, "") + "success.html";
+
   fetch(SCRIPT_URL, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: params.toString(),
     mode: "cors",
   })
-    .catch(() => {})
-    .finally(() => { window.location.href = successUrl; });
+    .then(res => {
+      if (res.status === 429) {
+        _submitting = false;
+        if (btn) { btn.disabled = false; btn.innerHTML = getState("currentLang") === "en" ? "Confirm my spot ✓" : "Platz bestätigen ✓"; btn.style.opacity = "1"; }
+        const err = document.getElementById("confirm-error-modal");
+        if (err) {
+          err.textContent = getState("currentLang") === "en"
+            ? "You have already submitted. Please try again in 1 hour."
+            : "Du hast bereits eine Anfrage gesendet. Bitte versuche es in 1 Stunde erneut.";
+          err.style.display = "block";
+        }
+        return;
+      }
+      window.location.href = successUrl;
+    })
+    .catch(() => { window.location.href = successUrl; });
 }
 
 /**

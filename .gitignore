@@ -1,3 +1,7 @@
 # Node modules
 node_modules/
 package-lock.json
+
+# Private — not for public repo
+apps-script/
+cloudflare-worker/

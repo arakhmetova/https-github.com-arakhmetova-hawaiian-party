@@ -199,6 +199,9 @@ async function confirmPaymentModal() {
     btn.style.opacity = "0.7";
   }
 
+  // Always fetch a fresh nonce right before submitting
+  await fetchNonce();
+
   const tsToken = await getTurnstileToken();
   const params = _buildSubmitParams();
   if (tsToken) params.set("ts_token", tsToken);

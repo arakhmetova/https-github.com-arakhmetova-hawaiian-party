@@ -4,7 +4,8 @@
 
 async function validateResident(name) {
   try {
-    const url = SCRIPT_URL + "?action=validate_resident&name=" + encodeURIComponent(name);
+    const nonce = getNonce() || "";
+    const url = SCRIPT_URL + "?action=validate_resident&name=" + encodeURIComponent(name) + "&nonce=" + encodeURIComponent(nonce);
     const res = await fetch(url);
     const data = await res.json();
     return data.valid === true;

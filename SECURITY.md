@@ -21,5 +21,4 @@ We will respond within 48 hours.
 ## Out of Scope
 
 - Spam submissions (handled server-side with token validation)
-- PayPal payment processing (managed by PayPal)
 - Denial of service attacks

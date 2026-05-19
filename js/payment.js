@@ -20,6 +20,7 @@ async function validateResident(name) {
 function openPayModal() {
   showModalPaypal();
   document.getElementById("modal").classList.add("open");
+  initTurnstile();
 }
 
 function showModalPaypal() {
@@ -101,17 +102,44 @@ function fallbackCopy(text, done) {
   document.body.removeChild(ta);
 }
 
+let _tsWidgetId = null;
+let _tsToken = null;
+
+function initTurnstile() {
+  const widget = document.getElementById("turnstile-widget");
+  if (!widget || typeof turnstile === "undefined" || _tsWidgetId !== null) return;
+  _tsWidgetId = turnstile.render(widget, {
+    sitekey: "0x4AAAAAADSM6_ICAyQbmf27",
+    size: "invisible",
+    callback: (token) => { _tsToken = token; },
+    "error-callback": () => { _tsToken = null; },
+    "expired-callback": () => { _tsToken = null; },
+  });
+  turnstile.execute(_tsWidgetId);
+}
+
 async function getTurnstileToken() {
+  if (_tsToken) {
+    const t = _tsToken;
+    _tsToken = null;
+    if (_tsWidgetId !== null) turnstile.reset(_tsWidgetId);
+    return t;
+  }
+  // Wait up to 5s for token
   return new Promise((resolve) => {
-    const widget = document.getElementById("turnstile-widget");
-    if (!widget || typeof turnstile === "undefined") { resolve(""); return; }
-    turnstile.render(widget, {
-      sitekey: "0x4AAAAAADSM6_ICAyQbmf27",
-      size: "invisible",
-      callback: (token) => resolve(token),
-      "error-callback": () => resolve(""),
-    });
-    turnstile.execute(widget);
+    let attempts = 0;
+    const interval = setInterval(() => {
+      if (_tsToken) {
+        clearInterval(interval);
+        const t = _tsToken;
+        _tsToken = null;
+        if (_tsWidgetId !== null) turnstile.reset(_tsWidgetId);
+        resolve(t);
+      } else if (++attempts > 50) {
+        clearInterval(interval);
+        resolve("");
+      }
+    }, 100);
   });
 }
 

@@ -47,8 +47,8 @@ function selectTicket(type, el) {
   const doorSub = document.getElementById("hero-door-sub");
   if (onlineAmount) onlineAmount.textContent = isGrp ? "12 €" : "5 €";
   if (onlineSub) onlineSub.innerHTML = isGrp
-    ? '<span data-lang="en">for 3 people · PayPal</span><span data-lang="de">für 3 Personen · PayPal</span>'
-    : "PayPal";
+    ? '<span data-lang="en">for 3 people · Stripe</span><span data-lang="de">für 3 Personen · Stripe</span>'
+    : "Stripe";
   if (doorAmount) doorAmount.textContent = isGrp ? "21 €" : "7 €";
   if (doorSub) doorSub.innerHTML = isGrp
     ? '<span data-lang="en">for 3 at the door</span><span data-lang="de">für 3 an der Abendkasse</span>'

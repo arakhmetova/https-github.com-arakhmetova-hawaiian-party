@@ -41,7 +41,7 @@
       <div class="price-col price-col--online">
         <div class="price-col-label"><span data-lang="en">Online</span><span data-lang="de">Online</span></div>
         <div class="price-col-amount" id="hero-online-amount">5 €</div>
-        <div class="price-col-sub" id="hero-online-sub">PayPal</div>
+        <div class="price-col-sub" id="hero-online-sub">Stripe</div>
       </div>
       <div class="price-col-divider">vs</div>
       <div class="price-col price-col--door">
@@ -285,8 +285,8 @@
 
       <div class="step-title"><span data-lang="en">Review & pay</span><span data-lang="de">Überprüfen & zahlen</span></div>
       <div class="step-subtitle">
-        <span data-lang="en">Check your details and complete payment via PayPal.</span>
-        <span data-lang="de">Überprüfe deine Angaben und zahle via PayPal.</span>
+        <span data-lang="en">Check your details and complete payment via Stripe.</span>
+        <span data-lang="de">Überprüfe deine Angaben und zahle via Stripe.</span>
       </div>
 
       <!-- Summary -->
@@ -308,19 +308,9 @@
       </div>
 
       <button class="btn-primary" onclick="openPayModal()">
-        <span data-lang="en">Pay via PayPal →</span>
-        <span data-lang="de">Per PayPal zahlen →</span>
+        <span data-lang="en">Pay with Stripe →</span>
+        <span data-lang="de">Mit Stripe zahlen →</span>
       </button>
-
-      <div class="divider"></div>
-
-      <!-- Tip -->
-      <div class="tip-hint">
-        <span>
-          <span data-lang="en">Want to support us? Send a little extra to the same PayPal link.</span>
-          <span data-lang="de">Möchtest du uns unterstützen? Schick einfach etwas mehr an denselben PayPal-Link.</span>
-        </span>
-      </div>
 
       <button class="btn-secondary" onclick="goStep(2)">
         <span data-lang="en">← Edit details</span>
@@ -328,8 +318,8 @@
       </button>
 
       <div class="pay-note">
-        <span data-lang="en">Secure payment via PayPal · Cards also accepted</span>
-        <span data-lang="de">Sichere Zahlung per PayPal · Kartenzahlung möglich</span>
+        <span data-lang="en">Secure payment via Stripe · Cards &amp; Apple/Google Pay accepted</span>
+        <span data-lang="de">Sichere Zahlung per Stripe · Karte, Apple &amp; Google Pay möglich</span>
         <br/>Kostenbeteiligung — private Veranstaltung
       </div>
     </div>
@@ -342,65 +332,23 @@
   <div class="modal-card">
     <div class="modal-handle"></div>
 
-    <!-- Step A: copy name + go to PayPal -->
+    <!-- Stripe Checkout -->
     <div id="modal-step-a">
       <h2><span data-lang="en">Almost there 🌴</span><span data-lang="de">Fast geschafft 🌴</span></h2>
       <p>
-        <span data-lang="en">Copy your name and paste it as a note in PayPal so we can identify your payment:</span>
-        <span data-lang="de">Kopiere deinen Namen und füge ihn als Notiz in PayPal ein, damit wir deine Zahlung zuordnen können:</span>
+        <span data-lang="en">Click below to pay securely with Stripe. You'll be redirected back here once payment is complete.</span>
+        <span data-lang="de">Klicke unten, um sicher mit Stripe zu zahlen. Du wirst nach der Zahlung automatisch zurückgeleitet.</span>
       </p>
-      <div class="copy-box">
-        <div class="copy-text" id="copy-text"></div>
-        <button class="copy-btn" id="copy-btn" onclick="copyName()">
-          <span data-lang="en">Copy</span><span data-lang="de">Kopieren</span>
-        </button>
-      </div>
-      <p style="font-size:13px; color:#b0a090; margin-bottom:16px;">
-        <span data-lang="en">You can pay with card or your PayPal balance on the next screen.</span>
-        <span data-lang="de">Auf der nächsten Seite kannst du per Karte oder PayPal-Guthaben zahlen.</span>
-      </p>
-      <a class="modal-btn" id="modal-link" href="#" target="_blank" onclick="showModalConfirm()">
-        <span data-lang="en">Open PayPal & Pay →</span>
-        <span data-lang="de">PayPal öffnen & zahlen →</span>
-      </a>
-      <button class="modal-cancel" onclick="closePayModal()">
-        <span data-lang="en">Go back</span><span data-lang="de">Zurück</span>
-      </button>
-    </div>
-
-    <!-- Step B: return here and confirm -->
-    <div id="modal-step-b" style="display:none;">
-      <h2><span data-lang="en">Payment sent? ✓</span><span data-lang="de">Gezahlt? ✓</span></h2>
-      <p>
-        <span data-lang="en">Welcome back! Enter the exact amount you sent via PayPal to confirm your spot:</span>
-        <span data-lang="de">Willkommen zurück! Gib den genauen Betrag ein, den du per PayPal geschickt hast:</span>
-      </p>
-      <div class="field" style="margin-bottom:12px; text-align:left;">
-        <label style="font-size:13px; color:#888;">
-          <span data-lang="en">Amount you sent (e.g. 5.00)</span>
-          <span data-lang="de">Gesendeter Betrag (z. B. 5.00)</span>
-        </label>
-        <input type="number" id="confirm-amount-modal" placeholder="5.00" step="0.01" min="5" style="margin-top:6px;" />
-        <div class="error-msg" id="confirm-error-modal" style="display:none;">
-          <span data-lang="en">Please enter the amount you sent</span>
-          <span data-lang="de">Bitte gesendeten Betrag eingeben</span>
-        </div>
-      </div>
-      <div class="field" style="margin-bottom:16px; text-align:left;">
-        <label style="font-size:13px; color:#888;">
-          <span data-lang="en">Paid under a different name? Leave a note (optional)</span>
-          <span data-lang="de">Unter anderem Namen gezahlt? Hinterlasse eine Notiz (optional)</span>
-        </label>
-        <input type="text" id="payment-note" placeholder="e.g. Max Muller" style="margin-top:6px;" />
-      </div>
+      <div id="modal-summary" style="background:#f9f5f0;border-radius:10px;padding:12px 16px;margin-bottom:16px;text-align:left;font-size:14px;color:#555;"></div>
       <input type="text" id="website" name="website" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" />
       <div class="cf-turnstile" id="turnstile-widget" data-sitekey="0x4AAAAAADSM6_ICAyQbmf27" data-size="invisible"></div>
+      <div class="error-msg" id="confirm-error-modal" style="display:none;margin-bottom:12px;"></div>
       <button class="modal-btn" id="confirm-btn" onclick="confirmPaymentModal()" style="background:#3aaa7a;">
-        <span data-lang="en">Confirm my spot ✓</span>
-        <span data-lang="de">Platz bestätigen ✓</span>
+        <span data-lang="en">Pay now →</span>
+        <span data-lang="de">Jetzt zahlen →</span>
       </button>
-      <button class="modal-cancel" onclick="showModalPaypal()">
-        <span data-lang="en">Go back to PayPal</span><span data-lang="de">Zurück zu PayPal</span>
+      <button class="modal-cancel" onclick="closePayModal()">
+        <span data-lang="en">Go back</span><span data-lang="de">Zurück</span>
       </button>
     </div>
 
@@ -425,7 +373,7 @@
 </div>
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script src="dist/js/bundle.js?v=15"></script>
+<script src="dist/js/bundle.js?v=16"></script>
 
 </body>
 </html>

@@ -18,14 +18,25 @@ async function validateResident(name) {
  * Open payment modal (always starts at step A)
  */
 function openPayModal() {
-  showModalPaypal();
   document.getElementById("modal").classList.add("open");
   initTurnstile();
+  _populateModalSummary();
 }
 
-function showModalPaypal() {
-  document.getElementById("modal-step-a").style.display = "block";
-  document.getElementById("modal-step-b").style.display = "none";
+function _populateModalSummary() {
+  const el = document.getElementById("modal-summary");
+  if (!el) return;
+  const isGrp = getState("selectedTicket") === "grp";
+  const hasGuest = getState("bringGuest");
+  const price = isGrp ? "12 €" : hasGuest ? "10 €" : "5 €";
+  let names = "";
+  if (isGrp) {
+    names = ["group1","group2","group3"].map(id => document.getElementById(id)?.value.trim()).filter(Boolean).join(", ");
+  } else {
+    names = document.getElementById("fullname")?.value.trim() || "";
+    if (hasGuest) names += " + " + (document.getElementById("guest-name")?.value.trim() || "");
+  }
+  el.innerHTML = `<strong>${names}</strong><br><span style="color:#3aaa7a;font-weight:600;">${price}</span>`;
 }
 
 function toggleGuest() {
@@ -40,25 +51,17 @@ function toggleGuest() {
   const doorSub = document.getElementById("hero-door-sub");
   if (active) {
     if (onlineAmount) onlineAmount.textContent = "10 €";
-    if (onlineSub) onlineSub.innerHTML = '<span data-lang="en">for 2 people · PayPal</span><span data-lang="de">für 2 Personen · PayPal</span>';
+    if (onlineSub) onlineSub.innerHTML = '<span data-lang="en">for 2 people · Stripe</span><span data-lang="de">für 2 Personen · Stripe</span>';
     if (doorAmount) doorAmount.textContent = "14 €";
     if (doorSub) doorSub.innerHTML = '<span data-lang="en">for 2 at the door</span><span data-lang="de">für 2 an der Abendkasse</span>';
   } else {
     if (onlineAmount) onlineAmount.textContent = "5 €";
-    if (onlineSub) onlineSub.textContent = "PayPal";
+    if (onlineSub) onlineSub.textContent = "Stripe";
     if (doorAmount) doorAmount.textContent = "7 €";
     if (doorSub) doorSub.innerHTML = '<span data-lang="en">if spots remain</span><span data-lang="de">falls noch Plätze frei</span>';
   }
 }
 
-function showModalConfirm() {
-  setTimeout(() => {
-    document.getElementById("modal-step-a").style.display = "none";
-    document.getElementById("modal-step-b").style.display = "block";
-    document.getElementById("confirm-amount-modal").value = "";
-    document.getElementById("confirm-error-modal").style.display = "none";
-  }, 300);
-}
 
 /**
  * Close payment modal
@@ -67,40 +70,6 @@ function closePayModal() {
   document.getElementById("modal").classList.remove("open");
 }
 
-/**
- * Copy participant name to clipboard for PayPal note
- */
-function copyName() {
-  const text = document.getElementById("copy-text").textContent;
-  const btn = document.getElementById("copy-btn");
-  const prev = btn.innerHTML;
-
-  const done = () => {
-    btn.classList.add("copied");
-    btn.innerHTML = getState("currentLang") === "en" ? "Copied!" : "Kopiert!";
-    setTimeout(() => {
-      btn.innerHTML = prev;
-      btn.classList.remove("copied");
-    }, 2000);
-  };
-
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
-  } else {
-    fallbackCopy(text, done);
-  }
-}
-
-function fallbackCopy(text, done) {
-  const ta = document.createElement("textarea");
-  ta.value = text;
-  ta.style.cssText = "position:fixed;opacity:0;top:0;left:0";
-  document.body.appendChild(ta);
-  ta.focus();
-  ta.select();
-  try { document.execCommand("copy"); done(); } catch (e) {}
-  document.body.removeChild(ta);
-}
 
 let _tsWidgetId = null;
 let _tsToken = null;
@@ -143,7 +112,7 @@ async function getTurnstileToken() {
   });
 }
 
-function _buildSubmitParams(amount) {
+function _buildSubmitParams() {
   const name =
     getState("selectedTicket") === "grp"
       ? [
@@ -168,10 +137,9 @@ function _buildSubmitParams(amount) {
   const guestName = getState("bringGuest") ? (document.getElementById("guest-name")?.value.trim() || "") : "";
   const guestEmail = getState("bringGuest") ? (document.getElementById("guest-email")?.value.trim() || "") : "";
 
-  const paymentNote = document.getElementById("payment-note")?.value.trim() || "";
   const honeypot = document.getElementById("website")?.value || "";
   const nonce = getNonce() || "";
-  return new URLSearchParams({ name, email, ticket, amount_sent: amount, uni, guest_name: guestName, guest_email: guestEmail, payment_note: paymentNote, website: honeypot, nonce });
+  return new URLSearchParams({ name, email, ticket, uni, guest_name: guestName, guest_email: guestEmail, website: honeypot, nonce });
 }
 
 let _submitting = false;
@@ -181,7 +149,7 @@ function _submitAndRedirect(params) {
   _submitting = true;
 
   const btn = document.getElementById("confirm-btn");
-  const successUrl = window.location.pathname.replace(/index\.html$/, "") + "success.html";
+  const err = document.getElementById("confirm-error-modal");
 
   fetch(SCRIPT_URL, {
     method: "POST",
@@ -189,11 +157,10 @@ function _submitAndRedirect(params) {
     body: params.toString(),
     mode: "cors",
   })
-    .then(res => {
+    .then(async res => {
       if (res.status === 429) {
         _submitting = false;
-        if (btn) { btn.disabled = false; btn.innerHTML = getState("currentLang") === "en" ? "Confirm my spot ✓" : "Platz bestätigen ✓"; btn.style.opacity = "1"; }
-        const err = document.getElementById("confirm-error-modal");
+        if (btn) { btn.disabled = false; btn.innerHTML = getState("currentLang") === "en" ? "Pay now ✓" : "Jetzt zahlen ✓"; btn.style.opacity = "1"; }
         if (err) {
           err.textContent = getState("currentLang") === "en"
             ? "You have already submitted. Please try again in 1 hour."
@@ -202,39 +169,38 @@ function _submitAndRedirect(params) {
         }
         return;
       }
-      window.location.href = successUrl;
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        _submitting = false;
+        if (btn) { btn.disabled = false; btn.innerHTML = getState("currentLang") === "en" ? "Pay now ✓" : "Jetzt zahlen ✓"; btn.style.opacity = "1"; }
+        if (err) { err.textContent = "Something went wrong. Please try again."; err.style.display = "block"; }
+      }
     })
-    .catch(() => { window.location.href = successUrl; });
+    .catch(() => {
+      _submitting = false;
+      if (btn) { btn.disabled = false; btn.innerHTML = getState("currentLang") === "en" ? "Pay now ✓" : "Jetzt zahlen ✓"; btn.style.opacity = "1"; }
+      if (err) { err.textContent = "Something went wrong. Please try again."; err.style.display = "block"; }
+    });
 }
 
 /**
- * Confirm payment from inside the modal (step B)
+ * Confirm payment — redirects to Stripe Checkout
  */
 async function confirmPaymentModal() {
-  const amountEl = document.getElementById("confirm-amount-modal");
-  const amountErr = document.getElementById("confirm-error-modal");
-  const val = parseFloat(amountEl.value);
-  if (!val || val < 5) {
-    amountErr.textContent = getState("currentLang") === "en"
-      ? "Please enter the amount you sent (minimum 5 €)"
-      : "Bitte gib den gesendeten Betrag ein (mindestens 5 €)";
-    amountErr.style.display = "block";
-    amountEl.classList.add("error");
-    return;
-  }
-
-  amountEl.classList.remove("error");
-  amountErr.style.display = "none";
+  const err = document.getElementById("confirm-error-modal");
+  if (err) err.style.display = "none";
 
   const btn = document.getElementById("confirm-btn");
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = getState("currentLang") === "en" ? "Sending..." : "Wird gesendet...";
+    btn.innerHTML = getState("currentLang") === "en" ? "Redirecting..." : "Weiterleitung...";
     btn.style.opacity = "0.7";
   }
 
   const tsToken = await getTurnstileToken();
-  const params = _buildSubmitParams(val.toFixed(2));
+  const params = _buildSubmitParams();
   if (tsToken) params.set("ts_token", tsToken);
   _submitAndRedirect(params);
 }

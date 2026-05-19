@@ -217,29 +217,4 @@ function buildSummary() {
     doorRow.style.display = "none";
   }
 
-  // Copy text and PayPal link
-  let copyText, paypalLink;
-  if (isGrp) {
-    const g1 = document.getElementById("group1")?.value.trim() || "";
-    const g2 = document.getElementById("group2")?.value.trim() || "";
-    const g3 = document.getElementById("group3")?.value.trim() || "";
-    copyText = `Hawaiian Party — ${g1}, ${g2}, ${g3} — 12 €`;
-    paypalLink = PAYPAL_LINKS.grp;
-  } else if (hasGuest) {
-    const name = document.getElementById("fullname")?.value.trim() || "";
-    const gName = document.getElementById("guest-name")?.value.trim() || "";
-    copyText = `Hawaiian Party — ${name} + ${gName} — 10 €`;
-    paypalLink = PAYPAL_LINKS.duo;
-  } else {
-    const name = document.getElementById("fullname")?.value.trim() || "";
-    copyText = `Hawaiian Party — ${name} — 5 €`;
-    paypalLink = PAYPAL_LINKS.std;
-  }
-
-  document.getElementById("copy-text").textContent = copyText;
-  document.getElementById("modal-link").href = paypalLink;
-
-  // Pre-fill modal confirm amount
-  const amountModalEl = document.getElementById("confirm-amount-modal");
-  if (amountModalEl) amountModalEl.placeholder = totalAmount;
 }

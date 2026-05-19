@@ -1,1 +1,0 @@
-let state={currentLang:"en",selectedTicket:null,selectedType:null,currentStep:1,bringGuest:!1};function updateState(e,t){state[e]=t}function getState(e){return state[e]}function resetState(){state={currentLang:"en",selectedTicket:null,selectedType:null,currentStep:1,bringGuest:!1}}

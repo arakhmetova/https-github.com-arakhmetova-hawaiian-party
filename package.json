@@ -1,9 +1,8 @@
 {
 
   "scripts": {
-
-    "build": "cat js/state.js js/config.js js/form.js js/modal.js js/payment.js js/ui.js js/app.js > /tmp/bundle_src.js && javascript-obfuscator /tmp/bundle_src.js --output dist/js/bundle.js --options-preset medium-obfuscation --disable-console-output true --string-array-encoding rc4 --numbers-to-expressions true --split-strings true --split-strings-chunk-length 5"
-
+  "build_linux": "cat js/state.js js/config.js js/form.js js/modal.js js/payment.js js/ui.js js/app.js > /tmp/bundle_src.js && javascript-obfuscator /tmp/bundle_src.js --output dist/js/bundle.js --options-preset high-obfuscation --disable-console-output true --string-array-encoding rc4 --numbers-to-expressions true --split-strings true --split-strings-chunk-length 5 --identifier-names-generator hexadecimal && rm -rf /tmp/bundle_src.js",
+  "build_windows": "type js\\state.js js\\config.js js\\form.js js\\modal.js js\\payment.js js\\ui.js js\\app.js > bundle_src.js && javascript-obfuscator bundle_src.js --output dist\\js\\bundle.js --options-preset high-obfuscation --disable-console-output true --string-array-encoding rc4 --numbers-to-expressions true --split-strings true --split-strings-chunk-length 5 --identifier-names-generator hexadecimal && del bundle_src.js"
   },
 
   "devDependencies": {

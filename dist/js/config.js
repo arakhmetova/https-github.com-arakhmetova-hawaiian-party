@@ -1,1 +1,0 @@
-const PAYPAL_LINKS={std:"https://www.paypal.com/pool/9pfOvXkFAc?sr=ancr",grp:"https://www.paypal.com/pool/9pfOvXkFAc?sr=ancr",duo:"https://www.paypal.com/pool/9pfOvXkFAc?sr=ancr"},TICKET_LABELS={std:"Online — 5 €",grp:"Group 3 people — 12 €"},TICKET_PRICES={std:"5.00 €",grp:"12.00 €"},TOTAL_SPOTS=30,TAKEN_SPOTS=14,SCRIPT_URL="https://hawaiian-party.aigul-akhmetova.workers.dev";

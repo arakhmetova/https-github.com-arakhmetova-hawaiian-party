@@ -18,11 +18,12 @@ function getNonce() {
   return _nonce;
 }
 
-function initApp() {
+async function initApp() {
+  await getData(); 
   const spotsText = document.getElementById("spots-text");
-  if (spotsText) spotsText.textContent = `${TAKEN_SPOTS} / ${TOTAL_SPOTS}`;
+  if (spotsText) spotsText.textContent = `${party_spots.taken} / ${party_spots.total}`;
   const progressFill = document.getElementById("progress-fill");
-  if (progressFill) progressFill.style.width = `${Math.round((TAKEN_SPOTS / TOTAL_SPOTS) * 100)}%`;
+  if (progressFill) progressFill.style.width = `${Math.round((party_spots.taken / party_spots.total) * 100)}%`;
 
   setLang("en");
   setupPaymentModalClosers();

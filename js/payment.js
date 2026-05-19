@@ -100,6 +100,20 @@ function fallbackCopy(text, done) {
   document.body.removeChild(ta);
 }
 
+async function getTurnstileToken() {
+  return new Promise((resolve) => {
+    const widget = document.getElementById("turnstile-widget");
+    if (!widget || typeof turnstile === "undefined") { resolve(""); return; }
+    turnstile.render(widget, {
+      sitekey: "0x4AAAAAADSM6_ICAyQbmf27",
+      size: "invisible",
+      callback: (token) => resolve(token),
+      "error-callback": () => resolve(""),
+    });
+    turnstile.execute(widget);
+  });
+}
+
 function _buildSubmitParams(amount) {
   const name =
     getState("selectedTicket") === "grp"
@@ -167,7 +181,7 @@ function _submitAndRedirect(params) {
 /**
  * Confirm payment from inside the modal (step B)
  */
-function confirmPaymentModal() {
+async function confirmPaymentModal() {
   const amountEl = document.getElementById("confirm-amount-modal");
   const amountErr = document.getElementById("confirm-error-modal");
   const val = parseFloat(amountEl.value);
@@ -190,7 +204,10 @@ function confirmPaymentModal() {
     btn.style.opacity = "0.7";
   }
 
-  _submitAndRedirect(_buildSubmitParams(val.toFixed(2)));
+  const tsToken = await getTurnstileToken();
+  const params = _buildSubmitParams(val.toFixed(2));
+  if (tsToken) params.set("ts_token", tsToken);
+  _submitAndRedirect(params);
 }
 
 /**

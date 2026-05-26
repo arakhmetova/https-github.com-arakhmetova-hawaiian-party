@@ -32,7 +32,7 @@ body {
   width: 100%;
   overflow: hidden;
   box-shadow: 0 8px 48px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ── Hero Section ── */
@@ -52,7 +52,9 @@ body {
   pointer-events: none;
 }
 
-.hero-palms { display: none; }
+.hero-palms {
+  display: none;
+}
 
 .hero h1 {
   font-size: 36px;
@@ -67,7 +69,7 @@ body {
 .hero .meta {
   margin-top: 4px;
   font-size: 14px;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
   position: relative;
 }
@@ -75,22 +77,22 @@ body {
 .hero .meta-small {
   margin-top: 2px;
   font-size: 12px;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 255, 255, 0.55);
   position: relative;
 }
 
 .students-badge {
   display: inline-block;
   margin-top: 10px;
-  background: rgba(0,0,0,0.25);
-  color: rgba(255,255,255,0.9);
+  background: rgba(0, 0, 0, 0.25);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.7px;
   text-transform: uppercase;
   padding: 4px 12px;
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
 }
 
@@ -113,12 +115,12 @@ body {
 }
 
 .price-col--online {
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .price-col--door {
   background: transparent;
-  border: 1.5px solid rgba(255,255,255,0.3);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
 }
 
 .price-col-label {
@@ -131,7 +133,7 @@ body {
 }
 
 .price-col--door .price-col-label {
-  color: rgba(255,255,255,0.65);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .price-col-amount {
@@ -142,7 +144,7 @@ body {
 }
 
 .price-col--door .price-col-amount {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .price-col-sub {
@@ -152,13 +154,13 @@ body {
 }
 
 .price-col--door .price-col-sub {
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .price-col-divider {
   font-size: 12px;
   font-weight: 600;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   flex-shrink: 0;
 }
 
@@ -173,12 +175,12 @@ body {
 
 .lang-btn {
   background: none;
-  border: 1.5px solid rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
   padding: 4px 10px;
   font-size: 12px;
   font-weight: 600;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.35);
   cursor: pointer;
   font-family: inherit;
   transition: all 0.15s;
@@ -187,7 +189,7 @@ body {
 .lang-btn.active {
   border-color: #e8822a;
   color: #e8822a;
-  background: rgba(232,130,42,0.1);
+  background: rgba(232, 130, 42, 0.1);
 }
 
 /* ── Buttons ── */
@@ -220,8 +222,8 @@ body {
   width: 100%;
   padding: 14px;
   background: none;
-  color: rgba(255,255,255,0.35);
-  border: 1.5px solid rgba(255,255,255,0.1);
+  color: rgba(255, 255, 255, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
   border-radius: 14px;
   font-size: 14px;
   font-weight: 600;
@@ -232,14 +234,14 @@ body {
 }
 
 .btn-secondary:hover {
-  border-color: rgba(255,255,255,0.25);
-  color: rgba(255,255,255,0.6);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* ── Divider ── */
 .divider {
   height: 1px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   margin: 20px 0;
 }
 
@@ -249,7 +251,22 @@ body {
   background: transparent;
 }
 
+.legal-footer-links {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
 /* ── Internationalization ── */
-[data-lang] { display: none; }
-.lang-en [data-lang="en"] { display: inline; }
-.lang-de [data-lang="de"] { display: inline; }
+[data-lang] {
+  display: none;
+}
+
+.lang-en [data-lang="en"] {
+  display: inline;
+}
+
+.lang-de [data-lang="de"] {
+  display: inline;
+}

@@ -124,6 +124,27 @@
             opacity: 0.4;
             font-style: italic;
         }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px 12px;
+                /* Weniger Abstand zum Bildschirmrand auf dem Handy */
+            }
+
+            .legal-card {
+                max-width: 100%;
+                /* Nutzt den verfügbaren Platz voll aus */
+                padding: 20px;
+                /* Etwas kompakterer Innenabstand */
+                box-sizing: border-box;
+            }
+
+            h1 {
+                font-size: 22px;
+                /* Verkleinert die Überschrift leicht, damit sie nicht umbricht */
+                word-wrap: break-word;
+            }
+        }
     </style>
 </head>
 

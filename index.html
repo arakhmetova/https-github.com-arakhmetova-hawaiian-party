@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,365 +10,438 @@
   <link rel="stylesheet" href="styles/form.css" />
   <link rel="stylesheet" href="styles/modal.css" />
 </head>
+
 <body class="lang-en">
 
-<div class="card">
+  <div class="card">
 
-  <!-- Lang -->
-  <div class="lang-switcher">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('de')">DE</button>
-  </div>
-
-  <!-- Hero -->
-  <div class="hero">
-    <div class="hero-palms" aria-hidden="true"></div>
-    <h1>🌴 Hawaiian Party 🌴</h1>
-    <div class="meta">
-      <span data-lang="en">Friday, June 12 · 21:00 · Ketteler Wohnheim</span>
-      <span data-lang="de">Freitag, 12. Juni · 21:00 · Ketteler Wohnheim</span>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('de')">DE</button>
     </div>
-    <div class="meta-small">Schleiermacherstraße 14, Darmstadt</div>
-    <div class="students-badge"><span data-lang="en">Students & friends of residents only</span><span data-lang="de">Nur Studierende & Freunde der Bewohner</span></div>
-    
 
-    <div class="price-compare">
-      <div class="price-col price-col--online">
-        <div class="price-col-label"><span data-lang="en">Online</span><span data-lang="de">Online</span></div>
-        <div class="price-col-amount" id="hero-online-amount">5 €</div>
-        <div class="price-col-sub" id="hero-online-sub">Stripe</div>
+    <div class="hero">
+      <div class="hero-palms" aria-hidden="true"></div>
+      <h1>🌴 Hawaiian Party 🌴</h1>
+      <div class="meta">
+        <span data-lang="en">Friday, June 12 · 21:00 · Ketteler Wohnheim</span>
+        <span data-lang="de">Freitag, 12. Juni · 21:00 · Ketteler Wohnheim</span>
       </div>
-      <div class="price-col-divider">vs</div>
-      <div class="price-col price-col--door">
-        <div class="price-col-label"><span data-lang="en">At the door</span><span data-lang="de">Abendkasse</span></div>
-        <div class="price-col-amount" id="hero-door-amount">7 €</div>
-        <div class="price-col-sub" id="hero-door-sub"><span data-lang="en">if spots remain</span><span data-lang="de">falls noch Plätze frei</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Progress -->
-  <div class="progress-steps" id="progress-bar">
-    <div class="step active" id="step-ind-1">
-      <div class="step-dot">1</div>
-      <div class="step-label"><span data-lang="en">Ticket</span><span data-lang="de">Ticket</span></div>
-    </div>
-    <div class="step-line" id="line-1"></div>
-    <div class="step" id="step-ind-2">
-      <div class="step-dot">2</div>
-      <div class="step-label"><span data-lang="en">Details</span><span data-lang="de">Details</span></div>
-    </div>
-    <div class="step-line" id="line-2"></div>
-    <div class="step" id="step-ind-3">
-      <div class="step-dot">3</div>
-      <div class="step-label"><span data-lang="en">Pay</span><span data-lang="de">Zahlen</span></div>
-    </div>
-  </div>
-
-  <div class="body">
-
-    <!-- ── STEP 1: Ticket ── -->
-    <div class="step-panel active" id="panel-1">
+      <div class="meta-small">Schleiermacherstraße 14, Darmstadt</div>
+      <div class="students-badge"><span data-lang="en">Students & friends of residents only</span><span
+          data-lang="de">Nur Studierende & Freunde der Bewohner</span></div>
 
 
-
-      <div class="label"><span data-lang="en">Choose your ticket</span><span data-lang="de">Ticket wählen</span></div>
-
-      <div class="tickets">
-        <label class="ticket" id="ticket-std" onclick="selectTicket('std', this)">
-          <div class="radio-dot"></div>
-          <div class="ticket-info">
-            <div class="ticket-name"><span data-lang="en">Online ticket — 1 person</span><span data-lang="de">Online-Ticket — 1 Person</span></div>
-            <div class="ticket-desc"><span data-lang="en">Pay now, save at the door</span><span data-lang="de">Jetzt zahlen, an der Kasse sparen</span></div>
+      <div class="price-compare">
+        <div class="price-col price-col--online">
+          <div class="price-col-label"><span data-lang="en">Online</span><span data-lang="de">Online</span></div>
+          <div class="price-col-amount" id="hero-online-amount">5 €</div>
+          <div class="price-col-sub" id="hero-online-sub">Stripe</div>
+        </div>
+        <div class="price-col-divider">vs</div>
+        <div class="price-col price-col--door">
+          <div class="price-col-label"><span data-lang="en">At the door</span><span data-lang="de">Abendkasse</span>
           </div>
-          <div class="ticket-price">5 €</div>
-          <div class="badge"><span data-lang="en">vs 7 € at door</span><span data-lang="de">statt 7 € Abendkasse</span></div>
-        </label>
-
-        <label class="ticket" id="ticket-grp" onclick="selectTicket('grp', this)">
-          <div class="radio-dot"></div>
-          <div class="ticket-info">
-            <div class="ticket-name"><span data-lang="en">Group · 3 people</span><span data-lang="de">Gruppe · 3 Personen</span></div>
-            <div class="ticket-desc"><span data-lang="en">Only 4 € per person — online only</span><span data-lang="de">Nur 4 € pro Person — nur online</span></div>
-          </div>
-          <div class="ticket-price">12 €</div>
-          <div class="badge"><span data-lang="en">Best deal!</span><span data-lang="de">Bestes Angebot!</span></div>
-        </label>
+          <div class="price-col-amount" id="hero-door-amount">7 €</div>
+          <div class="price-col-sub" id="hero-door-sub"><span data-lang="en">if spots remain</span><span
+              data-lang="de">falls noch Plätze frei</span></div>
+        </div>
       </div>
-
-      <div style="margin-top:10px; padding:13px 16px; background:rgba(232,130,42,0.12); border:1.5px solid rgba(232,130,42,0.35); border-radius:12px; font-size:13px; color:rgba(255,255,255,0.75); line-height:1.6;">
-        <span data-lang="en">Coming as a group of 3? Pay <strong style="color:#f5a050;">12 € together</strong> — that's only <strong style="color:#f5a050;">4 € each</strong>. Group tickets are only available online, not at the door.</span><span data-lang="de">Kommt ihr zu dritt? Zahlt zusammen <strong style="color:#f5a050;">12 € zusammen</strong> — das sind nur <strong style="color:#f5a050;">4 € pro Person</strong>. Gruppentickets gibt es nur online, nicht an der Abendkasse.</span>
-      </div>
-
-      <div class="error-msg" id="ticket-error" style="margin-bottom:12px;">
-        <span data-lang="en">Please choose a ticket</span>
-        <span data-lang="de">Bitte Ticket wählen</span>
-      </div>
-
-      <button class="btn-primary" onclick="goStep(2)" style="margin-top:16px;">
-        <span data-lang="en">Next →</span>
-        <span data-lang="de">Weiter →</span>
-      </button>
     </div>
 
-    <!-- ── STEP 2: Details ── -->
-    <div class="step-panel" id="panel-2">
-
-      <div class="step-title"><span data-lang="en">Your details</span><span data-lang="de">Deine Angaben</span></div>
-      <div class="step-subtitle">
-        <span data-lang="en">We need this to confirm your spot after payment.</span>
-        <span data-lang="de">Damit wir deinen Platz nach der Zahlung bestätigen können.</span>
+    <div class="progress-steps" id="progress-bar">
+      <div class="step active" id="step-ind-1">
+        <div class="step-dot">1</div>
+        <div class="step-label"><span data-lang="en">Ticket</span><span data-lang="de">Ticket</span></div>
       </div>
-
-      <!-- Who are you -->
-      <div class="label"><span data-lang="en">Who are you?</span><span data-lang="de">Wer bist du?</span></div>
-      <div class="type-options">
-        <label class="ticket" id="type-student" onclick="selectType('student', this)" style="padding:12px 14px;">
-          <div class="radio-dot"></div>
-          <div class="ticket-info">
-            <div class="ticket-name" style="font-size:14px;"><span data-lang="en">I am a student</span><span data-lang="de">Ich bin Student/in</span></div>
-            <div class="ticket-desc"><span data-lang="en">Enrolled at a Darmstadt university</span><span data-lang="de">An einer Hochschule in Darmstadt eingeschrieben</span></div>
-          </div>
-        </label>
-        <label class="ticket" id="type-friend" onclick="selectType('friend', this)" style="padding:12px 14px;">
-          <div class="radio-dot"></div>
-          <div class="ticket-info">
-            <div class="ticket-name" style="font-size:14px;"><span data-lang="en">My friend lives in Ketteler</span><span data-lang="de">Mein Freund/meine Freundin wohnt im Ketteler</span></div>
-            <div class="ticket-desc"><span data-lang="en">I was invited by a resident</span><span data-lang="de">Ich wurde von einem Bewohner eingeladen</span></div>
-          </div>
-        </label>
+      <div class="step-line" id="line-1"></div>
+      <div class="step" id="step-ind-2">
+        <div class="step-dot">2</div>
+        <div class="step-label"><span data-lang="en">Details</span><span data-lang="de">Details</span></div>
       </div>
-      <div class="error-msg" id="type-error" style="margin-bottom:12px;">
-        <span data-lang="en">Please select an option</span>
-        <span data-lang="de">Bitte eine Option wählen</span>
+      <div class="step-line" id="line-2"></div>
+      <div class="step" id="step-ind-3">
+        <div class="step-dot">3</div>
+        <div class="step-label"><span data-lang="en">Pay</span><span data-lang="de">Zahlen</span></div>
       </div>
+    </div>
 
-      <!-- Student notice -->
-      <div id="uni-field" style="display:none; margin-top:12px; padding:12px 14px; background:rgba(232,130,42,0.1); border:1.5px solid rgba(232,130,42,0.3); border-radius:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.6;">
-        <span data-lang="en">Please bring your <strong style="color:#f5a050;">student ID</strong> — we'll check it at the door.</span>
-        <span data-lang="de">Bitte bringe deinen <strong style="color:#f5a050;">Studierendenausweis</strong> mit — wir kontrollieren ihn am Eingang.</span>
-      </div>
-      <input type="hidden" id="university" value="student" />
+    <div class="body">
 
-      <!-- Friend name (friend only) -->
-      <div class="field" id="friend-field" style="display:none; margin-top:14px;">
-        <label><span data-lang="en">Name of your friend who lives in Ketteler</span><span data-lang="de">Name deines Freundes im Ketteler</span></label>
-        <input type="text" id="friend-name" placeholder="Max Müller" />
-        <div class="field-hint"><span data-lang="en">So we can verify with the resident</span><span data-lang="de">Damit wir beim Bewohner nachfragen können</span></div>
-        <div class="error-msg" id="friend-error">
-          <span data-lang="en">Please enter your friend's full name (first and last name)</span>
-          <span data-lang="de">Bitte vollständigen Namen des Freundes eingeben (Vor- und Nachname)</span>
+      <div class="step-panel active" id="panel-1">
+
+
+
+        <div class="label"><span data-lang="en">Choose your ticket</span><span data-lang="de">Ticket wählen</span></div>
+
+        <div class="tickets">
+          <label class="ticket" id="ticket-std" onclick="selectTicket('std', this)">
+            <div class="radio-dot"></div>
+            <div class="ticket-info">
+              <div class="ticket-name"><span data-lang="en">Online ticket — 1 person</span><span
+                  data-lang="de">Online-Ticket — 1 Person</span></div>
+              <div class="ticket-desc"><span data-lang="en">Pay now, save at the door</span><span data-lang="de">Jetzt
+                  zahlen, an der Kasse sparen</span></div>
+            </div>
+            <div class="ticket-price">5 €</div>
+            <div class="badge"><span data-lang="en">vs 7 € at door</span><span data-lang="de">statt 7 €
+                Abendkasse</span></div>
+          </label>
+
+          <label class="ticket" id="ticket-grp" onclick="selectTicket('grp', this)">
+            <div class="radio-dot"></div>
+            <div class="ticket-info">
+              <div class="ticket-name"><span data-lang="en">Group · 3 people</span><span data-lang="de">Gruppe · 3
+                  Personen</span></div>
+              <div class="ticket-desc"><span data-lang="en">Only 4 € per person — online only</span><span
+                  data-lang="de">Nur 4 € pro Person — nur online</span></div>
+            </div>
+            <div class="ticket-price">12 €</div>
+            <div class="badge"><span data-lang="en">Best deal!</span><span data-lang="de">Bestes Angebot!</span></div>
+          </label>
+        </div>
+
+        <div
+          style="margin-top:10px; padding:13px 16px; background:rgba(232,130,42,0.12); border:1.5px solid rgba(232,130,42,0.35); border-radius:12px; font-size:13px; color:rgba(255,255,255,0.75); line-height:1.6;">
+          <span data-lang="en">Coming as a group of 3? Pay <strong style="color:#f5a050;">12 € together</strong> —
+            that's only <strong style="color:#f5a050;">4 € each</strong>. Group tickets are only available online, not
+            at the door.</span><span data-lang="de">Kommt ihr zu dritt? Zahlt zusammen <strong style="color:#f5a050;">12
+              € zusammen</strong> — das sind nur <strong style="color:#f5a050;">4 € pro Person</strong>. Gruppentickets
+            gibt es nur online, nicht an der Abendkasse.</span>
+        </div>
+
+        <div class="error-msg" id="ticket-error" style="margin-bottom:12px;">
+          <span data-lang="en">Please choose a ticket</span>
+          <span data-lang="de">Bitte Ticket wählen</span>
+        </div>
+
+        <button class="btn-primary" onclick="goStep(2)" style="margin-top:16px;">
+          <span data-lang="en">Next →</span>
+          <span data-lang="de">Weiter →</span>
+        </button>
+
+        <div class="legal-footer-links">
+          <a href="impressum.html"
+            style="color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 8px; font-size: 11px;">Impressum</a>
+          ·
+          <a href="datenschutz.html"
+            style="color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 8px; font-size: 11px;">Datenschutz</a>
         </div>
       </div>
 
-      <div class="divider"></div>
+      <div class="step-panel" id="panel-2">
 
-      <!-- Name(s) -->
-      <div id="single-name-wrap">
+        <div class="step-title"><span data-lang="en">Your details</span><span data-lang="de">Deine Angaben</span></div>
+        <div class="step-subtitle">
+          <span data-lang="en">We need this to confirm your spot after payment.</span>
+          <span data-lang="de">Damit wir deinen Platz nach der Zahlung bestätigen können.</span>
+        </div>
+
+        <div class="label"><span data-lang="en">Who are you?</span><span data-lang="de">Wer bist du?</span></div>
+        <div class="type-options">
+          <label class="ticket" id="type-student" onclick="selectType('student', this)" style="padding:12px 14px;">
+            <div class="radio-dot"></div>
+            <div class="ticket-info">
+              <div class="ticket-name" style="font-size:14px;"><span data-lang="en">I am a student</span><span
+                  data-lang="de">Ich bin Student/in</span></div>
+              <div class="ticket-desc"><span data-lang="en">Enrolled at a Darmstadt university</span><span
+                  data-lang="de">An einer Hochschule in Darmstadt eingeschrieben</span></div>
+            </div>
+          </label>
+          <label class="ticket" id="type-friend" onclick="selectType('friend', this)" style="padding:12px 14px;">
+            <div class="radio-dot"></div>
+            <div class="ticket-info">
+              <div class="ticket-name" style="font-size:14px;"><span data-lang="en">My friend lives in
+                  Ketteler</span><span data-lang="de">Mein Freund/meine Freundin wohnt im Ketteler</span></div>
+              <div class="ticket-desc"><span data-lang="en">I was invited by a resident</span><span data-lang="de">Ich
+                  wurde von einem Bewohner eingeladen</span></div>
+            </div>
+          </label>
+        </div>
+        <div class="error-msg" id="type-error" style="margin-bottom:12px;">
+          <span data-lang="en">Please select an option</span>
+          <span data-lang="de">Bitte eine Option wählen</span>
+        </div>
+
+        <div id="uni-field"
+          style="display:none; margin-top:12px; padding:12px 14px; background:rgba(232,130,42,0.1); border:1.5px solid rgba(232,130,42,0.3); border-radius:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.6;">
+          <span data-lang="en">Please bring your <strong style="color:#f5a050;">student ID</strong> — we'll check it at
+            the door.</span>
+          <span data-lang="de">Bitte bringe deinen <strong style="color:#f5a050;">Studierendenausweis</strong> mit — wir
+            kontrollieren ihn am Eingang.</span>
+        </div>
+        <input type="hidden" id="university" value="student" />
+
+        <div class="field" id="friend-field" style="display:none; margin-top:14px;">
+          <label><span data-lang="en">Name of your friend who lives in Ketteler</span><span data-lang="de">Name deines
+              Freundes im Ketteler</span></label>
+          <input type="text" id="friend-name" placeholder="Max Müller" />
+          <div class="field-hint"><span data-lang="en">So we can verify with the resident</span><span
+              data-lang="de">Damit wir beim Bewohner nachfragen können</span></div>
+          <div class="error-msg" id="friend-error">
+            <span data-lang="en">Please enter your friend's full name (first and last name)</span>
+            <span data-lang="de">Bitte vollständigen Namen des Freundes eingeben (Vor- und Nachname)</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div id="single-name-wrap">
+          <div class="field">
+            <label><span data-lang="en">Your full name</span><span data-lang="de">Vor- und Nachname</span></label>
+            <input type="text" id="fullname" autocomplete="name" placeholder="Anna Müller" />
+            <div class="field-hint"><span data-lang="en">First name(s) and last name(s), capitalised — e.g. Anna Maria
+                Müller-Schmidt</span><span data-lang="de">Vornamen und Nachnamen, großgeschrieben — z. B. Anna Maria
+                Müller-Schmidt</span></div>
+            <div class="error-msg" id="name-error">
+              <span data-lang="en">Please enter your first and last name (at least 2 words)</span>
+              <span data-lang="de">Bitte Vor- und Nachnamen eingeben (mindestens 2 Wörter)</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="group-names-wrap" style="display:none;">
+          <div class="label"><span data-lang="en">Names of all 3 people</span><span data-lang="de">Namen aller 3
+              Personen</span></div>
+          <div
+            style="margin-bottom:10px; padding:10px 12px; background:#f5f0eb; border-radius:10px; font-size:13px; color:#7a6a5a; line-height:1.5;">
+            <span data-lang="en">Enter first name(s) and last name(s) for each person, capitalised — e.g. Anna Maria
+              Müller-Schmidt</span><span data-lang="de">Vornamen und Nachnamen für jede Person, großgeschrieben — z. B.
+              Anna Maria Müller-Schmidt</span>
+          </div>
+          <div class="field">
+            <label><span data-lang="en">Person 1 — your full name (the one paying)</span><span data-lang="de">Person 1 —
+                dein vollständiger Name (zahlende Person)</span></label>
+            <input type="text" id="group1" placeholder="e.g. Anna Müller" />
+            <div class="error-msg" id="group1-error"><span data-lang="en">Please enter full name (at least 2
+                words)</span><span data-lang="de">Bitte vollständigen Namen eingeben (mindestens 2 Wörter)</span></div>
+          </div>
+          <div class="field">
+            <label><span data-lang="en">Person 2 — full name of your 2nd guest</span><span data-lang="de">Person 2 —
+                vollständiger Name der 2. Person</span></label>
+            <input type="text" id="group2" placeholder="e.g. Max Schmidt" />
+            <div class="error-msg" id="group2-error"><span data-lang="en">Please enter full name (at least 2
+                words)</span><span data-lang="de">Bitte vollständigen Namen eingeben (mindestens 2 Wörter)</span></div>
+          </div>
+          <div class="field">
+            <label><span data-lang="en">Person 3 — full name of your 3rd guest</span><span data-lang="de">Person 3 —
+                vollständiger Name der 3. Person</span></label>
+            <input type="text" id="group3" placeholder="e.g. Lisa Weber" />
+            <div class="error-msg" id="group3-error"><span data-lang="en">Please enter full name (at least 2
+                words)</span><span data-lang="de">Bitte vollständigen Namen eingeben (mindestens 2 Wörter)</span></div>
+          </div>
+        </div>
+
         <div class="field">
-          <label><span data-lang="en">Your full name</span><span data-lang="de">Vor- und Nachname</span></label>
-          <input type="text" id="fullname" autocomplete="name" placeholder="Anna Müller" />
-          <div class="field-hint"><span data-lang="en">First name(s) and last name(s), capitalised — e.g. Anna Maria Müller-Schmidt</span><span data-lang="de">Vornamen und Nachnamen, großgeschrieben — z. B. Anna Maria Müller-Schmidt</span></div>
-          <div class="error-msg" id="name-error">
-            <span data-lang="en">Please enter your first and last name (at least 2 words)</span>
-            <span data-lang="de">Bitte Vor- und Nachnamen eingeben (mindestens 2 Wörter)</span>
+          <label>Email</label>
+          <input type="email" id="email" autocomplete="email" placeholder="anna@tu-darmstadt.de" />
+          <div class="field-hint"><span data-lang="en">Use your real email — your payment confirmation will be sent
+              there</span><span data-lang="de">Bitte deine echte E-Mail angeben — die Zahlungsbestätigung wird dorthin
+              geschickt</span></div>
+          <div class="error-msg" id="email-error">
+            <span data-lang="en">Please enter a valid email address</span>
+            <span data-lang="de">Bitte gültige E-Mail-Adresse eingeben</span>
           </div>
         </div>
-      </div>
-
-      <div id="group-names-wrap" style="display:none;">
-        <div class="label"><span data-lang="en">Names of all 3 people</span><span data-lang="de">Namen aller 3 Personen</span></div>
-        <div style="margin-bottom:10px; padding:10px 12px; background:#f5f0eb; border-radius:10px; font-size:13px; color:#7a6a5a; line-height:1.5;">
-          <span data-lang="en">Enter first name(s) and last name(s) for each person, capitalised — e.g. Anna Maria Müller-Schmidt</span><span data-lang="de">Vornamen und Nachnamen für jede Person, großgeschrieben — z. B. Anna Maria Müller-Schmidt</span>
-        </div>
-        <div class="field">
-          <label><span data-lang="en">Person 1 — your full name (the one paying)</span><span data-lang="de">Person 1 — dein vollständiger Name (zahlende Person)</span></label>
-          <input type="text" id="group1" placeholder="e.g. Anna Müller" />
-          <div class="error-msg" id="group1-error"><span data-lang="en">Please enter full name (at least 2 words)</span><span data-lang="de">Bitte vollständigen Namen eingeben (mindestens 2 Wörter)</span></div>
-        </div>
-        <div class="field">
-          <label><span data-lang="en">Person 2 — full name of your 2nd guest</span><span data-lang="de">Person 2 — vollständiger Name der 2. Person</span></label>
-          <input type="text" id="group2" placeholder="e.g. Max Schmidt" />
-          <div class="error-msg" id="group2-error"><span data-lang="en">Please enter full name (at least 2 words)</span><span data-lang="de">Bitte vollständigen Namen eingeben (mindestens 2 Wörter)</span></div>
-        </div>
-        <div class="field">
-          <label><span data-lang="en">Person 3 — full name of your 3rd guest</span><span data-lang="de">Person 3 — vollständiger Name der 3. Person</span></label>
-          <input type="text" id="group3" placeholder="e.g. Lisa Weber" />
-          <div class="error-msg" id="group3-error"><span data-lang="en">Please enter full name (at least 2 words)</span><span data-lang="de">Bitte vollständigen Namen eingeben (mindestens 2 Wörter)</span></div>
-        </div>
-      </div>
-
-      <!-- Email -->
-      <div class="field">
-        <label>Email</label>
-        <input type="email" id="email" autocomplete="email" placeholder="anna@tu-darmstadt.de" />
-        <div class="field-hint"><span data-lang="en">Use your real email — your payment confirmation will be sent there</span><span data-lang="de">Bitte deine echte E-Mail angeben — die Zahlungsbestätigung wird dorthin geschickt</span></div>
-        <div class="error-msg" id="email-error">
-          <span data-lang="en">Please enter a valid email address</span>
-          <span data-lang="de">Bitte gültige E-Mail-Adresse eingeben</span>
-        </div>
-      </div>
 
 
-      <!-- Rules -->
-      <label class="checkbox-label">
-        <input type="checkbox" id="rules-check" />
-        <span class="checkmark" id="rules-checkmark"></span>
-        <span class="check-text">
-          <span data-lang="en">I have read and agree to the </span>
-          <span data-lang="de">Ich habe die </span>
-          <button class="rules-link" onclick="openRules(event)">
-            <span data-lang="en">event rules</span>
-            <span data-lang="de">Veranstaltungsregeln</span>
-          </button>
-          <span data-lang="de"> gelesen und stimme zu</span>
-        </span>
-      </label>
-      <div class="error-msg" id="rules-error" style="margin-bottom:16px;">
-        <span data-lang="en">Please read and accept the event rules</span>
-        <span data-lang="de">Bitte Regeln lesen und akzeptieren</span>
-      </div>
-
-      <!-- +1 Guest -->
-      <div class="guest-toggle" id="guest-toggle-wrap" style="display:none;">
-        <label class="guest-toggle-label" onclick="toggleGuest()">
-          <span class="guest-toggle-check" id="guest-toggle-check"></span>
-          <span class="guest-toggle-text">
-            <span class="guest-toggle-title">
-              <span data-lang="en">Bringing a guest? +1 person — <strong>10 € total</strong></span>
-              <span data-lang="de">Bringst du jemanden mit? +1 Person — <strong>10 € gesamt</strong></span>
-            </span>
-            <span class="guest-toggle-sub">
-              <span data-lang="en">Your friend can invite one person with them</span>
-              <span data-lang="de">Dein Freund darf eine Person mitbringen</span>
-            </span>
+        <label class="checkbox-label">
+          <input type="checkbox" id="rules-check" />
+          <span class="checkmark" id="rules-checkmark"></span>
+          <span class="check-text">
+            <span data-lang="en">I have read and agree to the </span>
+            <span data-lang="de">Ich habe die </span>
+            <button class="rules-link" onclick="openRules(event)">
+              <span data-lang="en">event rules</span>
+              <span data-lang="de">Veranstaltungsregeln</span>
+            </button>
+            <span data-lang="de"> gelesen und stimme zu</span>
           </span>
         </label>
+        <div class="error-msg" id="rules-error" style="margin-bottom:16px;">
+          <span data-lang="en">Please read and accept the event rules</span>
+          <span data-lang="de">Bitte Regeln lesen und akzeptieren</span>
+        </div>
 
-        <div class="guest-fields" id="guest-fields" style="display:none;">
-          <div class="field">
-            <label><span data-lang="en">Guest full name</span><span data-lang="de">Vollständiger Name des Gastes</span></label>
-            <input type="text" id="guest-name" placeholder="Max Müller" />
-            <div class="error-msg" id="guest-name-error">
-              <span data-lang="en">Please enter guest's first and last name</span>
-              <span data-lang="de">Bitte Vor- und Nachnamen des Gastes eingeben</span>
+        <div class="guest-toggle" id="guest-toggle-wrap" style="display:none;">
+          <label class="guest-toggle-label" onclick="toggleGuest()">
+            <span class="guest-toggle-check" id="guest-toggle-check"></span>
+            <span class="guest-toggle-text">
+              <span class="guest-toggle-title">
+                <span data-lang="en">Bringing a guest? +1 person — <strong>10 € total</strong></span>
+                <span data-lang="de">Bringst du jemanden mit? +1 Person — <strong>10 € gesamt</strong></span>
+              </span>
+              <span class="guest-toggle-sub">
+                <span data-lang="en">Your friend can invite one person with them</span>
+                <span data-lang="de">Dein Freund darf eine Person mitbringen</span>
+              </span>
+            </span>
+          </label>
+
+          <div class="guest-fields" id="guest-fields" style="display:none;">
+            <div class="field">
+              <label><span data-lang="en">Guest full name</span><span data-lang="de">Vollständiger Name des
+                  Gastes</span></label>
+              <input type="text" id="guest-name" placeholder="Max Müller" />
+              <div class="error-msg" id="guest-name-error">
+                <span data-lang="en">Please enter guest's first and last name</span>
+                <span data-lang="de">Bitte Vor- und Nachnamen des Gastes eingeben</span>
+              </div>
             </div>
-          </div>
-          <div class="field">
-            <label><span data-lang="en">Guest email</span><span data-lang="de">E-Mail des Gastes</span></label>
-            <input type="email" id="guest-email" placeholder="guest@email.com" />
-            <div class="error-msg" id="guest-email-error">
-              <span data-lang="en">Please enter a valid email address</span>
-              <span data-lang="de">Bitte gültige E-Mail-Adresse eingeben</span>
+            <div class="field">
+              <label><span data-lang="en">Guest email</span><span data-lang="de">E-Mail des Gastes</span></label>
+              <input type="email" id="guest-email" placeholder="guest@email.com" />
+              <div class="error-msg" id="guest-email-error">
+                <span data-lang="en">Please enter a valid email address</span>
+                <span data-lang="de">Bitte gültige E-Mail-Adresse eingeben</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <button class="btn-primary" id="btn-step2-next" onclick="goStep(3)" style="margin-top:16px;">
-        <span data-lang="en">Review & Pay →</span>
-        <span data-lang="de">Überprüfen & Zahlen →</span>
-      </button>
-      <button class="btn-secondary" onclick="goStep(1)">
-        <span data-lang="en">← Back</span>
-        <span data-lang="de">← Zurück</span>
-      </button>
-    </div>
+        <button class="btn-primary" id="btn-step2-next" onclick="goStep(3)" style="margin-top:16px;">
+          <span data-lang="en">Review & Pay →</span>
+          <span data-lang="de">Überprüfen & Zahlen →</span>
+        </button>
+        <button class="btn-secondary" onclick="goStep(1)">
+          <span data-lang="en">← Back</span>
+          <span data-lang="de">← Zurück</span>
+        </button>
 
-    <!-- ── STEP 3: Pay ── -->
-    <div class="step-panel" id="panel-3">
-
-      <div class="step-title"><span data-lang="en">Review & pay</span><span data-lang="de">Überprüfen & zahlen</span></div>
-      <div class="step-subtitle">
-        <span data-lang="en">Check your details and complete payment via Stripe.</span>
-        <span data-lang="de">Überprüfe deine Angaben und zahle via Stripe.</span>
-      </div>
-
-      <!-- Summary -->
-      <div class="summary-box" id="summary-box">
-        <div class="summary-row"><span class="summary-label"><span data-lang="en">Ticket</span><span data-lang="de">Ticket</span></span><span id="sum-ticket">—</span></div>
-        <div class="summary-row"><span class="summary-label"><span data-lang="en">Name(s)</span><span data-lang="de">Name(n)</span></span><span id="sum-names">—</span></div>
-        <div class="summary-row"><span class="summary-label">Email</span><span id="sum-email">—</span></div>
-        <div class="summary-row"><span class="summary-label"><span data-lang="en">University / Invited by</span><span data-lang="de">Hochschule / Eingeladen von</span></span><span id="sum-uni">—</span></div>
-        <div class="summary-row" id="sum-guest-row" style="display:none;"><span class="summary-label"><span data-lang="en">Guest</span><span data-lang="de">Gast</span></span><span id="sum-guest">—</span></div>
-        <div class="summary-row total"><span><span data-lang="en">Total</span><span data-lang="de">Gesamt</span></span><span id="sum-total">—</span></div>
-        <div class="summary-row" id="sum-door-row" style="display:none; color:rgba(255,255,255,0.25); font-size:12px; padding-top:6px;">
-          <span class="summary-label"><span data-lang="en">vs Abendkasse</span><span data-lang="de">vs Abendkasse</span></span>
-          <span id="sum-door">—</span>
+        <div class="legal-footer-links">
+          <a href="impressum.html"
+            style="color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 8px; font-size: 11px;">Impressum</a>
+          ·
+          <a href="datenschutz.html"
+            style="color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 8px; font-size: 11px;">Datenschutz</a>
         </div>
+
       </div>
 
-      <div style="margin-bottom:16px; padding:12px 14px; background:rgba(255,255,255,0.04); border-radius:12px; font-size:13px; color:rgba(255,255,255,0.45); line-height:1.6;">
-        <span data-lang="en">Can't make it? Let us know <strong>at least 24 hours before</strong> the event and we'll refund you in full (except group tickets 3 × 4 €).</span><span data-lang="de">Kannst du nicht kommen? Meld dich <strong>mindestens 24 Stunden vorher</strong> und wir erstatten dir den vollen Betrag (außer Gruppentickets 3 × 4 €).</span>
+      <div class="step-panel" id="panel-3">
+
+        <div class="step-title"><span data-lang="en">Review & pay</span><span data-lang="de">Überprüfen & zahlen</span>
+        </div>
+        <div class="step-subtitle">
+          <span data-lang="en">Check your details and complete payment via Stripe.</span>
+          <span data-lang="de">Überprüfe deine Angaben und zahle via Stripe.</span>
+        </div>
+
+        <div class="summary-box" id="summary-box">
+          <div class="summary-row"><span class="summary-label"><span data-lang="en">Ticket</span><span
+                data-lang="de">Ticket</span></span><span id="sum-ticket">—</span></div>
+          <div class="summary-row"><span class="summary-label"><span data-lang="en">Name(s)</span><span
+                data-lang="de">Name(n)</span></span><span id="sum-names">—</span></div>
+          <div class="summary-row"><span class="summary-label">Email</span><span id="sum-email">—</span></div>
+          <div class="summary-row"><span class="summary-label"><span data-lang="en">University / Invited by</span><span
+                data-lang="de">Hochschule / Eingeladen von</span></span><span id="sum-uni">—</span></div>
+          <div class="summary-row" id="sum-guest-row" style="display:none;"><span class="summary-label"><span
+                data-lang="en">Guest</span><span data-lang="de">Gast</span></span><span id="sum-guest">—</span></div>
+          <div class="summary-row total"><span><span data-lang="en">Total</span><span
+                data-lang="de">Gesamt</span></span><span id="sum-total">—</span></div>
+          <div class="summary-row" id="sum-door-row"
+            style="display:none; color:rgba(255,255,255,0.25); font-size:12px; padding-top:6px;">
+            <span class="summary-label"><span data-lang="en">vs Abendkasse</span><span data-lang="de">vs
+                Abendkasse</span></span>
+            <span id="sum-door">—</span>
+          </div>
+        </div>
+
+        <div
+          style="margin-bottom:16px; padding:12px 14px; background:rgba(255,255,255,0.04); border-radius:12px; font-size:13px; color:rgba(255,255,255,0.45); line-height:1.6;">
+          <span data-lang="en">Can't make it? Let us know <strong>at least 24 hours before</strong> the event and we'll
+            refund you in full (except group tickets 3 × 4 €).</span><span data-lang="de">Kannst du nicht kommen? Meld
+            dich <strong>mindestens 24 Stunden vorher</strong> und wir erstatten dir den vollen Betrag (außer
+            Gruppentickets 3 × 4 €).</span>
+        </div>
+
+        <button class="btn-primary" onclick="openPayModal()">
+          <span data-lang="en">Pay with Stripe →</span>
+          <span data-lang="de">Mit Stripe zahlen →</span>
+        </button>
+
+        <button class="btn-secondary" onclick="goStep(2)">
+          <span data-lang="en">← Edit details</span>
+          <span data-lang="de">← Details bearbeiten</span>
+        </button>
+
+        <div class="pay-note">
+          <span data-lang="en">Secure payment via Stripe · Cards &amp; Apple/Google Pay accepted</span>
+          <span data-lang="de">Sichere Zahlung per Stripe · Karte, Apple &amp; Google Pay möglich</span>
+          <br />Kostenbeteiligung — private Veranstaltung
+        </div>
+        <div class="legal-footer-links">
+          <a href="impressum.html"
+            style="color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 8px; font-size: 11px;">Impressum</a>
+          ·
+          <a href="datenschutz.html"
+            style="color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 8px; font-size: 11px;">Datenschutz</a>
+        </div>
+
+
       </div>
 
-      <button class="btn-primary" onclick="openPayModal()">
-        <span data-lang="en">Pay with Stripe →</span>
-        <span data-lang="de">Mit Stripe zahlen →</span>
-      </button>
-
-      <button class="btn-secondary" onclick="goStep(2)">
-        <span data-lang="en">← Edit details</span>
-        <span data-lang="de">← Details bearbeiten</span>
-      </button>
-
-      <div class="pay-note">
-        <span data-lang="en">Secure payment via Stripe · Cards &amp; Apple/Google Pay accepted</span>
-        <span data-lang="de">Sichere Zahlung per Stripe · Karte, Apple &amp; Google Pay möglich</span>
-        <br/>Kostenbeteiligung — private Veranstaltung
-      </div>
     </div>
-
   </div>
-</div>
 
-<!-- Payment Modal -->
-<div class="modal" id="modal">
-  <div class="modal-card">
-    <div class="modal-handle"></div>
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <div class="modal-handle"></div>
 
-    <!-- Stripe Checkout -->
-    <div id="modal-step-a">
-      <h2><span data-lang="en">Almost there 🌴</span><span data-lang="de">Fast geschafft 🌴</span></h2>
-      <p>
-        <span data-lang="en">Click below to pay securely with Stripe. You'll be redirected back here once payment is complete.</span>
-        <span data-lang="de">Klicke unten, um sicher mit Stripe zu zahlen. Du wirst nach der Zahlung automatisch zurückgeleitet.</span>
-      </p>
-      <div id="modal-summary" style="background:#f9f5f0;border-radius:10px;padding:12px 16px;margin-bottom:16px;text-align:left;font-size:14px;color:#555;"></div>
-      <input type="text" id="website" name="website" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" />
-      <div class="cf-turnstile" id="turnstile-widget" data-sitekey="0x4AAAAAADSM6_ICAyQbmf27" data-size="invisible"></div>
-      <div class="error-msg" id="confirm-error-modal" style="display:none;margin-bottom:12px;"></div>
-      <button class="modal-btn" id="confirm-btn" onclick="confirmPaymentModal()" style="background:#3aaa7a;">
-        <span data-lang="en">Pay now →</span>
-        <span data-lang="de">Jetzt zahlen →</span>
-      </button>
-      <button class="modal-cancel" onclick="closePayModal()">
-        <span data-lang="en">Go back</span><span data-lang="de">Zurück</span>
+      <div id="modal-step-a">
+        <h2><span data-lang="en">Almost there 🌴</span><span data-lang="de">Fast geschafft 🌴</span></h2>
+        <p>
+          <span data-lang="en">Click below to pay securely with Stripe. You'll be redirected back here once payment is
+            complete.</span>
+          <span data-lang="de">Klicke unten, um sicher mit Stripe zu zahlen. Du wirst nach der Zahlung automatisch
+            zurückgeleitet.</span>
+        </p>
+        <div id="modal-summary"
+          style="background:#f9f5f0;border-radius:10px;padding:12px 16px;margin-bottom:16px;text-align:left;font-size:14px;color:#555;">
+        </div>
+        <input type="text" id="website" name="website" autocomplete="off" tabindex="-1"
+          style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" />
+        <div class="cf-turnstile" id="turnstile-widget" data-sitekey="0x4AAAAAADSM6_ICAyQbmf27" data-size="invisible">
+        </div>
+        <div class="error-msg" id="confirm-error-modal" style="display:none;margin-bottom:12px;"></div>
+        <button class="modal-btn" id="confirm-btn" onclick="confirmPaymentModal()" style="background:#3aaa7a;">
+          <span data-lang="en">Pay now →</span>
+          <span data-lang="de">Jetzt zahlen →</span>
+        </button>
+        <button class="modal-cancel" onclick="closePayModal()">
+          <span data-lang="en">Go back</span><span data-lang="de">Zurück</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="rules-modal" id="rules-modal">
+    <div class="rules-card">
+      <h3>🌴 Event Rules</h3>
+      <ul class="rules-list">
+        <li><span class="rule-icon">💶</span><span><strong>Pricing:</strong> Online tickets cost <strong>5 €</strong>
+            per person (group of 3: <strong>12 € total</strong>, i.e. 4 € each). At the door (Abendkasse) the price is
+            <strong>7 € for everyone</strong> — no exceptions and no group deal at the door.</span></li>
+        <li><span class="rule-icon">🎓</span><span><strong>Students & residents' friends only.</strong> You must be an
+            enrolled student at a Darmstadt university, or personally invited by a Ketteler resident, to attend.</span>
+        </li>
+        <li><span class="rule-icon">🤝</span><span><strong>Respect everyone.</strong> Harassment of any kind will not be
+            tolerated. Treat all guests with respect.</span></li>
+        <li><span class="rule-icon">💳</span><span><strong>Refund policy.</strong> If you can't attend, let us know at
+            least 24 hours before the event and we'll refund you in full — valid for all tickets except the group deal
+            (3 × 4 €), which is non-refundable. No-shows are non-refundable.</span></li>
+      </ul>
+      <button class="rules-close" onclick="closeRules()">
+        <span data-lang="en">Got it, I agree ✓</span>
+        <span data-lang="de">Verstanden, ich stimme zu ✓</span>
       </button>
     </div>
-
   </div>
-</div>
 
-<!-- Rules Modal -->
-<div class="rules-modal" id="rules-modal">
-  <div class="rules-card">
-    <h3>🌴 Event Rules</h3>
-    <ul class="rules-list">
-      <li><span class="rule-icon">💶</span><span><strong>Pricing:</strong> Online tickets cost <strong>5 €</strong> per person (group of 3: <strong>12 € total</strong>, i.e. 4 € each). At the door (Abendkasse) the price is <strong>7 € for everyone</strong> — no exceptions and no group deal at the door.</span></li>
-      <li><span class="rule-icon">🎓</span><span><strong>Students & residents' friends only.</strong> You must be an enrolled student at a Darmstadt university, or personally invited by a Ketteler resident, to attend.</span></li>
-      <li><span class="rule-icon">🤝</span><span><strong>Respect everyone.</strong> Harassment of any kind will not be tolerated. Treat all guests with respect.</span></li>
-      <li><span class="rule-icon">💳</span><span><strong>Refund policy.</strong> If you can't attend, let us know at least 24 hours before the event and we'll refund you in full — valid for all tickets except the group deal (3 × 4 €), which is non-refundable. No-shows are non-refundable.</span></li>
-    </ul>
-    <button class="rules-close" onclick="closeRules()">
-      <span data-lang="en">Got it, I agree ✓</span>
-      <span data-lang="de">Verstanden, ich stimme zu ✓</span>
-    </button>
-  </div>
-</div>
-
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script src="dist/js/bundle.js?v=17"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="dist/js/bundle.js?v=17"></script>
 
 </body>
+
 </html>

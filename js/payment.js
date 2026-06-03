@@ -37,6 +37,20 @@ function _populateModalSummary() {
     if (hasGuest) names += " + " + (document.getElementById("guest-name")?.value.trim() || "");
   }
   el.innerHTML = `<strong>${names}</strong><br><span style="color:#3aaa7a;font-weight:600;">${price}</span>`;
+
+  const promoEl = document.getElementById("modal-shots-promo");
+  const waBtn = document.getElementById("modal-whatsapp-btn");
+  if (promoEl && waBtn) {
+    const isSolo = !isGrp && !hasGuest;
+    promoEl.style.display = isSolo ? "block" : "none";
+    if (isSolo) {
+      const lang = getState("currentLang") === "de" ? "de" : "en";
+      const text = lang === "de"
+        ? "Ich hab gerade ein Ticket für die Hawaiian Party am 12. Juni gekauft 🌴 Kauf auch eines – wir bekommen beide 2 Gratis-Shots! Nur noch wenige Plätze: ketteler-party.social"
+        : "Just got my ticket for the Hawaiian Party on June 12 🌴 Get yours too — we'll both get 2 free shots at the door! Limited spots: ketteler-party.social";
+      waBtn.href = "https://wa.me/?text=" + encodeURIComponent(text);
+    }
+  }
 }
 
 function toggleGuest() {

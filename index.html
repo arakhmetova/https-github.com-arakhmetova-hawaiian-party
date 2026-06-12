@@ -51,12 +51,19 @@
 
 
 
-    <!-- FOMO banner -->
-    <div style="background:#fff3e0;border:1.5px solid #f4a52a;border-radius:12px;padding:10px 16px;margin:0 0 12px;text-align:center;font-size:14px;font-weight:600;color:#b85c00;">
-      🔥 <span data-lang="en">Online tickets are limited — secure yours now!</span><span data-lang="de">Online-Tickets sind begrenzt — sichere dir jetzt deins!</span>
+    <!-- Closed banner -->
+    <div style="background:rgba(232,130,42,0.12);border:1.5px solid rgba(232,130,42,0.5);border-radius:12px;padding:16px;margin:0 0 12px;text-align:center;">
+      <div style="font-size:16px;font-weight:700;color:#f5a050;margin-bottom:6px;">
+        <span data-lang="en">Online registration is now closed</span>
+        <span data-lang="de">Online-Anmeldung ist geschlossen</span>
+      </div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">
+        <span data-lang="en">We look forward to seeing you tonight! Join us at the Abendkasse — 7 € at the door.</span>
+        <span data-lang="de">Wir freuen uns auf euch heute Abend! Kommt einfach zur Abendkasse — 7 € an der Tür.</span>
+      </div>
     </div>
 
-    <div class="progress-steps" id="progress-bar">
+    <div class="progress-steps" id="progress-bar" style="display:none;">
       <div class="step active" id="step-ind-1">
         <div class="step-dot">1</div>
         <div class="step-label"><span data-lang="en">Ticket</span><span data-lang="de">Ticket</span></div>
@@ -73,7 +80,7 @@
       </div>
     </div>
 
-    <div class="body">
+    <div class="body" style="display:none;">
 
       <div class="step-panel active" id="panel-1">
 
